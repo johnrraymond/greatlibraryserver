@@ -1,13 +1,15 @@
-nftbooks.art
+Welcome to the Great Library Server
 =======================
 
-This code contains three main parts:
+This code contains four main parts:
 
 the website as a wagtail bakerydemo
 
 the code for creating the smart html
 
 the code for creating and managing the tokens on the backend
+
+the unity code for the game
 
 =======================
 
