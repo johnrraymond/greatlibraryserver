@@ -16,12 +16,17 @@ Currently this installation walkthrough assumes a Basic Digital Ocean Droplet.
 Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot.
 
 Choose password login and be happy with a nice strong password. Its just as good as the other option.
+
 As root admin the droplet by adding john and yourself 
+
 adduser john                  # Give john an even stronger one. (never login with him.)
+
 usermod -aG sudo john && gpasswd -a john sudo
 
 adduser <yourusernamehere>     #Use strong password.
+ 
 gpasswd -a <yourusernamehere> sudo
+ 
 usermod -aG john <yourusernamehere>
 
 chmod g+w /home/john
@@ -30,28 +35,38 @@ Log in again if sudo doesn't work.
 Introduction: Setting up the site user and directories
 
 john is like the effective nobody for the site
+ 
 Add/verify /mnt/* exists and has plenty of space
+ 
 df -h
+ 
 Part 1: Make the website work
 
 Apache mod_wgsi from: 
 
  
 sudo apt update
+ 
 sudo apt install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 nodejs npm
+ 
 sudo npm install  ganache-cli --global
+ 
 sudo a2enmod wsgi
 
 Try bakerydemo to start with:
+ 
 sudo apt install python3-virtualenv pip
 
 cd ~john
+ 
 virtualenv wagtailbakerydemo --python=python3
+ 
 . ./wagtailbakerydemo/bin/activate
 
 sudo apt-get install libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
     libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk \
     libharfbuzz-dev libfribidi-dev libxcb1-dev   # for pillow
+ 
 pip3 install pymysql
 pip3 install django_dramatiq
 pip3 install redis
