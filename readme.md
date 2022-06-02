@@ -13,7 +13,7 @@ the unity code for the game
 
 =======================
 
-Currently this installation walkthrough assumes a Basic Digital Ocean Droplet.
+Currently this installation walkthrough assumes a ubuntu 20.04.
 
 Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot.
 
