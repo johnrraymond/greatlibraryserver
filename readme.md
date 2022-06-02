@@ -149,15 +149,10 @@ Include /etc/letsencrypt/options-ssl-apache.conf
 
 sudo systemctl restart apache2
 
-### https://stackoverflow.com/questions/43318041/ah00035-access-to-denied-filesystem-path-users-xxx-documents-workspace-b
-### RUN: namei -mol /home/john/bakerydemo/bakerydemo
-#sudo chmod o+x /home/john/    ## might have to force john's...
-#chmod o+x /home/<yourusername>
-
- 
 cd ~john/bakerydemo
 
-### add admin to wagtail
+add admin to wagtail if needed
+
 DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
 
 cp env.example .env
