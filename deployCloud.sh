@@ -1,7 +1,8 @@
 #Deploy the cloud code with the evergrowing BookTradable abi
-
 source .env
+
 source /home/john/wagtailbakerydemo/bin/activate
+
 
 echo const chainID = \"$chainID\"\; > index.js
 cat cloud.js >> index.js
