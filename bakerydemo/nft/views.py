@@ -13,8 +13,9 @@ def nft(request):
     ds = path.split(os.sep)
     
     datamine = ds[2]
+    datamine = re.sub(r'[^a-zA-Z0-9\.]', '', datamine)
     serial = ds[3]
-
+    serial = re.sub(r'[^a-zA-Z0-9\.]', '', serial)
 
     metadata = {
         "description": "Bookmark for " + datamine,
@@ -40,14 +41,15 @@ def getusage(datamine):
 
 def usage(request):
     
-        path = request.path
+    path = request.path
         
-        path = os.path.normpath(path)
-        ds = path.split(os.sep)
+    path = os.path.normpath(path)
+    ds = path.split(os.sep)
         
-        datamine = ds[2]
+    datamine = ds[2]
+    datamine = re.sub(r'[^a-zA-Z0-9\.]', '', datamine)
 
-        return HttpResponse(getusage(datamine), content_type='text/pain')
+    return HttpResponse(getusage(datamine), content_type='text/plain')
 
 def contractMetadata(request):
 
@@ -57,6 +59,7 @@ def contractMetadata(request):
     ds = path.split(os.sep)
     
     datamine = ds[2]
+    datamine = re.sub(r'[^a-zA-Z0-9\.]', '', datamine)
 
 
     metadata = getmetadata(datamine)
