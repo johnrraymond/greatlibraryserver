@@ -1,7 +1,7 @@
-nftbooks.art
+Welcome to the Great Library Server
 =======================
 
-This code contains three main parts:
+This code contains four main parts:
 
 the website as a wagtail bakerydemo
 
@@ -9,7 +9,231 @@ the code for creating the smart html
 
 the code for creating and managing the tokens on the backend
 
+the unity code for the game
 
+=======================
+
+Currently this installation walkthrough assumes a ubuntu 20.04.
+
+Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot.
+
+Choose password login and be happy with a nice strong password. Its just as good as the other option.
+
+As root admin the droplet by adding john and yourself 
+
+adduser john                  # Give john an even stronger one. (never login with him.)
+
+usermod -aG sudo john && gpasswd -a john sudo
+
+adduser <yourusernamehere>     #Use strong password.
+ 
+gpasswd -a <yourusernamehere> sudo
+ 
+usermod -aG john <yourusernamehere>
+
+chmod g+w /home/john
+
+Log in again if sudo doesn't work. 
+Introduction: Setting up the site user and directories
+
+john is like the effective nobody for the site
+ 
+Add/verify /mnt/* exists and has plenty of space
+ 
+df -h
+ 
+Part 1: Make the website work
+
+Apache mod_wgsi from: 
+
+ 
+sudo apt update
+ 
+sudo apt install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 nodejs npm
+ 
+sudo npm install  ganache-cli --global
+ 
+sudo a2enmod wsgi
+
+Try bakerydemo to start with:
+ 
+sudo apt install python3-virtualenv pip
+
+cd ~john
+ 
+virtualenv wagtailbakerydemo --python=python3
+ 
+. ./wagtailbakerydemo/bin/activate
+
+sudo apt-get install libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
+    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk \
+    libharfbuzz-dev libfribidi-dev libxcb1-dev   # for pillow
+ 
+pip3 install pymysql
+pip3 install django_dramatiq
+pip3 install redis
+pip3 install django_extensions
+pip3 install django-ckeditor
+pip3 install django-cors-headers
+pip3 install simplejson
+pip3 install filelock
+pip3 install django-richtextfield
+
+pip3 install dj_database_url
+pip3 install django_cache_url
+pip3 install whitenoise
+
+python3 -m pip uninstall python-dotenv  # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'
+
+git clone https://github.com/johnrraymond/greatlibraryserver
+cp -r greatlibraryserver bakerydemo
+cd bakerydemo
+pip3 install -r requirements/base.txt
+
+### copy in the .env file here to make the site work.
+# vi ~john/bakerydemo/.env
+
+python3 ./manage.py collectstatic
+
+### Load the data
+python ./manage.py migrate
+#python ./manage.py load_initial_data
+
+Next the ssl keys.
+sudo apt install certbot python3-certbot-apache
+
+Now fight with dns as you try to run:
+sudo certbot --apache
+
+Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to look like:
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+
+        ServerAdmin johnrraymond@yahoo.com
+        DocumentRoot /home/john/bakerydemo/
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combine
+
+    Alias /static /home/john/bakerydemo/bakerydemo/collect_static
+    <Directory /home/john/bakerydemo/bakerydemo/collect_static/>
+        Require all granted
+    </Directory>
+
+    <Directory /home/john/bakerydemo/bakerydemo>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess bakerydemo python-home=/home/john/wagtailbakerydemo python-path=/home/john/bakerydemo/
+    WSGIProcessGroup bakerydemo
+    WSGIScriptAlias / /home/john/bakerydemo/bakerydemo/wsgi.py
+
+<Directory /home/john/bakerydemo/>
+  Require all granted
+</Directory>
+
+
+<Directory /home/john/bakerydemo/>
+  Require all granted
+</Directory>
+
+SSLCertificateFile /etc/letsencrypt/live/greatlibrary.io/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/greatlibrary.io/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+</IfModule>
+
+ 
+
+sudo systemctl restart apache2
+
+cd ~john/bakerydemo
+
+add admin to wagtail if needed
+
+DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
+
+cp env.example .env
+
+python3 manage.py migrate
+
+. .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
+
+### Browse to the dev site address ... horay! Dev should work.
+
+Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.
+cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
+
+Copy in the database file
+cd ~john/bakerydemo
+sudo cp  ~/bakerydemodb bakerydemodb
+
+Expand the library.books.tar.gz into /mnt/media_dir as john
+/mnt% sudo tar -zxvf ~/library.tar.gz
+# This is how you create this tar file:
+#/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
+# or if fresh and untainted:
+tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
+
+Setting up the media dir
+rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
+ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
+#sudo mkdir /mnt/media_dir
+sudo chown john:john /mnt/media_dir
+
+Edit "/etc/apache2/envvars":
+export APACHE_RUN_USER=john
+export APACHE_RUN_GROUP=john
+
+Then run:
+sudo systemctl restart apache2
+The Glorious End to Part 1
+
+The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
+Part 2: Brownie / Web3
+
+ You might have to do this is new session because of strange effects with manage.py
+## FROM HOME DIR
+
+sudo apt install python3.8-venv
+sudo apt-get install pipx
+pipx install eth-brownie
+pipx ensurepath
+source ~/.bashrc
+
+# IF the above fails...
+#git clone https://github.com/eth-brownie/brownie.git
+#cd brownie
+#sudo python3 setup.py install
+
+#pip3 install django-dotenv
+
+# Make a new account if needed
+brownie accounts generate Account1
+# SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
+###  This number is the new cCA 
+###  Add to .env
+
+# Use the tool in moralis dir. Save the result in the private
+(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
+
+# Enter the deploy dirrectory for the site
+cd bakerydemo/brownie
+
+############ Possible issue: if your username is something like: joe
+PermissionError: [Errno 13] Permission denied: '/home/john/bakerydemo/brownie/build'
+joe@preprod:/home/john/bakerydemo/brownie$ sudo chown -R joe:john .
+############
+
+## MOCK DEPLOY
+brownie run scripts/deployDummy.py  --network avax-test
+### ValueError: insufficient funds for gas * price + value: 
+
+Fund your new account. Use metamask or some online pay tool.
+brownie run scripts/deployDummy.py  --network avax-test
+#### DummyContract deployed at: 0xSomewhere
 
 Wagtail demo project
 =======================
