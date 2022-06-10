@@ -25,11 +25,11 @@ adduser john                  # Give john an even stronger one. (never login wit
 
 usermod -aG sudo john && gpasswd -a john sudo
 
-adduser <yourusernamehere>     #Use strong password.
+adduser yourusernamehere     #Use strong password.
  
-gpasswd -a <yourusernamehere> sudo
+gpasswd -a yourusernamehere sudo
  
-usermod -aG john <yourusernamehere>
+usermod -aG john yourusernamehere
 
 chmod g+w /home/john
 
