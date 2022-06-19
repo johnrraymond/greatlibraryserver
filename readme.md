@@ -3,13 +3,13 @@ Welcome to the Great Library Server
 
 This code contains four main parts:
 
-the website as a wagtail bakerydemo
+1. the website as a wagtail bakerydemo
 
-the code for creating the smart html
+2. the code for creating the smart html
 
-the code for creating and managing the tokens on the backend
+3. the code for creating and managing the tokens on the backend
 
-the unity code for the game
+4. the unity code for the game
 
 =======================
 
@@ -20,6 +20,7 @@ Remember the first thing to do is to set up the DNS or you will not be able to c
 Choose password login and be happy with a nice strong password. Its just as good as the other option.
 
 As root admin the droplet by adding john and yourself 
+```
 
 adduser john                  # Give john an even stronger one. (never login with him.)
 
@@ -32,6 +33,8 @@ gpasswd -a yourusernamehere sudo
 usermod -aG john yourusernamehere
 
 chmod g+w /home/john
+
+```
 
 Log in again if sudo doesn't work. 
 Introduction: Setting up the site user and directories
@@ -90,8 +93,8 @@ cp -r greatlibraryserver bakerydemo
 cd bakerydemo
 pip3 install -r requirements/base.txt
 
-### copy in the .env file here to make the site work.
-# vi ~john/bakerydemo/.env
+copy in the .env file here to make the site work.
+> vi ~john/bakerydemo/.env
 
 python3 ./manage.py collectstatic
 
@@ -106,6 +109,7 @@ Now fight with dns as you try to run:
 sudo certbot --apache
 
 Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to look like:
+```
 <IfModule mod_ssl.c>
 <VirtualHost *:443>
 
@@ -144,7 +148,7 @@ SSLCertificateKeyFile /etc/letsencrypt/live/greatlibrary.io/privkey.pem
 Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
 </IfModule>
-
+```
  
 
 sudo systemctl restart apache2
