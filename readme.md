@@ -34,7 +34,7 @@ john is like the effective nobody for the site. Add/verify /mnt/* exists and has
 df -h
 ```
 
-Part 1: Make the website work
+## Part 1: Make the website work
 
 Apache mod_wgsi from: 
 ```
@@ -142,35 +142,40 @@ Include /etc/letsencrypt/options-ssl-apache.conf
  
 ```
 sudo systemctl restart apache2
-
 ```
+
 add admin to wagtail if needed
+
 ```
 cd ~john/bakerydemo
 DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
-
 cp env.example .env
-
 python3 manage.py migrate
-
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
 ```
 
-## Browse to the dev site address ... horay! Dev should work.
+Browse to the dev site address ... horay! Dev should work.
 ~~Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.~~
+
+## Verify the python env is all setup for apache to use
 ```
 cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
 ```
+
 Copy in the database file
+```
 cd ~john/bakerydemo
 sudo cp  ~/bakerydemodb bakerydemodb
-
+```
 Expand the library.books.tar.gz into /mnt/media_dir as john:
 ```
-/mnt% sudo tar -zxvf ~/library.tar.gz
+cd /mnt
+sudo tar -zxvf ~/library.tar.gz
+
 # This is how you create this tar file:
 #/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
 # or if fresh and untainted:
+
 tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
 ```
 
@@ -181,20 +186,20 @@ ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
 #sudo mkdir /mnt/media_dir
 
 sudo chown john:john /mnt/media_dir
+```
 
-# Edit "/etc/apache2/envvars":
+## Edit "/etc/apache2/envvars":
+```
 export APACHE_RUN_USER=john
 export APACHE_RUN_GROUP=john
 ```
 
 Then run:
-
 ```
 sudo systemctl restart apache2
-
 ```
 
-## The Glorious End to Part 1
+# The Glorious End to Part 1
 
 The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 Part 2: Brownie / Web3
@@ -209,7 +214,7 @@ pipx ensurepath
 source ~/.bashrc
 ```
 
-### If the above fails... WARNING DO NTO DO THIS STEP ULNESS YOU NEED TO
+### If the above fails... WARNING DO NOT DO THIS STEP ULNESS YOU NEED TO
 ```
 git clone https://github.com/eth-brownie/brownie.git
 cd brownie
@@ -218,7 +223,7 @@ sudo python3 setup.py install
 
 ~~pip3 install django-dotenv~~
 
-# Make a new account if needed
+## Make a new account if needed
 ```
 brownie accounts generate Account1
 ```
@@ -227,11 +232,12 @@ brownie accounts generate Account1
 ###  This number is the new cCA 
 ###  Add to .env
 
-# Use the tool in moralis dir. Save the result in the private
+# Use the tool in moralis dir. Save the result in the your passscode vault 
 ```
 (cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
 ```
-# Enter the deploy dirrectory for the site
+
+## Enter the deploy directory for the site
 
 ```
 cd bakerydemo/brownie
