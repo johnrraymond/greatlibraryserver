@@ -81,17 +81,22 @@ pip3 install -r requirements/base.txt
 copy in the .env file here to make the site work.
 > vi ~john/bakerydemo/.env
 
+```
 python3 ./manage.py collectstatic
 
 ### Load the data
 python ./manage.py migrate
 #python ./manage.py load_initial_data
+```
 
 Next the ssl keys.
+```
 sudo apt install certbot python3-certbot-apache
-
+```
 Now fight with dns as you try to run:
+```
 sudo certbot --apache
+```
 
 Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to look like:
 ```
@@ -135,13 +140,13 @@ Include /etc/letsencrypt/options-ssl-apache.conf
 </IfModule>
 ```
  
-
+```
 sudo systemctl restart apache2
 
 cd ~john/bakerydemo
-
+```
 add admin to wagtail if needed
-
+```
 DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
 
 cp env.example .env
@@ -149,12 +154,14 @@ cp env.example .env
 python3 manage.py migrate
 
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
+```
 
-### Browse to the dev site address ... horay! Dev should work.
+# Browse to the dev site address ... horay! Dev should work.
 
 Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.
+```
 cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
-
+```
 Copy in the database file
 cd ~john/bakerydemo
 sudo cp  ~/bakerydemodb bakerydemodb
