@@ -174,7 +174,7 @@ Expand the library.books.tar.gz into /mnt/media_dir as john:
 tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
 ```
 
-#Setting up the media dir
+# Setting up the media dir
 ```
 rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
 ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
@@ -191,7 +191,7 @@ sudo systemctl restart apache2
 
 ```
 
-#The Glorious End to Part 1
+# The Glorious End to Part 1
 
 The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 Part 2: Brownie / Web3
@@ -206,12 +206,14 @@ pipx ensurepath
 source ~/.bashrc
 ```
 
-IF the above fails...
-#git clone https://github.com/eth-brownie/brownie.git
-#cd brownie
-#sudo python3 setup.py install
+# If the above fails... WARNING DO NTO DO THIS STEP ULNESS YOU NEED TO
+```
+git clone https://github.com/eth-brownie/brownie.git
+cd brownie
+sudo python3 setup.py install
+```
 
-#pip3 install django-dotenv
+~~pip3 install django-dotenv~~
 
 # Make a new account if needed
 brownie accounts generate Account1
