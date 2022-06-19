@@ -179,13 +179,16 @@ tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
 rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
 ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
 #sudo mkdir /mnt/media_dir
+
 sudo chown john:john /mnt/media_dir
-```
-#Edit "/etc/apache2/envvars":
+
+# Edit "/etc/apache2/envvars":
 export APACHE_RUN_USER=john
 export APACHE_RUN_GROUP=john
 ```
+
 Then run:
+
 ```
 sudo systemctl restart apache2
 
@@ -216,31 +219,40 @@ sudo python3 setup.py install
 ~~pip3 install django-dotenv~~
 
 # Make a new account if needed
+```
 brownie accounts generate Account1
+```
+
 # SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
 ###  This number is the new cCA 
 ###  Add to .env
 
 # Use the tool in moralis dir. Save the result in the private
+```
 (cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
-
+```
 # Enter the deploy dirrectory for the site
+
+```
 cd bakerydemo/brownie
 
 ############ Possible issue: if your username is something like: joe
 PermissionError: [Errno 13] Permission denied: '/home/john/bakerydemo/brownie/build'
 joe@preprod:/home/john/bakerydemo/brownie$ sudo chown -R joe:john .
 ############
+```
 
 ## MOCK DEPLOY
+```
 brownie run scripts/deployDummy.py  --network avax-test
 ### ValueError: insufficient funds for gas * price + value: 
 
 Fund your new account. Use metamask or some online pay tool.
 brownie run scripts/deployDummy.py  --network avax-test
 #### DummyContract deployed at: 0xSomewhere
+```
 
-Wagtail demo project
+~~Wagtail demo project
 =======================
 
 This is a demonstration project for the amazing [Wagtail CMS](https://github.com/wagtail/wagtail).
@@ -488,4 +500,4 @@ and configure [SMTP settings](https://docs.djangoproject.com/en/3.2/topics/email
 
 ### Ownership of demo content
 
-All content in the demo is public domain. Textual content in this project is either sourced from Wikipedia or is lorem ipsum. All images are from either Wikimedia Commons or other copyright-free sources.
+All content in the demo is public domain. Textual content in this project is either sourced from Wikipedia or is lorem ipsum. All images are from either Wikimedia Commons or other copyright-free sources.~~
