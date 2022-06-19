@@ -143,10 +143,10 @@ Include /etc/letsencrypt/options-ssl-apache.conf
 ```
 sudo systemctl restart apache2
 
-cd ~john/bakerydemo
 ```
 add admin to wagtail if needed
 ```
+cd ~john/bakerydemo
 DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
 
 cp env.example .env
@@ -157,8 +157,7 @@ python3 manage.py migrate
 ```
 
 # Browse to the dev site address ... horay! Dev should work.
-
-Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.
+~~Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.~~
 ```
 cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
 ```
@@ -166,40 +165,48 @@ Copy in the database file
 cd ~john/bakerydemo
 sudo cp  ~/bakerydemodb bakerydemodb
 
-Expand the library.books.tar.gz into /mnt/media_dir as john
+Expand the library.books.tar.gz into /mnt/media_dir as john:
+```
 /mnt% sudo tar -zxvf ~/library.tar.gz
 # This is how you create this tar file:
 #/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
 # or if fresh and untainted:
 tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
+```
 
-Setting up the media dir
+#Setting up the media dir
+```
 rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
 ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
 #sudo mkdir /mnt/media_dir
 sudo chown john:john /mnt/media_dir
-
-Edit "/etc/apache2/envvars":
+```
+#Edit "/etc/apache2/envvars":
 export APACHE_RUN_USER=john
 export APACHE_RUN_GROUP=john
-
+```
 Then run:
+```
 sudo systemctl restart apache2
-The Glorious End to Part 1
+
+```
+
+#The Glorious End to Part 1
 
 The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 Part 2: Brownie / Web3
 
- You might have to do this is new session because of strange effects with manage.py
-## FROM HOME DIR
-
+You might have to do this is new session because of strange effects with manage.py
+FROM HOME DIR
+```
 sudo apt install python3.8-venv
 sudo apt-get install pipx
 pipx install eth-brownie
 pipx ensurepath
 source ~/.bashrc
+```
 
-# IF the above fails...
+IF the above fails...
 #git clone https://github.com/eth-brownie/brownie.git
 #cd brownie
 #sudo python3 setup.py install
