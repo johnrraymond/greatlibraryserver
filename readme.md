@@ -1,4 +1,4 @@
-Welcome to the Great Library Server
+# Welcome to the Great Library Server
 =======================
 
 This code contains four main parts:
@@ -89,7 +89,7 @@ python ./manage.py migrate
 #python ./manage.py load_initial_data
 ```
 
-Next the ssl keys.
+Next the ssl keys
 ```
 sudo apt install certbot python3-certbot-apache
 ```
@@ -156,7 +156,7 @@ python3 manage.py migrate
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
 ```
 
-# Browse to the dev site address ... horay! Dev should work.
+## Browse to the dev site address ... horay! Dev should work.
 ~~Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.~~
 ```
 cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
@@ -194,7 +194,7 @@ sudo systemctl restart apache2
 
 ```
 
-# The Glorious End to Part 1
+## The Glorious End to Part 1
 
 The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 Part 2: Brownie / Web3
@@ -209,7 +209,7 @@ pipx ensurepath
 source ~/.bashrc
 ```
 
-# If the above fails... WARNING DO NTO DO THIS STEP ULNESS YOU NEED TO
+### If the above fails... WARNING DO NTO DO THIS STEP ULNESS YOU NEED TO
 ```
 git clone https://github.com/eth-brownie/brownie.git
 cd brownie
@@ -252,7 +252,7 @@ brownie run scripts/deployDummy.py  --network avax-test
 #### DummyContract deployed at: 0xSomewhere
 ```
 
-~~Wagtail demo project
+~~Wagtail demo project:~~ Left for completeness
 =======================
 
 This is a demonstration project for the amazing [Wagtail CMS](https://github.com/wagtail/wagtail).
@@ -500,4 +500,4 @@ and configure [SMTP settings](https://docs.djangoproject.com/en/3.2/topics/email
 
 ### Ownership of demo content
 
-All content in the demo is public domain. Textual content in this project is either sourced from Wikipedia or is lorem ipsum. All images are from either Wikimedia Commons or other copyright-free sources.~~
+All content in the demo is public domain. Textual content in this project is either sourced from Wikipedia or is lorem ipsum. All images are from either Wikimedia Commons or other copyright-free sources.
