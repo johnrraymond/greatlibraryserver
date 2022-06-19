@@ -4,11 +4,8 @@ Welcome to the Great Library Server
 This code contains four main parts:
 
 1. the website as a wagtail bakerydemo
-
 2. the code for creating the smart html
-
 3. the code for creating and managing the tokens on the backend
-
 4. the unity code for the game
 
 =======================
@@ -21,51 +18,38 @@ Choose password login and be happy with a nice strong password. Its just as good
 
 As root admin the droplet by adding john and yourself 
 ```
-
 adduser john                  # Give john an even stronger one. (never login with him.)
-
 usermod -aG sudo john && gpasswd -a john sudo
-
 adduser yourusernamehere     #Use strong password.
- 
 gpasswd -a yourusernamehere sudo
- 
 usermod -aG john yourusernamehere
-
 chmod g+w /home/john
-
 ```
 
 Log in again if sudo doesn't work. 
 Introduction: Setting up the site user and directories
 
-john is like the effective nobody for the site
- 
-Add/verify /mnt/* exists and has plenty of space
- 
+john is like the effective nobody for the site. Add/verify /mnt/* exists and has plenty of space
+``` 
 df -h
- 
+```
+
 Part 1: Make the website work
 
 Apache mod_wgsi from: 
-
- 
+```
 sudo apt update
- 
 sudo apt install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 nodejs npm
- 
 sudo npm install  ganache-cli --global
- 
 sudo a2enmod wsgi
+```
 
 Try bakerydemo to start with:
- 
+```
 sudo apt install python3-virtualenv pip
-
 cd ~john
- 
 virtualenv wagtailbakerydemo --python=python3
- 
+
 . ./wagtailbakerydemo/bin/activate
 
 sudo apt-get install libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
@@ -92,6 +76,7 @@ git clone https://github.com/johnrraymond/greatlibraryserver
 cp -r greatlibraryserver bakerydemo
 cd bakerydemo
 pip3 install -r requirements/base.txt
+```
 
 copy in the .env file here to make the site work.
 > vi ~john/bakerydemo/.env
