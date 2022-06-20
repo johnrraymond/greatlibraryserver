@@ -6,7 +6,7 @@ This code contains four main parts:
 1. the website as a wagtail bakerydemo
 2. the code for creating the smart html
 3. the code for creating and managing the tokens on the backend
-4. the unity code for the game
+4. the unity code for the game :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
 
 =======================
 
@@ -17,6 +17,7 @@ Remember the first thing to do is to set up the DNS or you will not be able to c
 Choose password login and be happy with a nice strong password. Its just as good as the other option.
 
 As root admin the droplet by adding john and yourself 
+
 ```
 adduser john                  # Give john an even stronger one. (never login with him.)
 usermod -aG sudo john && gpasswd -a john sudo
