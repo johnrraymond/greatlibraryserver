@@ -156,7 +156,6 @@ python3 manage.py migrate
 ```
 
 Browse to the dev site address ... horay! Dev should work.
-~~Switch apache’s config over to the demo by editing the config from above to actually point to john now and then copy over your wagtailenv if needed.~~
 
 ## Verify the python env is all setup for apache to use
 ```
@@ -215,7 +214,7 @@ pipx ensurepath
 source ~/.bashrc
 ```
 
-### If the above fails... WARNING DO NOT DO THIS STEP ULNESS YOU NEED TO
+### If the above fails... WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
 ```
 git clone https://github.com/eth-brownie/brownie.git
 cd brownie
