@@ -1,4 +1,4 @@
-# Welcome to the Great Library Server
+# Welcome to the Great Library
 =======================
 
 This code contains four main parts:
