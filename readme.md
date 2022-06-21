@@ -10,6 +10,12 @@ This code contains four main parts:
 
 =======================
 
+For windows development use Visual Studio Code. THE COMMUNITY VERSIONS DO NOT WORK.
+
+Install the solidity extension to compile the contracts.
+
+=======================
+
 Currently this installation walkthrough assumes a ubuntu 20.04.
 
 Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot.
