@@ -4,7 +4,7 @@ import "./DaedalusClass.sol";
 import "./BookTradable.sol";
 import "./CultureCoin.sol";
 import "./BEN.sol";
-import "openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
+import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
 
 /** The Gambler's Union takes bets on BEN's money making skills
  */

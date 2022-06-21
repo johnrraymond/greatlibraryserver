@@ -13,7 +13,7 @@ import "./BookTradable.sol";
 import "./LiveTradables.sol";
 import "./send_receive.sol";
 
-import "openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol";
+import "../openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract MyItems is BookTradable, Receiver, IERC721Receiver, LiveTradables {	// Each game gets differnt items.
 	CultureCoin private CC;

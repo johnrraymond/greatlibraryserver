@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 import "./DaedalusClass.sol";
 import "./BookTradable.sol";
 import "./CultureCoin.sol";
-import "openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
+import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
 
 /** BEN the AI cat. He creates tokens here as well as in his litter box.
  *  Currently you may pet him and he gives you scratches. These scraches

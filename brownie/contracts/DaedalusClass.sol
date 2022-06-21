@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 import "./BookTradable.sol";
-import "openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
+import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
 
 /**
  * 

@@ -4,7 +4,7 @@ pragma solidity 0.8.9;
 import "./BookTradable.sol";
 import "./CultureCoin.sol";
 import "./send_receive.sol";
-import "openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
+import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
 
 contract PrintingPress is Receiver, ReentrancyGuard { // is Ownable { // because require(msg.sender == address(________) // clone ::::: see json ::::
 

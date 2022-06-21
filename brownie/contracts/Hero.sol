@@ -12,7 +12,7 @@ import "./BookTradable.sol";
 import "./LiveTradables.sol";
 import "./send_receive.sol";
 
-import "openzeppelin-solidity/contracts/token/ERC1155/IERC1155Receiver.sol";
+import "../openzeppelin-solidity/contracts/token/ERC1155/IERC1155Receiver.sol";
 
 contract Hero is BookTradable, Receiver, IERC1155Receiver, LiveTradables /*, DaedalusClassUpgradeable: FIXME will not work until upgradable. */ {
 	mapping(uint256 => int) private hClass;		// Static...

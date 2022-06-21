@@ -34,10 +34,10 @@ pragma solidity ^0.8.0;
 
 //import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 //import "openzeppelin-solidity/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import "openzeppelin-contracts-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol";
-import "openzeppelin-contracts-upgradeable/contracts/token/ERC20/extensions/ERC20BurnableUpgradeable.sol";
-import "openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol";
-import "openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol";
+import "../openzeppelin-contracts-upgradeable/contracts/token/ERC20/ERC20Upgradeable.sol";
+import "../openzeppelin-contracts-upgradeable/contracts/token/ERC20/extensions/ERC20BurnableUpgradeable.sol";
+import "../openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol";
+import "../openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol";
 import "./CultureCoinWrapper.sol";
 //import "./NaturalCoin.sol";
 import "./Stakeable.sol";

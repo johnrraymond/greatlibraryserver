@@ -10,7 +10,7 @@ import "./Hero.sol";
 import "./CultureCoin.sol";
 import "./Legion.sol";
 
-import "openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol";
+import "../openzeppelin-contracts-upgradeable/contracts/security/ReentrancyGuardUpgradeable.sol";
 
 contract TimeCube is ReentrancyGuardUpgradeable {
 	address private cCA;

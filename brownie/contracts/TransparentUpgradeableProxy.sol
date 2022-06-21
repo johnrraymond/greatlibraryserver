@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "openzeppelin-solidity/contracts/proxy/ERC1967/ERC1967Proxy.sol";
+import "../openzeppelin-solidity/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
 /**
  * @dev This contract implements a proxy that is upgradeable by an admin.
