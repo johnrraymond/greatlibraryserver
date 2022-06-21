@@ -10,7 +10,7 @@ This code contains four main parts:
 
 =======================
 
-For windows development use Visual Studio Code. THE COMMUNITY VERSIONS DO NOT WORK.
+For windows development in Unity use Visual Studio Code. COMMUNITY VERSIONS DO NOT WORK!
 
 Install the solidity extension to compile the contracts.
 
