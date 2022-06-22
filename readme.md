@@ -35,6 +35,8 @@ chmod g+w /home/john
 sudo npm install -g moralis-admin-cli
 chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
 
+sudo apt install imagemagick   # For autogen of bookmark images...
+
 ```
 
 Log in again if sudo doesn't work. 
