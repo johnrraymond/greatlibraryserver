@@ -1298,6 +1298,11 @@ async function verifyTimeCube() {
 	}
 }
 
+async function cloudRun(_func, _args) {
+	return await Moralis.Cloud.run(_func, _args);
+}
+
+
 module.exports.verifyGameAddons = verifyGameAddons;
 module.exports.newContest = newContest;
 module.exports.setupAddonPrintingPress = setupAddonPrintingPress;
@@ -1310,3 +1315,4 @@ module.exports.gasUpPrintingPress = gasUpPrintingPress;
 module.exports.verifyAddon = verifyAddon;
 module.exports.getBENWork = getBENWork;
 module.exports.sleep = sleep;
+module.exports.cloudRun = cloudRun;
