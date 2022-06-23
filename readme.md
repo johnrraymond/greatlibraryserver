@@ -32,11 +32,6 @@ gpasswd -a yourusernamehere sudo
 usermod -aG john yourusernamehere
 chmod g+w /home/john
 
-sudo npm install -g moralis-admin-cli
-chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
-
-sudo apt install imagemagick   # For autogen of bookmark images...
-
 ```
 
 Log in again if sudo doesn't work. 
@@ -82,9 +77,11 @@ pip3 install django-richtextfield
 pip3 install dj_database_url
 pip3 install django_cache_url
 pip3 install whitenoise
+```
 
-python3 -m pip uninstall python-dotenv  # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'
+~~python3 -m pip uninstall python-dotenv  # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'~~
 
+```
 git clone https://github.com/johnrraymond/greatlibraryserver
 cp -r greatlibraryserver bakerydemo
 cd bakerydemo
@@ -224,6 +221,13 @@ sudo apt-get install pipx
 pipx install eth-brownie
 pipx ensurepath
 source ~/.bashrc
+
+
+sudo npm install -g moralis-admin-cli
+chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
+
+sudo apt install imagemagick   # For autogen of bookmark images...
+
 ```
 
 ### If the above fails... WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
