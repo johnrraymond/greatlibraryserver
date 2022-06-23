@@ -117,7 +117,7 @@ SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been gen
 This number is the new cCA 
 It needs to be added to .env ....
 
-# Use the tool in moralis dir. Save the result in the your passscode vault 
+# Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
 ```
 (cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
 ```
