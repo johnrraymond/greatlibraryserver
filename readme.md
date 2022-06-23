@@ -140,6 +140,8 @@ brownie run scripts/deployDummy.py  --network avax-test
 ```
 brownie run scripts/deployCultureCoinProxyAdmin.py  --network=avax-test     ## add address as proxyAdmin
 brownie run scripts/deployCultureCoin.py  --network=avax-test               ## add the contract addrss to the .env as cultureCoinAddressImpl
+brownie run scripts/deployCultureCoinProxy.py  --network=avax-test
+
 . ../.env && brownie run scripts/deployMarketPlace.py  --network=avax-test
 . ../.env &&  brownie run scripts/deployPrintingPress.py --network=avax-test
 
