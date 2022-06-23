@@ -138,7 +138,7 @@ brownie run scripts/deployDummy.py  --network avax-test
 
 ## DEPLOY CULTURE COIN, etc
 ```
-brownie run scripts/deployCultureCoin.py  --network=avax-test  ## add the conttact to the .env
+brownie run scripts/deployCultureCoin.py  --network=avax-test  ## add the contract to the .env
 . ../.env && brownie run scripts/deployMarketPlace.py  --network=avax-test
 . ../.env &&  brownie run scripts/deployPrintingPress.py --network=avax-test
 
