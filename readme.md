@@ -86,6 +86,19 @@ git clone https://github.com/johnrraymond/greatlibraryserver
 cp -r greatlibraryserver bakerydemo
 cd bakerydemo
 pip3 install -r requirements/base.txt
+
+
+sudo apt install python3.8-venv
+sudo apt-get install pipx
+pipx install eth-brownie
+pipx ensurepath
+source ~/.bashrc
+
+
+sudo npm install -g moralis-admin-cli
+chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
+
+sudo apt install imagemagick   # For autogen of bookmark images...
 ```
 
 copy in the .env file here to make the site work.
@@ -216,17 +229,7 @@ Part 2: Brownie / Web3
 You might have to do this is new session because of strange effects with manage.py
 FROM HOME DIR
 ```
-sudo apt install python3.8-venv
-sudo apt-get install pipx
-pipx install eth-brownie
-pipx ensurepath
-source ~/.bashrc
 
-
-sudo npm install -g moralis-admin-cli
-chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
-
-sudo apt install imagemagick   # For autogen of bookmark images...
 
 ```
 
