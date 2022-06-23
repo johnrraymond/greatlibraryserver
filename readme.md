@@ -122,7 +122,7 @@ It needs to be added to .env ....
 (cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
 ```
 
-# Edit in the .env file here to make the site work.
+# Edit the .env file like:
 > vi ~john/bakerydemo/.env
 
 
@@ -210,6 +210,13 @@ Now fight with dns as you try to run:
 ```
 sudo certbot --apache
 ```
+
+## Edit "/etc/apache2/envvars":
+```
+export APACHE_RUN_USER=john
+export APACHE_RUN_GROUP=john
+```
+
  
 ```
 sudo systemctl restart apache2
@@ -222,7 +229,6 @@ cd ~john/bakerydemo
 python3 manage.py migrate
 
 DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
-cp env.example .env
 
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
 ```
@@ -260,11 +266,6 @@ ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
 sudo chown john:john /mnt/media_dir
 ```
 
-## Edit "/etc/apache2/envvars":
-```
-export APACHE_RUN_USER=john
-export APACHE_RUN_GROUP=john
-```
 
 Then run:
 ```
