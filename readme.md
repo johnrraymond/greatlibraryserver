@@ -125,6 +125,18 @@ It needs to be added to .env ....
 # Edit in the .env file here to make the site work.
 > vi ~john/bakerydemo/.env
 
+
+## MOCK DEPLOY
+```
+brownie run scripts/deployDummy.py  --network avax-test
+### ValueError: insufficient funds for gas * price + value: 
+
+Fund your new account. Use metamask or some online pay tool.
+brownie run scripts/deployDummy.py  --network avax-test
+#### DummyContract deployed at: 0xSomewhere
+```
+
+
 ```
 python3 ./manage.py collectstatic
 
@@ -273,16 +285,6 @@ cd bakerydemo/brownie
 PermissionError: [Errno 13] Permission denied: '/home/john/bakerydemo/brownie/build'
 joe@preprod:/home/john/bakerydemo/brownie$ sudo chown -R joe:john .
 ############
-```
-
-## MOCK DEPLOY
-```
-brownie run scripts/deployDummy.py  --network avax-test
-### ValueError: insufficient funds for gas * price + value: 
-
-Fund your new account. Use metamask or some online pay tool.
-brownie run scripts/deployDummy.py  --network avax-test
-#### DummyContract deployed at: 0xSomewhere
 ```
 
 ~~Wagtail demo project:~~ Left for completeness
