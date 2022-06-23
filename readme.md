@@ -101,7 +101,26 @@ chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is 
 sudo apt install imagemagick   # For autogen of bookmark images...
 ```
 
-copy in the .env file here to make the site work.
+## Make a new account if needed
+```
+brownie accounts generate Account1
+```
+
+SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
+This number is the new cCA 
+It needs to be added to .env ....
+
+# Use the tool in moralis dir. Save the result in the your passscode vault 
+```
+(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
+```
+
+# Copy in the env.example.
+```
+cp env.example .env
+```
+
+# Edit in the .env file here to make the site work.
 > vi ~john/bakerydemo/.env
 
 ```
@@ -242,19 +261,6 @@ sudo python3 setup.py install
 
 ~~pip3 install django-dotenv~~
 
-## Make a new account if needed
-```
-brownie accounts generate Account1
-```
-
-# SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
-###  This number is the new cCA 
-###  Add to .env
-
-# Use the tool in moralis dir. Save the result in the your passscode vault 
-```
-(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
-```
 
 ## Enter the deploy directory for the site
 
