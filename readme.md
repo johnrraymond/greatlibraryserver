@@ -128,7 +128,7 @@ It needs to be added to .env ....
 
 ## MOCK DEPLOY
 ```
-brownie run scripts/deployDummy.py  --network avax-test
+brownie run scripts/deployDummy.py  --network=avax-test
 ### ValueError: insufficient funds for gas * price + value: 
 
 Fund your new account. Use metamask or some online pay tool.
@@ -136,6 +136,10 @@ brownie run scripts/deployDummy.py  --network avax-test
 #### DummyContract deployed at: 0xSomewhere
 ```
 
+### DEPLOY CULTURE COIN
+```
+brownie run scripts/deployCultureCoin.py  --network=avax-test
+```
 
 ```
 python3 ./manage.py collectstatic
