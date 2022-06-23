@@ -42,7 +42,7 @@ john is like the effective nobody for the site. Add/verify /mnt/* exists and has
 df -h
 ```
 
-## Part 1: Make the website work
+## Part 1: Make the server work for development
 
 Apache mod_wgsi from: 
 ```
@@ -101,7 +101,14 @@ chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is 
 sudo apt install imagemagick   # For autogen of bookmark images...
 ```
 
-## Make a new account if needed
+
+# Copy in the env.example.
+```
+cp env.example .env
+```
+
+
+## Make a new development culture coin administrator account if needed
 ```
 brownie accounts generate Account1
 ```
@@ -113,11 +120,6 @@ It needs to be added to .env ....
 # Use the tool in moralis dir. Save the result in the your passscode vault 
 ```
 (cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
-```
-
-# Copy in the env.example.
-```
-cp env.example .env
 ```
 
 # Edit in the .env file here to make the site work.
