@@ -142,9 +142,15 @@ brownie run scripts/deployCultureCoinProxyAdmin.py  --network=avax-test     ## a
 brownie run scripts/deployCultureCoin.py  --network=avax-test               ## add the contract addrss to the .env as cultureCoinAddressImpl
 brownie run scripts/deployCultureCoinProxy.py  --network=avax-test
 
-. ../.env && brownie run scripts/deployMarketPlace.py  --network=avax-test
-. ../.env &&  brownie run scripts/deployPrintingPress.py --network=avax-test
+brownie run scripts/deployMarketPlace.py  --network=avax-test
+brownie run scripts/deployPrintingPress.py --network=avax-test
 
+# Deploy the game parts that you can
+brownie run scripts/deployBaseSpells.py  --network=avax-test                ## baseSpellsImplAddress
+brownie run scripts/deployBaseSpellsProxy.py  --network=avax-test           ## baseSpellsAddress
+brownie run scripts/deployBaseLoot.py  --network=avax-test                  ## baseLootAddress
+
+## Need the rest of the site deployed for the rest of the game... need a bookmark for the heros, etc
 ```
 
 ```
