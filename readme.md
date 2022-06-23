@@ -165,10 +165,7 @@ Next the ssl keys
 ```
 sudo apt install certbot python3-certbot-apache
 ```
-Now fight with dns as you try to run:
-```
-sudo certbot --apache
-```
+
 
 Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to look like:
 ```
@@ -205,11 +202,13 @@ Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to l
   Require all granted
 </Directory>
 
-SSLCertificateFile /etc/letsencrypt/live/greatlibrary.io/fullchain.pem
-SSLCertificateKeyFile /etc/letsencrypt/live/greatlibrary.io/privkey.pem
-Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
 </IfModule>
+```
+
+Now fight with dns as you try to run:
+```
+sudo certbot --apache
 ```
  
 ```
@@ -220,9 +219,11 @@ add admin to wagtail if needed
 
 ```
 cd ~john/bakerydemo
+python3 manage.py migrate
+
 DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py createsuperuser
 cp env.example .env
-python3 manage.py migrate
+
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
 ```
 
