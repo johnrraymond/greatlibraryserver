@@ -331,14 +331,14 @@ sudo systemctl restart apache2
 
 # The Glorious End to Part 1
 
-The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
+The site should be working…. https://droplet.greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 Part 2: Brownie / Web3
 
-You might have to do this is new session because of strange effects with manage.py
-FROM HOME DIR
+
+# RUN INSECURE DEV SITE
 ```
 
-
+/home/john/bakerydemo$  .   .env && python3 manage.py runserver 0.0.0.0:9466
 
 ```
 
