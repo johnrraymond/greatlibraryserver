@@ -123,7 +123,7 @@ SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been gen
 
 # Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
 ```
-(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
+(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input")     ## This returns the cCAPrivateKey
 ```
 
 # Edit the .env file like:
@@ -277,17 +277,21 @@ Topic:
 OfferingPlaced(bytes32, address, address, uint, uint, string)
 ```
 
-```
 ABI
+```
 {
   <from files...>
 }
+'''
 
 Address:
+```
 <THE CONTRACT DEPLOY ADDRESS>
- 
+```
+    
 Table:
-PlacedOfferings
+```
+PlacedOfferings             # placedOfferings in .env
 ```
 
 Click confirm.
@@ -301,28 +305,25 @@ Save the table name in the .env
 Do the same thing again for the BookContracts table and event listener. But this time watch the Printing Press address.
 Setting the code for mainnet
 
+```
 npm  install --save web3
 
-``` 
-Autosavecloud.sh
 sudo npm install -g moralis-admin-cli
 sudo chown -R <yourusername>:john /usr/local/lib/node_modules/moralis-admin-cli/
-
  
 moralisApiKey="2cEzQ3XynlRGWLR"
 moralisApiSecret="SXA9P9laLO8HKr8"
 moralisSubdomain="qzzj9cxkd0zd.usemoralis.com"
+```
 
 This is the final step: Deploy Cloud :: If you are uncertain about running this command then you probably want to still step up the rest of the site
-% sh bakerydemo/autosavecloud.sh &
-...
-% bash deployCloud.sh
 
+```
+sh bakerydemo/autosavecloud.sh &
+% bash deployCloud.sh
 ```
 
 Browse to the dev site address ... horay! Dev should work.
-
-
 
 Then run:
 ```
