@@ -49,7 +49,7 @@ df -h
 
 # Create a great library server for development
 
-Apache mod_wgsi from: 
+Prep apache and mod_wgsi: 
 ```
 sudo apt update
 sudo apt install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 nodejs npm
@@ -92,13 +92,11 @@ cp -r greatlibraryserver bakerydemo
 cd bakerydemo
 pip3 install -r requirements/base.txt
 
-
 sudo apt install python3.8-venv
 sudo apt-get install pipx
 pipx install eth-brownie
 pipx ensurepath
 source ~/.bashrc
-
 
 sudo npm install -g moralis-admin-cli
 chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
@@ -112,14 +110,16 @@ cp env.example .env
 ```
 
 
-## Make a new development culture coin administrator account if needed
+## Make a new development culture coin administrator account for yourself
 ```
 brownie accounts generate Account1
-```
+
 
 SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
-This number is the new cCA 
-It needs to be added to .env ....
+
+```
+
+***This number is the new cCA. It needs to be added to ~john/bakerydemo/.env***
 
 # Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
 ```
