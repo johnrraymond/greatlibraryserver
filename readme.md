@@ -325,17 +325,13 @@ Then run:
 sudo systemctl restart apache2
 ```
 
-# The Glorious End to Part 1
+The site should be working…
+    
+https://droplet.greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 
-The site should be working…. https://droplet.greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
-Part 2: Brownie / Web3
-
-
-# RUN INSECURE DEV SITE
+# To run dev site run a command like the following but change the port number:
 ```
-
 /home/john/bakerydemo$  .   .env && python3 manage.py runserver 0.0.0.0:9466
-
 ```
 
 ### WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
@@ -346,18 +342,6 @@ sudo python3 setup.py install
 ```
 
 ~~pip3 install django-dotenv~~
-
-
-## Enter the deploy directory for the site
-
-```
-cd bakerydemo/brownie
-
-############ Possible issue: if your username is something like: joe
-PermissionError: [Errno 13] Permission denied: '/home/john/bakerydemo/brownie/build'
-joe@preprod:/home/john/bakerydemo/brownie$ sudo chown -R joe:john .
-############
-```
 
 ~~Wagtail demo project:~~ Left for completeness
 =======================
