@@ -24,7 +24,7 @@ Remember the first thing to do is to set up the DNS or you will not be able to c
 
 Choose password login and be happy with a nice strong password. Its just as good as the other option.
 
-As root admin the droplet by adding john and yourself.  ***john is the effective nobody for the website. ***
+As root admin the droplet by adding john and yourself.  ***john is the effective nobody for the website.***
 
 ```
 adduser john                  # Give john an even stronger one. (never login with him.)
