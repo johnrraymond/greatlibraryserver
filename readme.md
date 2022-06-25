@@ -36,15 +36,16 @@ chmod g+w /home/john
 
 ```
 
-Log in again if sudo doesn't work. 
-Introduction: Setting up the site user and directories
+***Log in again if sudo doesn't work.***
+
+## Set up the site user and directories
 
 john is like the effective nobody for the site. Add/verify /mnt/* exists and has plenty of space
 ``` 
 df -h
 ```
 
-## Part 1: Make the server work for development
+# How to create a server for development
 
 Apache mod_wgsi from: 
 ```
