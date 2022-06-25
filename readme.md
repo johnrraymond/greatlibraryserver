@@ -261,6 +261,59 @@ DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py creates
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
 ```
 
+# Set up the OfferingsPlaced event listener on moralis.io/servers
+
+From “View Details” for the mainnet server click on “Sync.”
+
+Either add or edit the offerings placed “Sync and Watch Contract Events”
+```
+Topic:
+OfferingPlaced(bytes32, address, address, uint, uint, string)
+```
+
+```
+ABI
+{
+  <from files...>
+}
+
+Address:
+<THE CONTRACT DEPLOY ADDRESS>
+ 
+Table:
+PlacedOfferings
+```
+
+Click confirm.
+
+Save the contracts address, you will need it later in this walk through.
+
+Save the table name in the .env
+
+## BookContracts
+
+Do the same thing again for the BookContracts table and event listener. But this time watch the Printing Press address.
+Setting the code for mainnet
+
+npm  install --save web3
+
+``` 
+Autosavecloud.sh
+sudo npm install -g moralis-admin-cli
+sudo chown -R <yourusername>:john /usr/local/lib/node_modules/moralis-admin-cli/
+
+ 
+moralisApiKey="2cEzQ3XynlRGWLR"
+moralisApiSecret="SXA9P9laLO8HKr8"
+moralisSubdomain="qzzj9cxkd0zd.usemoralis.com"
+
+This is the final step: Deploy Cloud :: If you are uncertain about running this command then you probably want to still step up the rest of the site
+% sh bakerydemo/autosavecloud.sh &
+...
+% bash deployCloud.sh
+
+```
+
 Browse to the dev site address ... horay! Dev should work.
 
 
@@ -278,6 +331,7 @@ Part 2: Brownie / Web3
 You might have to do this is new session because of strange effects with manage.py
 FROM HOME DIR
 ```
+
 
 
 ```
