@@ -22,14 +22,12 @@ This installation walkthrough assumes a ubuntu 20.04. (Works with digital ocean'
 
 Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot if you want to test your code using apache.
 
-Choose password login and be happy with a nice strong password. Its just as good as the other option.
-
 As root admin the droplet by adding john and yourself.  ***john is the effective nobody for the website.***
 
 ```
-adduser john                  # Give john an even stronger one. (never login with him.)
+adduser john                                                # Give john a strong password. (never login with him.)
 usermod -aG sudo john && gpasswd -a john sudo
-adduser yourusernamehere     #Use strong password.
+adduser yourusernamehere                                    # Use strong password.
 gpasswd -a yourusernamehere sudo
 usermod -aG john yourusernamehere
 chmod g+w /home/john
@@ -109,17 +107,14 @@ sudo apt install imagemagick   # For autogen of bookmark images...
 cp env.example .env
 ```
 
-
 ## Make a new development culture coin administrator account for yourself
 ```
 brownie accounts generate Account1
 
-
 SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
-
 ```
 
-***This number is the new cCA. It needs to be added to ~john/bakerydemo/.env***
+***Save the account address and paswword. The account needs to be added to ~john/bakerydemo/.env as the cCA***
 
 # Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
 ```
