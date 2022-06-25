@@ -342,7 +342,7 @@ Part 2: Brownie / Web3
 
 ```
 
-### If the above fails... WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
+### WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
 ```
 git clone https://github.com/eth-brownie/brownie.git
 cd brownie
