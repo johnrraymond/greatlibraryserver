@@ -12,19 +12,19 @@ Looking to help? :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe
 
 =======================
 
-For windows development in Unity use Visual Studio Code. COMMUNITY VERSIONS DO NOT WORK!
+For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
 
 Install the solidity extension to compile the contracts.
 
 =======================
 
-Currently this installation walkthrough assumes a ubuntu 20.04.
+This installation walkthrough assumes a ubuntu 20.04. (Works with digital ocean's 20.04LTS droplets.)
 
-Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot.
+Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot if you want to test your code using apache.
 
 Choose password login and be happy with a nice strong password. Its just as good as the other option.
 
-As root admin the droplet by adding john and yourself 
+As root admin the droplet by adding john and yourself.  ***john is the effective nobody for the website. ***
 
 ```
 adduser john                  # Give john an even stronger one. (never login with him.)
@@ -40,7 +40,9 @@ chmod g+w /home/john
 
 ## Set up the site user and directories
 
-john is like the effective nobody for the site. Add/verify /mnt/* exists and has plenty of space
+
+
+Add/verify /mnt/* exists and has plenty of space
 ``` 
 df -h
 ```
