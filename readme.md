@@ -6,7 +6,9 @@ This code contains four main parts:
 1. the website as a wagtail bakerydemo
 2. the code for creating the smart html
 3. the code for creating and managing the tokens on the backend
-4. the unity code for the game :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
+4. the unity code for the game 
+
+Looking to help? :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
 
 =======================
 
@@ -79,7 +81,7 @@ pip3 install django_cache_url
 pip3 install whitenoise
 ```
 
-~~python3 -m pip uninstall python-dotenv  # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'~~
+~~python3 -m pip uninstall python-dotenv~~ # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'
 
 ```
 git clone https://github.com/johnrraymond/greatlibraryserver
@@ -100,7 +102,6 @@ chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is 
 
 sudo apt install imagemagick   # For autogen of bookmark images...
 ```
-
 
 # Copy in the env.example.
 ```
@@ -152,20 +153,47 @@ brownie run scripts/deployBaseLoot.py  --network=avax-test                  ## b
 
 ## Need the rest of the site deployed for the rest of the game... need a bookmark for the heros, etc
 ```
-
+## Copy in the database file
 ```
+cd ~john/bakerydemo
+sudo cp  ~/bakerydemodb bakerydemodb
+```
+Expand the library.books.tar.gz into /mnt/media_dir as john:
+```
+cd /mnt
+sudo tar -zxvf ~/library.tar.gz
+
+# This is how you create this tar file:
+#/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
+# or if fresh and untainted:
+
+tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
+```
+
+# Setting up the media dir
+```
+rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
+ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
+#sudo mkdir /mnt/media_dir
+
+sudo chown john:john /mnt/media_dir
+
+cd ~john/bakerydemo/
 python3 ./manage.py collectstatic
-
-### Load the data
 python ./manage.py migrate
-#python ./manage.py load_initial_data
+
 ```
 
-Next the ssl keys
+## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b" )
+```
+
+
+```
+
+## Next the ssl keys
 ```
 sudo apt install certbot python3-certbot-apache
 ```
-
 
 Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to look like:
 ```
@@ -235,36 +263,6 @@ DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py creates
 
 Browse to the dev site address ... horay! Dev should work.
 
-## Verify the python env is all setup for apache to use
-```
-cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
-```
-
-Copy in the database file
-```
-cd ~john/bakerydemo
-sudo cp  ~/bakerydemodb bakerydemodb
-```
-Expand the library.books.tar.gz into /mnt/media_dir as john:
-```
-cd /mnt
-sudo tar -zxvf ~/library.tar.gz
-
-# This is how you create this tar file:
-#/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
-# or if fresh and untainted:
-
-tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
-```
-
-# Setting up the media dir
-```
-rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
-ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
-#sudo mkdir /mnt/media_dir
-
-sudo chown john:john /mnt/media_dir
-```
 
 
 Then run:
