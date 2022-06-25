@@ -1,4 +1,4 @@
-# Welcome to The Great Library
+# Welcome to The Great Library's open source code
 =======================
 
 This code contains four main parts:
