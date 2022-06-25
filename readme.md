@@ -57,7 +57,7 @@ sudo npm install  ganache-cli --global
 sudo a2enmod wsgi
 ```
 
-Try bakerydemo to start with:
+Make the bakerydemo from the greatlibraryserver:
 ```
 sudo apt install python3-virtualenv pip
 cd ~john
