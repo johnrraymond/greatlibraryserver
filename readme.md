@@ -104,7 +104,7 @@ chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is 
 sudo apt install imagemagick   # For autogen of bookmark images...
 ```
 
-# Copy in the env.example.
+# Copy the env.example.
 ```
 cp env.example .env
 ```
@@ -156,6 +156,7 @@ brownie run scripts/deployBaseLoot.py  --network=avax-test                  ## b
 
 ## Need the rest of the site deployed for the rest of the game... need a bookmark for the heros, etc
 ```
+
 ## Copy in the database file
 ```
 cd ~john/bakerydemo
@@ -189,8 +190,10 @@ python ./manage.py migrate
 
 ## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b" )
 ```
-
-
+brownie run scripts/deployMyItems.py --network=avax-test                ## myItemsAddress
+brownie run scripts/deployHero.py --network=avax-test                   ## heroAddress
+brownie run scripts/deployTimeCube.py --network=avax-test               ## timeCubeImplAddress
+brownie run scripts/deployTimeCubeProxy.py --network=avax-test          ## timeCubeAddress
 ```
 
 ## Next the ssl keys
