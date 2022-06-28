@@ -129,6 +129,7 @@ SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been gen
 
 ## MOCK DEPLOY
 ```
+cd ~john/bakerydemo/brownie
 brownie run scripts/deployDummy.py  --network=avax-test
 ### ValueError: insufficient funds for gas * price + value: 
 
@@ -141,7 +142,7 @@ brownie run scripts/deployDummy.py  --network avax-test
 ```
 brownie run scripts/deployCultureCoinProxyAdmin.py  --network=avax-test     ## add address as proxyAdmin
 brownie run scripts/deployCultureCoin.py  --network=avax-test               ## add the contract addrss to the .env as cultureCoinAddressImpl
-brownie run scripts/deployCultureCoinProxy.py  --network=avax-test
+brownie run scripts/deployCultureCoinProxy.py  --network=avax-test          ## cultureCoinAddress
 
 brownie run scripts/deployMarketPlace.py  --network=avax-test
 brownie run scripts/deployPrintingPress.py --network=avax-test
@@ -149,7 +150,8 @@ brownie run scripts/deployPrintingPress.py --network=avax-test
 # Deploy the game parts that you can
 brownie run scripts/deployBaseSpells.py  --network=avax-test                ## baseSpellsImplAddress
 brownie run scripts/deployBaseSpellsProxy.py  --network=avax-test           ## baseSpellsAddress
-brownie run scripts/deployBaseLoot.py  --network=avax-test                  ## baseLootAddress
+brownie run scripts/deployBaseLoot.py  --network=avax-test                  ## baseLootImplAddress
+brownie run scripts/deployBaseLootProxy.py  --network=avax-test             ## baseLootAddress
 
 ## Need the rest of the site deployed for the rest of the game... need a bookmark for the heros, etc
 ```
