@@ -62,7 +62,7 @@ sudo apt install python3-virtualenv pip
 cd ~john
 virtualenv wagtailbakerydemo --python=python3
 
-. ./wagtailbakerydemo/bin/activate
+. ../wagtailbakerydemo/bin/activate
 
 sudo apt-get install libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
     libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk \
@@ -186,6 +186,10 @@ python3 ./manage.py collectstatic
 python ./manage.py migrate
 
 ```
+
+## Deploy a bookmark
+``
+
 
 ## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b" )
 ```
