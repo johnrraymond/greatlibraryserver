@@ -57,6 +57,7 @@ sudo a2enmod wsgi
 
 Make the bakerydemo from the greatlibraryserver:
 ```
+
 sudo apt install python3-virtualenv pip
 cd ~john
 virtualenv wagtailbakerydemo --python=python3
@@ -85,6 +86,7 @@ pip3 install whitenoise
 ~~python3 -m pip uninstall python-dotenv~~ # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'
 
 ```
+sudo apt install git
 git clone https://github.com/johnrraymond/greatlibraryserver
 cp -r greatlibraryserver bakerydemo
 cd bakerydemo
