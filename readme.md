@@ -1,4 +1,4 @@
-# Welcome to the Great Library
+# Welcome to The Great Library's source code
 =======================
 
 This code contains four main parts:
@@ -6,45 +6,48 @@ This code contains four main parts:
 1. the website as a wagtail bakerydemo
 2. the code for creating the smart html
 3. the code for creating and managing the tokens on the backend
-4. the unity code for the game :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
+4. the unity code for the game 
+
+Looking to help? :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
 
 =======================
 
-For windows development in Unity use Visual Studio Code. COMMUNITY VERSIONS DO NOT WORK!
+For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
 
 Install the solidity extension to compile the contracts.
 
 =======================
 
-Currently this installation walkthrough assumes a ubuntu 20.04.
+This installation walkthrough assumes a ubuntu 20.04. (Works with digital ocean's 20.04LTS droplets.)
 
-Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot.
+Remember the first thing to do is to set up the DNS or you will not be able to created your SSL keys as needed by apache certbot if you want to test your code using apache.
 
-Choose password login and be happy with a nice strong password. Its just as good as the other option.
-
-As root admin the droplet by adding john and yourself 
+As root admin the droplet by adding john and yourself.  ***john is the effective nobody for the website.***
 
 ```
-adduser john                  # Give john an even stronger one. (never login with him.)
+adduser john                                                # Give john a strong password. (never login with him.)
 usermod -aG sudo john && gpasswd -a john sudo
-adduser yourusernamehere     #Use strong password.
+adduser yourusernamehere                                    # Use strong password.
 gpasswd -a yourusernamehere sudo
 usermod -aG john yourusernamehere
 chmod g+w /home/john
 
 ```
 
-Log in again if sudo doesn't work. 
-Introduction: Setting up the site user and directories
+***Log in again if sudo doesn't work.***
 
-john is like the effective nobody for the site. Add/verify /mnt/* exists and has plenty of space
+## Set up the site user and directories
+
+
+
+Add/verify /mnt/* exists and has plenty of space
 ``` 
 df -h
 ```
 
-## Part 1: Make the server work for development
+# Create a great library server for development
 
-Apache mod_wgsi from: 
+Prep apache and mod_wgsi: 
 ```
 sudo apt update
 sudo apt install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 nodejs npm
@@ -52,7 +55,7 @@ sudo npm install  ganache-cli --global
 sudo a2enmod wsgi
 ```
 
-Try bakerydemo to start with:
+Make the bakerydemo from the greatlibraryserver:
 ```
 sudo apt install python3-virtualenv pip
 cd ~john
@@ -79,7 +82,7 @@ pip3 install django_cache_url
 pip3 install whitenoise
 ```
 
-~~python3 -m pip uninstall python-dotenv  # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'~~
+~~python3 -m pip uninstall python-dotenv~~ # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'
 
 ```
 git clone https://github.com/johnrraymond/greatlibraryserver
@@ -87,13 +90,11 @@ cp -r greatlibraryserver bakerydemo
 cd bakerydemo
 pip3 install -r requirements/base.txt
 
-
 sudo apt install python3.8-venv
 sudo apt-get install pipx
 pipx install eth-brownie
 pipx ensurepath
 source ~/.bashrc
-
 
 sudo npm install -g moralis-admin-cli
 chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is wrong but might fix some error you dont want...
@@ -101,25 +102,23 @@ chmod go+w /usr/local/lib/node_modules/moralis-admin-cli/  # Dont do this it is 
 sudo apt install imagemagick   # For autogen of bookmark images...
 ```
 
-
-# Copy in the env.example.
+# Copy the env.example.
 ```
 cp env.example .env
 ```
 
-
-## Make a new development culture coin administrator account if needed
+## Make a new development culture coin administrator account for yourself
 ```
 brownie accounts generate Account1
-```
 
 SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
-This number is the new cCA 
-It needs to be added to .env ....
+```
+
+***Save the account address and paswword. The account needs to be added to ~john/bakerydemo/.env as the cCA***
 
 # Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
 ```
-(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input ")
+(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input")     ## This returns the cCAPrivateKey
 ```
 
 # Edit the .env file like:
@@ -153,19 +152,49 @@ brownie run scripts/deployBaseLoot.py  --network=avax-test                  ## b
 ## Need the rest of the site deployed for the rest of the game... need a bookmark for the heros, etc
 ```
 
+## Copy in the database file
 ```
+cd ~john/bakerydemo
+sudo cp  ~/bakerydemodb bakerydemodb
+```
+Expand the library.books.tar.gz into /mnt/media_dir as john:
+```
+cd /mnt
+sudo tar -zxvf ~/library.tar.gz
+
+# This is how you create this tar file:
+#/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
+# or if fresh and untainted:
+
+tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
+```
+
+# Setting up the media dir
+```
+rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
+ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
+#sudo mkdir /mnt/media_dir
+
+sudo chown john:john /mnt/media_dir
+
+cd ~john/bakerydemo/
 python3 ./manage.py collectstatic
-
-### Load the data
 python ./manage.py migrate
-#python ./manage.py load_initial_data
+
 ```
 
-Next the ssl keys
+## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b" )
+```
+brownie run scripts/deployMyItems.py --network=avax-test                ## myItemsAddress
+brownie run scripts/deployHero.py --network=avax-test                   ## heroAddress
+brownie run scripts/deployTimeCube.py --network=avax-test               ## timeCubeImplAddress
+brownie run scripts/deployTimeCubeProxy.py --network=avax-test          ## timeCubeAddress
+```
+
+## Next the ssl keys
 ```
 sudo apt install certbot python3-certbot-apache
 ```
-
 
 Edit the apache config /etc/apache2/sites-available/000-default-le-ssl.conf to look like:
 ```
@@ -233,58 +262,79 @@ DJANGO_SETTINGS_MODULE=bakerydemo.settings.production python ./manage.py creates
 . .env && python3 manage.py runserver 0.0.0.0:9466#change this # for security reasons
 ```
 
+# Set up the OfferingsPlaced event listener on moralis.io/servers
+
+From “View Details” for the mainnet server click on “Sync.”
+
+Either add or edit the offerings placed “Sync and Watch Contract Events”
+```
+Topic:
+OfferingPlaced(bytes32, address, address, uint, uint, string)
+```
+
+ABI
+```
+{
+  <from files...>
+}
+'''
+
+Address:
+```
+<THE CONTRACT DEPLOY ADDRESS>
+```
+    
+Table:
+```
+PlacedOfferings             # placedOfferings in .env
+```
+
+Click confirm.
+
+Save the contracts address, you will need it later in this walk through.
+
+Save the table name in the .env
+
+## BookContracts
+
+Do the same thing again for the BookContracts table and event listener. But this time watch the Printing Press address.
+Setting the code for mainnet
+
+```
+npm  install --save web3
+
+sudo npm install -g moralis-admin-cli
+sudo chown -R <yourusername>:john /usr/local/lib/node_modules/moralis-admin-cli/
+ 
+moralisApiKey="2cEzQ3XynlRGWLR"
+moralisApiSecret="SXA9P9laLO8HKr8"
+moralisSubdomain="qzzj9cxkd0zd.usemoralis.com"
+```
+
+This is the final step: Deploy Cloud :: If you are uncertain about running this command then you probably want to still step up the rest of the site
+
+```
+sh bakerydemo/autosavecloud.sh &
+% bash deployCloud.sh
+```
+
 Browse to the dev site address ... horay! Dev should work.
-
-## Verify the python env is all setup for apache to use
-```
-cp -r /home/<yourusername>/wagtailbakerydemo /home/john/wagtailbakerydemo 
-```
-
-Copy in the database file
-```
-cd ~john/bakerydemo
-sudo cp  ~/bakerydemodb bakerydemodb
-```
-Expand the library.books.tar.gz into /mnt/media_dir as john:
-```
-cd /mnt
-sudo tar -zxvf ~/library.tar.gz
-
-# This is how you create this tar file:
-#/mnt/% tar cvfz library.tar.gz  media_dir/{BOOKV1/,CHAME/,DCBT/,GBCC/,GLBP/,HFMIO/,MBMPGBRRR/,TDAWP/,TDBR/,TLSC/} media_dir/default-bookmark.png
-# or if fresh and untainted:
-
-tar cvfz library.tar.gz  media_dir/ media_dir/default-bookmark.png
-```
-
-# Setting up the media dir
-```
-rm /home/john/bakerydemo/bakerydemo/templates/art/datamines
-ln -s /mnt/media_dir  /home/john/bakerydemo/bakerydemo/templates/art/datamines
-#sudo mkdir /mnt/media_dir
-
-sudo chown john:john /mnt/media_dir
-```
-
 
 Then run:
 ```
 sudo systemctl restart apache2
 ```
 
-# The Glorious End to Part 1
+The site should be working…
+    
+https://droplet.greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
 
-The site should be working…. https://greatlibrary.io/admin/login/?next=/admin/  Login with you username and password.
-Part 2: Brownie / Web3
-
-You might have to do this is new session because of strange effects with manage.py
-FROM HOME DIR
+# To run dev site run a command like the following but change the port number:
+```
+/home/john/bakerydemo$  .   .env && python3 manage.py runserver 0.0.0.0:9466
 ```
 
-
-```
-
-### If the above fails... WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
+### WARNING DO NOT DO THIS STEP UNLESS YOU NEED TO
 ```
 git clone https://github.com/eth-brownie/brownie.git
 cd brownie
@@ -292,18 +342,6 @@ sudo python3 setup.py install
 ```
 
 ~~pip3 install django-dotenv~~
-
-
-## Enter the deploy directory for the site
-
-```
-cd bakerydemo/brownie
-
-############ Possible issue: if your username is something like: joe
-PermissionError: [Errno 13] Permission denied: '/home/john/bakerydemo/brownie/build'
-joe@preprod:/home/john/bakerydemo/brownie$ sudo chown -R joe:john .
-############
-```
 
 ~~Wagtail demo project:~~ Left for completeness
 =======================
