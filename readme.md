@@ -187,8 +187,13 @@ python ./manage.py migrate
 
 ```
 
-## Deploy a bookmark
-``
+## Deploy a bookmark  using the dev site...
+```
+cd ~john/bakerydemo
+
+. .env && python3 manage.py runserver 0.0.0.0:9466
+
+```
 
 
 ## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b" )
