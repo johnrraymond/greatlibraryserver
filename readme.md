@@ -196,12 +196,15 @@ cd ~john/bakerydemo
 ```
 
 
-## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b" )
+## Deploy the rest of the game contracts using a bookmark contract for bookmmarkAddress in the .env (e.g. bookmarkAddress="0x9d3f59e810ec2250adcc3aa5947e48d6d927850b"), the DaedalusClassBoosterToken's address and benScratchesAddress
 ```
 brownie run scripts/deployMyItems.py --network=avax-test                ## myItemsAddress
 brownie run scripts/deployHero.py --network=avax-test                   ## heroAddress
 brownie run scripts/deployTimeCube.py --network=avax-test               ## timeCubeImplAddress
 brownie run scripts/deployTimeCubeProxy.py --network=avax-test          ## timeCubeAddress
+
+brownie run scripts/deployTheGoldenKeys.py --network=avax-test          ## theGoldenKeysAddress
+brownie run scripts/deployBEN.py --network=avax-test                    ## benDeployAddress
 ```
 
 ## Next the ssl keys
