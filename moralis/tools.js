@@ -865,6 +865,26 @@ async function newCultureCoinSeed(_meme) {
 }
 
 
+async function recoverXMTSPFromCC(_amount) {
+	const contract = new Contract(CC_abi, cultureCoinAddress);
+        const nonceOperator = web3.eth.getTransactionCount(cCA);
+        const functionCall = contract.methods.recover(_amount).encodeABI();
+        transactionBody = {
+                to: cultureCoinAddress,
+                nonce:nonceOperator,
+                data:functionCall,
+                gas:regularGas,
+                gasPrice:gw100
+        };
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        console.log(signedTransaction);
+        const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
+        console.log(retval);
+
+        return retval;
+}
+
+
 async function newBookContract(_name, _symbol, _marketPlaceAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo) {
 	console.log("Creating new book contract...");
 	console.log("_name: " + _name);
@@ -1316,3 +1336,5 @@ module.exports.verifyAddon = verifyAddon;
 module.exports.getBENWork = getBENWork;
 module.exports.sleep = sleep;
 module.exports.cloudRun = cloudRun;
+module.exports.recoverXMTSPFromCC = recoverXMTSPFromCC;
+
