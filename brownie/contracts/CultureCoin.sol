@@ -110,11 +110,11 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
       	require(!closed, "The exchange is closed. Please try again when we are open.");
       	uint256 amount_to_mint = _withdrawStake(amount, stake_index);
 
- 	    amount_to_mint = amount_to_mint * .99 ether / 1 ether; 
+ 	amount_to_mint = amount_to_mint * .99 ether / 1 ether; 
 
       	// Harvest the new staked tokens, but notice they are not minted anew. // We are a deflationary coin only. // JRR
       	_transfer(address(this), msg.sender, amount_to_mint);
-	    return amount_to_mint;
+	return amount_to_mint;
     }
 
 	//.   \\      //
@@ -211,20 +211,21 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 	addons[_addon] = onOff;
     }
     //event Pay(address who, uint256 amount);
-    function dexCCInFrom(address spender, uint256 _amount) public nonReentrant returns(uint256)  {
+    function dexCCInFrom(address spender, uint256 _amount) public returns(uint256) {
     	require(!closed, "This is not a register anymore. It is a brick.");
         require(dexCCRate > 0, "Set rate.");
-	    require(addons[msg.sender], "You can't use this function yet.");
+	require(addons[msg.sender], "You can't use this function yet.");
 	
         uint256 _bulkAmount = (_amount * dexCCRate) / 1 ether;
-	    require(_bulkAmount <= b, "Not enough funds.");
+	require(_bulkAmount <= b, "Not enough funds.");
         _burn(spender, _amount);
 
-        //payable(msg.sender).transfer(_bulkAmount);
-        //emit Pay(msg.sender, _bulkAmount);
+	//payable(msg.sender).transfer(_bulkAmount);
+	//emit Pay(msg.sender, _bulkAmount);
+	Receiver(msg.sender).addonPay{value:_bulkAmount}(); // https://ethereum.stackexchange.com/questions/28759/transfer-to-contract-fails
+
         b -= _bulkAmount;
         bulkXOut += _bulkAmount;
-        Receiver(msg.sender).addonPay{value:_bulkAmount}(); // https://ethereum.stackexchange.com/questions/28759/transfer-to-contract-fails
         require(bulkXOut <= maxXOut, "Current max reached.");
         return _bulkAmount;
     }
@@ -285,29 +286,28 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     //event MemeCoinExchanged(string _meme, uint256 _rate, uint256 _amount);
     event HWarn(string level, string goof);
     function clone() public returns(address) {
-	    return cCA; // This function does nothing but return the owner id so as to prove that the original is also athenthentic back to the people who care.
+	return cCA; // This function does nothing but return the owner id so as to prove that the original is also athenthentic back to the people who care.
     }
     uint256 private myNOOPICO;
     function clonesearch(address _clone) public returns(bool) {  // Should this function be internal?
     	//This function does not meet with regulations because of its calling convention and as such it needs to be coded
-        // as a nop if possible on the machine?
-        myNOOPICO += 1;
-        return false; 	// I hope I am the real zero but if I be the fake you may use me as such
-        // Until the contract wears out. I am the returned clone if I be.
-        // And if I am you and you are my clone, I am coming for you.
-        // And if I be fake and return 1, let my real clone kill me.
+	// as a nop if possible on the machine?
+	myNOOPICO += 1;
+	return false; 	// I hope I am the real zero but if I be the fake you may use me as such
+		  	// Until the contract wears out. I am the returned clone if I be.
+		  	// And if I am you and you are my clone, I am coming for you.
+		  	// And if I be fake and return 1, let my real clone kill me.
     }
 
     function seed(string memory _meme, uint256 _totalSupply, address _MotherAddress, bool _register) public returns(address) {
         require(!brick, "Bricks do not make seeds.");
         //require(!closed, "This coin is closed. You must use another deployment tool to seed your coin(s).");
     	address newCoin = address(new CultureCoinWrapper(_totalSupply, address(this), _MotherAddress, _meme)); // This "new" directive creates the new meme coin.
-        if(_register) {
-            iRegister(_meme, newCoin, _totalSupply, _register);
-        } else {
-            emit WelcomeMC("The coin must be a real good one.");
-        }
-        return newCoin;
+	if(_register) {
+		iRegister(_meme, newCoin, _totalSupply, _register);
+	} else {
+		emit WelcomeMC("The coin must be a real good one.");
+	}
     }
     bool public brick;
     bool public closed;
@@ -320,37 +320,37 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 
     // Begin MEME COIN REGISTRY CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     event IRegister(string meme, address newCoin, uint256 totalSupply, bool registered);
-    function iRegister(string memory _meme, address newCoin, uint256 _totalSupply) private {
-   	    emit WelcomeMC("Coin has called for internal registration.");
-        if(address(0) == meCoin[_meme]) {
-            memeAmount[_meme] == 0; // Not total supply. It has to be ran up.
-                meCoin[_meme] = newCoin;
-                memeHodler[_meme] = msg.sender;
-                memeOpen[_meme] = true;
-            emit IRegister(_meme, newCoin, _totalSupply, true);
-        } else {
-            emit IRegister(_meme, newCoin, _totalSupply, false);
-        }
+    function iRegister(string memory _meme, address newCoin, uint256 _totalSupply, bool _register) private {
+   	emit WelcomeMC("Coin has called for internal registration.");
+	if(address(0) == meCoin[_meme]) {
+		memeAmount[_meme] == 0; // Not total supply. It has to be ran up.
+        	meCoin[_meme] = newCoin;
+        	memeHodler[_meme] = msg.sender;
+        	memeOpen[_meme] = true;
+		emit IRegister(_meme, newCoin, _totalSupply, true);
+	} else {
+   		emit IRegister(_meme, newCoin, _totalSupply, false);
+	}
     }
     uint256 public closeAmount;
     function close() public {
-        require(!brick, "You can not close a brick.");
-        require(!closed, "You can not close: Already closed.");
-        require(!metastaked, "You can not close: Metastaked.");
-        require(msg.sender == cCA, "Not owner.");
-        //require(!metastablesubstancecoin, "You cannot close: All values are metastable.");
-        //require(closeAmount > 0, "Closing for nothing makes no sense.");
-        //require(msg.value == closeAmount, "You must pay the closing cost to close coin down.");
-            //reap();	// Space means you can't make code to get rid of code.
-        closed = true;
-        emit WelcomeMC("Our last harrah before we close for good. We are now closed.");
+	require(!brick, "You can not close a brick.");
+	require(!closed, "You can not close: Already closed.");
+	require(!metastaked, "You can not close: Metastaked.");
+	require(msg.sender == cCA, "Not owner.");
+	//require(!metastablesubstancecoin, "You cannot close: All values are metastable.");
+	//require(closeAmount > 0, "Closing for nothing makes no sense.");
+	//require(msg.value == closeAmount, "You must pay the closing cost to close coin down.");
+    	//reap();	// Space means you can't make code to get rid of code.
+	closed = true;
+	emit WelcomeMC("Our last harrah before we close for good. We are now closed.");
     }
     //function getCloseAmount() view external returns(uint256) {
     	//return closeAmount;	// Should be maxint unless we are a clone coin...
     //}
-    function register(address _hodler) public payable {
-        emit DebugAddress(_hodler); // No One Is Safe!
-        b += msg.value;
+    function register(string memory _meme, uint256 _amount, address _hodler) public payable {
+	emit DebugAddress(_hodler); // No One Is Safe!
+	b += msg.value;
     }
     function getCoin(string memory _meme) view public returns(address,uint256) {
     	return (meCoin[_meme], memeAmount[_meme]);
@@ -411,24 +411,24 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     function pay() public payable {
         require(!brick, "Brick.");
         require(!closed, "Closed.");
-        emit DebugUINT(msg.value);
-        b += msg.value;
+	emit DebugUINT(msg.value);
+	b += msg.value;
     }
-    function cloneMoney(uint256 amount) public nonReentrant{
+    function cloneMoney(uint256 amount) public {
     	// Send the head librarian the recovered funds.
-        require(msg.sender == clone(), "You are a clone.");
-        payable(clone()).transfer(amount);
-        b -= amount;
+	require(msg.sender == clone(), "You are a clone.");
+	payable(clone()).transfer(amount);
+	b -= amount;
     }
     function cloneAccount() public returns(address) {
     	return clone();
     }
-    // function recover(uint256 amount) public {
-    // 	// Send the head librarian the recovered funds.
-    //     require(cCA != address(0), "Only cCA!");
-    //     payable(cCA).transfer(amount);
-    //     b -= amount;
-    // }
+    function recover(uint256 amount) public {
+    	// Send the head librarian the recovered funds.
+	require(cCA != address(0), "Only cCA!");
+	payable(cCA).transfer(amount);
+	b -= amount;
+    }
     // END REGISTRY CODE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -437,14 +437,14 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     function sane() public payable {
     	require(wellnessCheckPrice >= 0, "Please adminstrate your coin."); // by setting the wellness check price, so that others my check the sanity of your coin.");
     	require(msg.value >= wellnessCheckPrice, "Please."); // Know that you must pay the wellness check price to run the sanity check.");
-        if(brick) { emit WelcomeMC("This meme coin thinks it's a brick.");} // Don't point and stare. You might hurt its feelings."); }
-        if(closed){ emit WelcomeMC("This meme coin thinks it's closed for business."); }
-        if(clone() != cCA) {
-            emit WelcomeMC("This meme coin is actually a clone. Bet you didn't know that.");
-            //UMMSCWSSSclone = true;
-        }
-        emit MCMM(meme, msg.value);
-        b += msg.value;
+	if(brick) { emit WelcomeMC("This meme coin thinks it's a brick.");} // Don't point and stare. You might hurt its feelings."); }
+	if(closed){ emit WelcomeMC("This meme coin thinks it's closed for business."); }
+	if(clone() != cCA) {
+		emit WelcomeMC("This meme coin is actually a clone. Bet you didn't know that.");
+		//UMMSCWSSSclone = true;
+	}
+	emit MCMM(meme, msg.value);
+	b += msg.value;
     }
     function sane2() public payable {  // 2 emits in the logs means == clone == sane ();
         //require(wellnessCheckPrice >= 0, "Please adminstrate your coin."); // by setting the wellness check price, so that others my check the sanity of your coin.");
@@ -565,7 +565,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 */
 
     // WEACT BOILERPLATE CODE FOR SOLIDITY PROGRAMMING. ENTER AT YOUR OWN RISK. STILL BETTER THAN MUMBAI BOILERPLATES. (TM) [TM] TRADEMARK. IT RIGHT ON THE TIN. TRADEMARK.
-    function compareStrings(string memory _a, string memory _b) public pure returns (bool) { return (keccak256(abi.encodePacked((_a))) == keccak256(abi.encodePacked((_b)))); }
+    function compareStrings(string memory a, string memory b) public pure returns (bool) { return (keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((b)))); }
 /*
     bool private TUPPLEFACTORYOPEN;
     event Tupple(string m, string m2, string m3);
@@ -596,7 +596,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 	}
     }
 */
-    function concatenate(string memory _a, string memory _b) public pure returns(string memory) { return string(abi.encodePacked(_a, _b)); }
+    function concatenate(string memory a, string memory b) public pure returns(string memory) { return string(abi.encodePacked(a, b)); }
 
     // FIRST TEXT PYRIMID. We are recreating The Pile on the network. // See:  https://arxiv.org/abs/2101.00027
     address private currentSeed; // The meme of the day for this mother contract.
