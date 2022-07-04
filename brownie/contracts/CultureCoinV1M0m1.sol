@@ -47,16 +47,17 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 
     //constructor (uint256 initialSupply, address _cCA) ERC20("CultureCoin", "CC") {
     function initialize (uint256 initialSupply, address _cCA) external initializer {
+        require(_cCA != address(0), "Zero address");
     	__ERC20_init("CultureCoin", "CC");
         __ERC20Burnable_init();
-	stakeholders.push(); // Doing this instead of __stakeable_init(); // complained.
+	    stakeholders.push(); // Doing this instead of __stakeable_init(); // complained.
         __ReentrancyGuard_init();
 
         uint256 _dexAmount = 113454015.4 ether;  // 27% of 420 million
         _mint(msg.sender, initialSupply - _dexAmount);
-	_mint(address(this), _dexAmount);
+        _mint(address(this), _dexAmount);
 
-	closeAmount = 115792089237316195423570985008687907853269984665640564039457584007913129639935;	// This coin cannot be closed using money unless all.
+        closeAmount = 115792089237316195423570985008687907853269984665640564039457584007913129639935;	// This coin cannot be closed using money unless all.
         cCA = _cCA; 	// Set Admin account.
 
         //meme = "Initial Supply : 420,200,054 ::: JSON :::: Mumbai Meme Code ::::: Culture Coin : AVAX FUJI ERC20 ";
@@ -81,7 +82,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     // We provide variable interest rates.   	// This coin makes moves at warp 10. // All movement is controlled from engineering new contracts or from the bridge.
     function setRewardPerHour(uint256 _rewardPerHour) public {
     	require(msg.sender == cCA, "Sorry, no.");
-	rewardPerHour = _rewardPerHour;
+	    rewardPerHour = _rewardPerHour;
     }
     function getRewardPerHour() public view returns(uint256) {
     	return rewardPerHour;
@@ -105,7 +106,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     * @notice withdrawStake is used to withdraw stakes from the account holder
     *  This also now generates a liquidity concern and has to be monitored from the bridge. // This is why the 5% insurance. // See GBCC. // JRR Strikes Again.
      */
-    function withdrawStake(uint256 amount, uint256 stake_index) nonReentrant public returns(uint256) {
+    function withdrawStake(uint256 amount, uint256 stake_index) public nonReentrant returns(uint256) {
       	require(!brick, "Sorry. We are a brick.");
       	require(!closed, "The exchange is closed. Please try again when we are open.");
       	uint256 amount_to_mint = _withdrawStake(amount, stake_index);
@@ -235,12 +236,14 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
         uint256 _bulkAmount = (_amount * dexCCRate) / 1 ether;
 
         _burn(msg.sender, _amount);
-        payable(msg.sender).transfer(_bulkAmount);
+    
         b -= _bulkAmount;
         bulkXOut += _bulkAmount;
+
+        payable(msg.sender).transfer(_bulkAmount);
         require(bulkXOut <= maxXOut, "Current max reached.");
 
-	return _bulkAmount;
+	    return _bulkAmount;
     }
     function setMaxXOut(uint256 _maxXOut) public {
     	require(cCA == msg.sender);
@@ -255,7 +258,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 
         b += msg.value;
 
-	bulkCCOut += _bulkAmount;
+	    bulkCCOut += _bulkAmount;
         require(bulkCCOut <= maxCCOut, "Current max reached.");
 
 	return _bulkAmount;
@@ -324,9 +327,9 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
    	    emit WelcomeMC("Coin has called for internal registration.");
         if(address(0) == meCoin[_meme]) {
             memeAmount[_meme] == 0; // Not total supply. It has to be ran up.
-                meCoin[_meme] = newCoin;
-                memeHodler[_meme] = msg.sender;
-                memeOpen[_meme] = true;
+            meCoin[_meme] = newCoin;
+            memeHodler[_meme] = msg.sender;
+            memeOpen[_meme] = true;
             emit IRegister(_meme, newCoin, _totalSupply, true);
         } else {
             emit IRegister(_meme, newCoin, _totalSupply, false);
@@ -435,7 +438,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     // BEGIN COIN HEALTH AND WELLNESS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     uint256 public wellnessCheckPrice;
     function sane() public payable {
-    	require(wellnessCheckPrice >= 0, "Please adminstrate your coin."); // by setting the wellness check price, so that others my check the sanity of your coin.");
+    	require(wellnessCheckPrice > 0, "Please adminstrate your coin."); // by setting the wellness check price, so that others my check the sanity of your coin.");
     	require(msg.value >= wellnessCheckPrice, "Please."); // Know that you must pay the wellness check price to run the sanity check.");
         if(brick) { emit WelcomeMC("This meme coin thinks it's a brick.");} // Don't point and stare. You might hurt its feelings."); }
         if(closed){ emit WelcomeMC("This meme coin thinks it's closed for business."); }
