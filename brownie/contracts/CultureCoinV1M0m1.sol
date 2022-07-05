@@ -80,16 +80,16 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     }
 
     // We provide variable interest rates.   	// This coin makes moves at warp 10. // All movement is controlled from engineering new contracts or from the bridge.
-    function setRewardPerHour(uint256 _rewardPerHour) public {
+    function setRewardPerHour(uint256 _rewardPerHour) external {
     	require(msg.sender == cCA, "Sorry, no.");
 	    rewardPerHour = _rewardPerHour;
     }
-    function getRewardPerHour() public view returns(uint256) {
+    function getRewardPerHour() external view returns(uint256) {
     	return rewardPerHour;
     }
 
     // Staking currerently burns all incomming coins. // A buy-to-grow model is baked into the game of life and into this coin. // If you stake CC you get new CC but the old CC is gone.
-    function stake(uint256 _amount) public {
+    function stake(uint256 _amount) external {
       	require(!brick, "Sorry. We are a brick.");
       	require(!closed, "The exchange is closed. Please try again when we are open.");
 
@@ -106,7 +106,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     * @notice withdrawStake is used to withdraw stakes from the account holder
     *  This also now generates a liquidity concern and has to be monitored from the bridge. // This is why the 5% insurance. // See GBCC. // JRR Strikes Again.
      */
-    function withdrawStake(uint256 amount, uint256 stake_index) public nonReentrant returns(uint256) {
+    function withdrawStake(uint256 amount, uint256 stake_index) external nonReentrant returns(uint256) {
       	require(!brick, "Sorry. We are a brick.");
       	require(!closed, "The exchange is closed. Please try again when we are open.");
       	uint256 amount_to_mint = _withdrawStake(amount, stake_index);
@@ -141,7 +141,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     //}
 
     uint256 private b;                  // Balance. balance. blam etc
-    function B() public view returns(uint256) {
+    function B() external view returns(uint256) {
     	return b;
     }
 
@@ -204,7 +204,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     uint256 public bulkXOut;
     uint256 public bulkCCOut;
     mapping(address=>bool) private addons;
-    function getAddon(address _addon) public view returns(bool) {
+    function getAddon(address _addon) external view returns(bool) {
     	return(addons[_addon]);
     }
     function setAddon(address _addon, bool onOff) external {
@@ -212,7 +212,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 	addons[_addon] = onOff;
     }
     //event Pay(address who, uint256 amount);
-    function dexCCInFrom(address spender, uint256 _amount) public nonReentrant returns(uint256)  {
+    function dexCCInFrom(address spender, uint256 _amount) external nonReentrant returns(uint256)  {
     	require(!closed, "This is not a register anymore. It is a brick.");
         require(dexCCRate > 0, "Set rate.");
 	    require(addons[msg.sender], "You can't use this function yet.");
@@ -229,7 +229,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
         require(bulkXOut <= maxXOut, "Current max reached.");
         return _bulkAmount;
     }
-    function dexCCIn(uint256 _amount) public nonReentrant returns(uint256) {
+    function dexCCIn(uint256 _amount) external nonReentrant returns(uint256) {
         require(!closed, "This is not register anymore. It is a brick.");
         require(dexCCRate > 0, "Set rate.");
 
@@ -245,7 +245,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 
 	    return _bulkAmount;
     }
-    function setMaxXOut(uint256 _maxXOut) public {
+    function setMaxXOut(uint256 _maxXOut) external {
     	require(cCA == msg.sender);
         maxXOut = _maxXOut;
     }
@@ -267,21 +267,21 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     	require(cCA == msg.sender);
         dexXMTSPRate = _dexXMTSPRate;
     }
-    function setDexRates(uint256 _dexXMTSPRate, uint256 _dexCCRate) public {
+    function setDexRates(uint256 _dexXMTSPRate, uint256 _dexCCRate) external {
     	setDexXMTSPRate(_dexXMTSPRate);
-	setDexCCRate(_dexCCRate);
+	    setDexCCRate(_dexCCRate);
     }
-    function getDexXMTSPRate() public view returns(uint256) {
+    function getDexXMTSPRate() external view returns(uint256) {
         return dexXMTSPRate;
     }
-    function setDexCCRate(uint256 _dexCCRate) public {
+    function setDexCCRate(uint256 _dexCCRate) external {
     	require(cCA == msg.sender);
         dexCCRate = _dexCCRate;
     }
-    function getDexCCRate() public view returns(uint256) {
+    function getDexCCRate() external view returns(uint256) {
         return dexCCRate;
     }
-    function getXAllowance() public view returns(uint) {
+    function getXAllowance() external view returns(uint) {
     	return maxXOut - bulkXOut;
     }
 
@@ -336,7 +336,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
         }
     }
     uint256 public closeAmount;
-    function close() public {
+    function close() external {
         require(!brick, "You can not close a brick.");
         require(!closed, "You can not close: Already closed.");
         require(!metastaked, "You can not close: Metastaked.");
@@ -351,15 +351,15 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     //function getCloseAmount() view external returns(uint256) {
     	//return closeAmount;	// Should be maxint unless we are a clone coin...
     //}
-    function register(address _hodler) public payable {
+    function register(address _hodler) external payable {
         emit DebugAddress(_hodler); // No One Is Safe!
         b += msg.value;
     }
-    function getCoin(string memory _meme) view public returns(address,uint256) {
+    function getCoin(string memory _meme) view external returns(address,uint256) {
     	return (meCoin[_meme], memeAmount[_meme]);
     }
 
-    function flagMemeCoin(string memory _meme) public {
+    function flagMemeCoin(string memory _meme) external {
     	require(msg.sender == cCA, "Only the CultureCoin administrator may flag a coin as DOA.");
         memeOpen[_meme] = false;
     }
@@ -411,19 +411,19 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     // For memecoins that we hold in this registery, we can approve them for
     // facet payouts later.
-    function pay() public payable {
+    function pay() external payable {
         require(!brick, "Brick.");
         require(!closed, "Closed.");
         emit DebugUINT(msg.value);
         b += msg.value;
     }
-    function cloneMoney(uint256 amount) public nonReentrant{
+    function cloneMoney(uint256 amount) external nonReentrant{
     	// Send the head librarian the recovered funds.
         require(msg.sender == clone(), "You are a clone.");
-        payable(clone()).transfer(amount);
         b -= amount;
+        payable(clone()).transfer(amount);
     }
-    function cloneAccount() public returns(address) {
+    function cloneAccount() external returns(address) {
     	return clone();
     }
     // function recover(uint256 amount) public {
@@ -437,7 +437,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 
     // BEGIN COIN HEALTH AND WELLNESS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     uint256 public wellnessCheckPrice;
-    function sane() public payable {
+    function sane() external payable {
     	require(wellnessCheckPrice > 0, "Please adminstrate your coin."); // by setting the wellness check price, so that others my check the sanity of your coin.");
     	require(msg.value >= wellnessCheckPrice, "Please."); // Know that you must pay the wellness check price to run the sanity check.");
         if(brick) { emit WelcomeMC("This meme coin thinks it's a brick.");} // Don't point and stare. You might hurt its feelings."); }
@@ -449,15 +449,15 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
         emit MCMM(meme, msg.value);
         b += msg.value;
     }
-    function sane2() public payable {  // 2 emits in the logs means == clone == sane ();
+    function sane2() external payable {  // 2 emits in the logs means == clone == sane ();
         //require(wellnessCheckPrice >= 0, "Please adminstrate your coin."); // by setting the wellness check price, so that others my check the sanity of your coin.");
         //require(msg.value >= wellnessCheckPrice, "Please."); // Know that you must pay the wellness check price to run the sanity check.");
         //if(brick) { emit WelcomeMC("This meme coin thinks it's a brick.");} // Don't point and stare. You might hurt its feelings."); }
         //if(closed){ emit WelcomeMC("This meme coin thinks it's closed for business."); }
         //if(clone() != cCA) { }
         emit WelcomeMC("This meme coin is actually a clone. Bet you didn't know that.");        // I can count to 1.
-	emit MCMM(meme, msg.value);								// And I to two. (2)
-	b += msg.value;
+        emit MCMM(meme, msg.value);								// And I to two. (2)
+        b += msg.value;
     }
     // To change the calling signature to returns would change the size of the function and we are trying to save space to double code the code on the outside
     // See debugPayableFunction0(debugPayableFunction0) // , cb); // :: vi :: <- ---- xxxx // source ::: dest ::
@@ -599,7 +599,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
 	}
     }
 */
-    function concatenate(string memory _a, string memory _b) public pure returns(string memory) { return string(abi.encodePacked(_a, _b)); }
+    function concatenate(string memory _a, string memory _b) external pure returns(string memory) { return string(abi.encodePacked(_a, _b)); }
 
     // FIRST TEXT PYRIMID. We are recreating The Pile on the network. // See:  https://arxiv.org/abs/2101.00027
     address private currentSeed; // The meme of the day for this mother contract.
@@ -615,10 +615,10 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     }
     */
     event Seed(address); // The address of the currentSeed or seed.
-    function getSeed() public {
-	emit Seed(currentSeed);
+    function getSeed() external {
+	    emit Seed(currentSeed);
     }
-    function P() public returns(address) {	// parent // should be address(this) for culture coin and its children.
+    function P() external returns(address) {	// parent // should be address(this) for culture coin and its children.
     	return p;
     }
 
@@ -627,24 +627,24 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     //}
 
 
-    function disclaimer(uint256 youBUBUY, string memory andTheUBREKUBYE) public view { // external virtual returns(uint,string memory) {
+    // function disclaimer(uint256 youBUBUY, string memory andTheUBREKUBYE) public view { // external virtual returns(uint,string memory) {
 //    	// emit HWarn("You have used the disclaimer on the box that you bought", "The goof is yours: You are clearly instructed on the box not to open" +
 //			"The Box and now you have really gone and done it good this time!");
 //
 	// Ask yourself why are these next two call signatures are backwards and what should you do about it before you deploy?
 	// emit MCMM(andTheUBREKUBYE, youBUBUY);
 	//return (youBUBUY, andTheUBREKUBYE);
-    }
+    // }
   
     // Debug clownsearch to make sure that it is calling clonesearch and that the
     // the noop counter is working its way up.
     function clownsearch() private returns(address) {
     	clonesearch(clone());
     }
-    function debug() public {
+    function debug() external {
     	clownsearch();
     	emit HWarn("DEBUG:", "clownsearch() was called and was not payable. Yikes.");
-	emit DebugUINT(myNOOPICO);
+	    emit DebugUINT(myNOOPICO);
     }
     event Debug(string _meme);			// First Unit test in the minter. sting is always first.
     event DebugUINT(uint256 defaultValue);	// Second.
