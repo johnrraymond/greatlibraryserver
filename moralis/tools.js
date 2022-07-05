@@ -3,8 +3,11 @@ console.log(myEnv);
 require('dotenv').config({ path: '/home/john/bakerydemo/.env',  override: true, debug: true });
 
 const coordinatorKey=process.env.cCAPrivateKey;
-
 const cultureCoinAddress=process.env.cultureCoinAddress;
+
+const testAccountAddress=process.env.testAccountAddress;
+const testPrivateKey=process.env.testPrivateKey;
+
 const printingPressAddress=process.env.printingPressAddress;
 const cCA=process.env.cCA;
 const marketPlaceAddress = process.env.marketPlaceAddress;
@@ -865,6 +868,23 @@ async function newCultureCoinSeed(_meme) {
 }
 
 
+async function testRecoverXMTSPFromCC(_amount) {
+	const contract = new Contract(CC_abi, cultureCoinAddress);
+        const nonceOperator = web3.eth.getTransactionCount(testAccountAddress);
+        const functionCall = contract.methods.recover(_amount).encodeABI();
+        transactionBody = {
+                to: cultureCoinAddress,
+                nonce:nonceOperator,
+                data:functionCall,
+                gas:regularGas,
+                gasPrice:gw100
+        };
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,testPrivateKey);
+        console.log(signedTransaction);
+        const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
+        console.log(retval);
+}
+
 async function recoverXMTSPFromCC(_amount) {
 	const contract = new Contract(CC_abi, cultureCoinAddress);
         const nonceOperator = web3.eth.getTransactionCount(cCA);
@@ -1337,4 +1357,6 @@ module.exports.getBENWork = getBENWork;
 module.exports.sleep = sleep;
 module.exports.cloudRun = cloudRun;
 module.exports.recoverXMTSPFromCC = recoverXMTSPFromCC;
+module.exports.testRecoverXMTSPFromCC = testRecoverXMTSPFromCC;
+
 

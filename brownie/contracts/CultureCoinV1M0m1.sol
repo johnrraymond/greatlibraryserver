@@ -43,7 +43,7 @@ import "./CultureCoinWrapper.sol";
 import "./Stakeable.sol";
 import "./send_receive.sol"; // For the addons to send and receive XMTSP, AKA AVAX.
 
-contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, Stakeable, ReentrancyGuardUpgradeable, Receiver {
+contract CultureCoinV1M0m1 is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, Stakeable, ReentrancyGuardUpgradeable, Receiver {
 
     //constructor (uint256 initialSupply, address _cCA) ERC20("CultureCoin", "CC") {
     function initialize (uint256 initialSupply, address _cCA) external initializer {
@@ -267,16 +267,16 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     	require(cCA == msg.sender);
         dexXMTSPRate = _dexXMTSPRate;
     }
+    function setDexCCRate(uint256 _dexCCRate) public {
+    	require(cCA == msg.sender);
+        dexCCRate = _dexCCRate;
+    }
     function setDexRates(uint256 _dexXMTSPRate, uint256 _dexCCRate) external {
     	setDexXMTSPRate(_dexXMTSPRate);
-	    setDexCCRate(_dexCCRate);
+	setDexCCRate(_dexCCRate);
     }
     function getDexXMTSPRate() external view returns(uint256) {
         return dexXMTSPRate;
-    }
-    function setDexCCRate(uint256 _dexCCRate) external {
-    	require(cCA == msg.sender);
-        dexCCRate = _dexCCRate;
     }
     function getDexCCRate() external view returns(uint256) {
         return dexCCRate;
@@ -306,7 +306,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
         //require(!closed, "This coin is closed. You must use another deployment tool to seed your coin(s).");
     	address newCoin = address(new CultureCoinWrapper(_totalSupply, address(this), _MotherAddress, _meme)); // This "new" directive creates the new meme coin.
         if(_register) {
-            iRegister(_meme, newCoin, _totalSupply, _register);
+            iRegister(_meme, newCoin, _totalSupply);
         } else {
             emit WelcomeMC("The coin must be a real good one.");
         }
