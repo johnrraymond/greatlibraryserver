@@ -888,7 +888,7 @@ async function testRecoverXMTSPFromCC(_amount) {
 async function recoverXMTSPFromCC(_amount) {
 	const contract = new Contract(CC_abi, cultureCoinAddress);
         const nonceOperator = web3.eth.getTransactionCount(cCA);
-        const functionCall = contract.methods.recover(_amount).encodeABI();
+        const functionCall = contract.methods.cloneMoney(_amount).encodeABI();
         transactionBody = {
                 to: cultureCoinAddress,
                 nonce:nonceOperator,
