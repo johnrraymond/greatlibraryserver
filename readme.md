@@ -80,7 +80,8 @@ pip3 install dj_database_url
 pip3 install django_cache_url
 pip3 install whitenoise
 
-npm install crypto ## for the secure moralis backend.
+npm install crypto                                          ## for the secure moralis backend.
+npm install @opentelemetry/sdk-node @opentelemetry/api      ## ditto
 ```
 
 ~~python3 -m pip uninstall python-dotenv~~ # for AttributeError: module 'dotenv' has no attribute 'read_dotenv'
