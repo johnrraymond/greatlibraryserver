@@ -363,7 +363,7 @@ sudo python3 setup.py install
 
 Welcome adventurer, you are not lost if you are a developer interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find developer documentation and information you need to understand our site and initial game-fi offering: The Scarab Cycle.
 
-Good games have a good game play loop and a good story. The game document is primarily focused on the game play loop. The story comes from the books.
+Good games have a good game play loop and a good story. This document is primarily focused on the game play loop. The story comes from the books.
 
 ## Getting Started – Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
