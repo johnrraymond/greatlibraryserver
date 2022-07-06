@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../openzeppelin-solidity/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
-import "./CultureCoin.sol";
+import "./CultureCoinV1M0m1.sol";
 import "./Stakeable.sol";
 
 // Create your own book, dApp, or intelectual property using this wrapper coin.

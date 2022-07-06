@@ -274,7 +274,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
     function getDexXMTSPRate() external view returns(uint256) {
         return dexXMTSPRate;
     }
-    function setDexCCRate(uint256 _dexCCRate) external {
+    function setDexCCRate(uint256 _dexCCRate) public {
     	require(cCA == msg.sender);
         dexCCRate = _dexCCRate;
     }
@@ -301,7 +301,7 @@ contract CultureCoin is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeabl
         // And if I be fake and return 1, let my real clone kill me.
     }
 
-    function seed(string memory _meme, uint256 _totalSupply, address _MotherAddress, bool _register) public returns(address) {
+    function seed(string memory _meme, uint256 _totalSupply, address _MotherAddress, bool _register) public nonReentrant returns(address) {
         require(!brick, "Bricks do not make seeds.");
         //require(!closed, "This coin is closed. You must use another deployment tool to seed your coin(s).");
     	address newCoin = address(new CultureCoinWrapper(_totalSupply, address(this), _MotherAddress, _meme)); // This "new" directive creates the new meme coin.
