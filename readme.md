@@ -382,14 +382,15 @@ Items players create using the mechanisms of the game have real-money implicatio
 The take-away is this: If you play this game and wish to make money at it we support that. Want to sell your hero? We support that. By playing the game you gain ownership of valuable in-game assets–as it should be. 
 
 Remember, the player’s time is valuable.
-### Planned Features
+## Planned Features
 ### Legendary item effects
 
 ### Item crafting
 
 ### In-game auction house
 
-## User contributed cosmetics and art
+### User contributed cosmetics and art
+    
 ## Commitment to the players
 ### We want a game in which money can play a part without it becoming evil:
     Players should be able to sell their characters, unlike in World of Warcraft.
@@ -412,37 +413,39 @@ For example take scene one where Gaz is the main lootable mob. If your hero is m
 However if Culture Coin has been locked into bookmark then the amount may be higher based on the following calculation: percent bonus is equal to the logarithm of CultureCoin divided by the normalization constant for the game. This constant is something like six or seven so that the locked Culture Coin bonus is effectively never greater than around 5%. So in the best case for a hero their bonus from killing Gaz may be as high as 10% more of the loot for killing and looting him.
 
 So called “whales” should not have player power outrageously greater than people who do not have large sums of Culture Coin to throw away. Which brings us to the next section.
-The Library’s Philosophy on Games and Gaming
+    
+## The Library’s Philosophy on Games and Gaming
 All games have issues which detract from the fun and while the library’s games will be no different, we strive to make any unfortunate aspects as innocuous as possible. We have a philosophy and it is that players should be able to enjoy all the content the game has to offer while by the time they reach 80% of the effective max power.
-The 80-20 rule
+### The 80-20 rule
 The 80-20 rule is a critical rule for understanding the library’s philosophy. The rule can be applied to many aspects of the game. Whales should only ever be able to get 20% more powerful than a minnow per unit time in the end game.
-No theft from the players
+### No theft from the players
 In Diablo II (d2) and Path of Exile (POE) if you die in the late game the game steals money and experience from you. This theft does not add anything to the game save to make it harder. It acts as a gatekeeper. But more importantly, it robs the player of fun. Also in D2 socketing a gem locks it in place and it cannot be removed without destroying it. Such destructive behavior from the game when it is not needed is also a form of theft.
 
 If the game needs to burn tokens for economic reasons, then that process must be coded specifically to the problem and must give the player compensation in return. Having to nuke a gem or rune to replace it is not acceptable. Having to nuke them to upgrade something that can not be downgraded is much better.
-Caps are the enemy of flow
+
+### Caps are the enemy of flow
 The best games allow the player to enter a state of mind known as flow and only breaks them out of flow when they fail to achieve an objective or when they succeed. This means that if the player sets out to do something, in the best world that thing they wish to do should be doable for as long as they wish it.
 
 Therefore there should not be any caps to any activities. Such game design is coded to abuse the player into logging in everyday to do chores and the like. This is a big no no.
-Events are better than dailies
+### Events are better than dailies
 The use of events to entice people to play is much better than giving players daily chores in game.
-No abusive gambling
+### No abusive gambling
 Life is a gamble. Everything we do is a gamble. But that doesn’t mean we should be addicted to gambling. Any gamble made in the game must be tied to skill, knowledge, or foresight. Loot boxes are right out.
-No parasitic design
+### No parasitic design
 All features should be synergistic. But what does that mean? It means that bolt-on systems are not allowed in the games. Movement is a synergistic design pattern in most RPGs. If you need to hit something out in the world with your staff, then you probably need to move to it.
 
 If you are swinging your staff then having different swing timers is synergistic with the attack mode in question. However, once a game is made, adding on soulbinds like seen in World of Warcraft (WoW) do nothing but detract from the game. The same goes for outfitting pets and helpers like in Diablo III (d3.) Such systems detract from the game because they create unnecessary worry in the minds of the players. Instead of worrying about themselves and their friends they are worried about an NPC. This does nothing but make the game more complex without adding any real additional fun.
 
 If the player has to have a helper, it is up to the game to outfit and supply the helper.
-Understanding Bookmarks Better
+## Understanding Bookmarks Better
 The text of a book is marked up to include section breaks. Each section is analogous to these bookmarks. On the site inside the html for the books a smart contract for the bookmarks supplies the ERC721 tokens that line up with these bookmarks/sections.
-Benefits of Ownership
+### Benefits of Ownership
 They are critical to the game function as well as for petting BEN and other gambling mechanics on the site.
-Gambling on Bookmarks
+### Gambling on Bookmarks
 The gamble will not be one that is based on pure luck. One must be able to predicate the future or have some skill to win.
-Petting BEN
+### Petting BEN
 Petting BEN is initially a way to interact with the AI custodian for the library. BEN is the friendly cat that likes to wander the digital stacks.
-Movement and Camera Controls in Game
+## Movement and Camera Controls in Game
 Because the UI of any game is so critical, a theory of how it should work is important. Largely this game is inspired by the likes of Path of Exile (PoE) and World of Warcraft (WoW.) Because of the speed of the game and the need to target the spells and abilities, the WoWmodel of movement and camera control is what we are shooting for.
 
 Clicking both mouse buttons will cause the player to move forward and then WASD can help modify those movements.
@@ -452,10 +455,10 @@ The Full Requirements: OxFxM
 Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements traceability is what this project uses for its main high level design and will include all of the great library. Operations are the highest level actions that users and AIs can take. Whereas the functionalities implement large swaths of these operations. The module level is the lowest level and is at the function or subroutine level of the code.
 
 As a good developer, ask yourself why am I writing this code if there is no functionality it supports?
-Operations
+## Operations
 Welcome the high level operations that users can accomplish when using the software you are writing. These are the “Steve Jobs Level” concepts. These are what he worried about when he made his code. Is the user experience clean and consistent across all the operations the users partake in? At the highest level we do not worry about what functionalities are needed to implement, we simply assign them the functionalities needed to accomplish the goal and as we work through the operations we worry about the UX (user experience.)
 
-The Pitch
+## The Pitch
 We are pleased to introduce the next evolution of the written word. By blending artistic content, NFT’s, gaming and AI, we have leapt past the current saturated e-reader market and bring something new which marries the best of physical mediums with the ease of digital ones.
 
 Take the humble book. It is physical, tactile, collectible. A library is a sign of culture to some, and speaks of your passion and interests. Books can take us to far away places, or teach us things we never thought were possible. They are, sadly, cumbersome, entirely static, and once read are stored, collecting dust.  But most damaging, there is a significant barrier to entry that barres all but the most easily marketed. New Authors have a steep hill to climb to enter into this tight market as the cost to print, store and distribute and market physical media is high, and publishers, facing an increasingly cluttered market fear to innovate.
@@ -466,43 +469,44 @@ Smartbooks are radically different.  They are collectable and dynamic, capitaliz
 
 Ongoing revenue will be secured through the portion of sales perpetually generated in the NFT marketplace. Marketing and site placement are premiums for potential creators to place their offerings. Smart Media will become the standard for the future because it allows successful authors to interact with their public on a level that is not possible no other way.
 
-Connect to Network
+### Connect to Network
 
-Mint One Bookmark
+### Mint One Bookmark
 
-Mint 1-10 Bookmarks with Rewards
+### Mint 1-10 Bookmarks with Rewards
 
-Purchase Bookmark
+### Purchase Bookmark
 
-Sell Bookmark
+### Sell Bookmark
 
-Purchase Book
+### Purchase Book
 
-Sell Bookmark
+### Sell Bookmark
 
-Purchase Hardbound
+### Purchase Hardbound
 
-Read Book
+### Read Book
 
-Save Book
+### Save Book
 
-Pet BEN
+### Pet BEN
 
-Mint Hero
+### Mint Hero
 
-Sell Hero
+### Sell Hero
 
-Launch Game
+### Launch Game
 
-Zone-In
+### Zone-In
 
-Functionalities
+## Functionalities
 
 
-Modules
+## Modules
 async function getBENResponse(myPrompt)
 Based on myPrompt BEN is to generate a text response using a GPT to provide an in-character response that follows from the prompt.
-A Case Study: Scene One
+
+## A Case Study: Scene One
 
 The users currently have to sign all their actions on chain but we will allow a bridge to remove that in the future. So say player1 zones into scene one:
 
@@ -529,33 +533,27 @@ In the future, however, doDruidFireForUser() can call into bridging code on the 
 
 This new bridging ability will likely happen when we move to our own Avalanche Subnet.
 
-Loot and the “Cube”
+## Loot and the “Cube”
 TimeCube.sol was inspired by the great ether-monster in the sky. But what is it for? It is for controlling many aspects of the game, but primarily, users will use “the cube” to transmute the loot they get off of monsters and mobs in the game to create items: ERC721 items to be specific.
 
-A quick rundown of how loot works
+### A quick rundown of how loot works
 When a lootable NPC dies, players calling the BaseLoot.sol:loot() contract function cause a mint of a new ERC1155 with the hero token id of the dead mob as its identifier. This ERC1155 is transferred to the msg.sender, AKA the player’s wallet.
 
 Then the user has to call TimeCube.sol::transmute() to convert the ERC1155 to the ERC721 which is the item. Many pieces of loot may be required to create the best items in the game. So 1, 2, 3 or even 20+ ERC1155 loot tokens may be necessary to craft the best legendary items.
-Beyond Game-Fi
+## Beyond Game-Fi
 Maybe you aren’t a game developer but still want to contribute? We need to make the e-reader for the Great Library’s smart-books and a total reskin of the site. Skills include JS, REACT, PYTHON, WEB3 and many more. We are looking for people who are just starting their WEB3 journey as well as old hands at software development.
 
 If you are interested in contributing in- or outside of the game email: johnrraymond@yahoo.com or see me on discord https://discord.gg/mdSKcX5PeE
 
 You will still be paid even if you aren’t working on the game itself.
 
-The React Version of the Great Library
+## The React Version of the Great Library
 The current version of the website uses moralis’ vanilla js. This react initiative is two-fold. Part one is to replace the site with a react frontend that is maintainable in the ways js is not. The second push is to make a react-native e-reader for the books.
 
-The Secure Backend
+## The Secure Backend
 The CCA private key should not be on disk in the .env file without being encrypted. Likewise the keys used for the ssl node server code should also be encrypted. The plan is to run the backend in GNU’s Screen. It requires the admin/librarian in charge of the server to type in the password to decrypt everything into memory, including the cCAPrivateKey.
 
 To facilitate the transition, if the password is 1234 or fallback or blank, the value in the .env will not be decrypted but used directly.
-Resources
-https://github.com/johnrraymond/greatlibraryserver
-
-The Great Library's Great Book of Culture Coin ← preprod for now
-
-The Great Libray's Needs
 
 
 
