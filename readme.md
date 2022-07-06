@@ -454,8 +454,6 @@ The Full Requirements: OxFxM
 Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements traceability is what this project uses for its main high level design and will include all of the great library. Operations are the highest level actions that users and AIs can take. Whereas the functionalities implement large swaths of these operations. The module level is the lowest level and is at the function or subroutine level of the code.
 
 As a good developer, ask yourself why am I writing this code if there is no functionality it supports?
-## Operations
-Welcome the high level operations that users can accomplish when using the software you are writing. These are the “Steve Jobs Level” concepts. These are what he worried about when he made his code. Is the user experience clean and consistent across all the operations the users partake in? At the highest level we do not worry about what functionalities are needed to implement, we simply assign them the functionalities needed to accomplish the goal and as we work through the operations we worry about the UX (user experience.)
 
 ## The Pitch
 We are pleased to introduce the next evolution of the written word. By blending artistic content, NFT’s, gaming and AI, we have leapt past the current saturated e-reader market and bring something new which marries the best of physical mediums with the ease of digital ones.
@@ -467,6 +465,9 @@ E-Books tried to address this shortcoming, but have shortcomings of their own. G
 Smartbooks are radically different.  They are collectable and dynamic, capitalizing on the advantage of the digital medium, driving the story into hitherto unreached markets.  NFT tokens generated from the work proves exclusive ownership of a piece of literature, with the secure backbone of the crypto block-chain networks. Buy and sell on the integrated marketplace with other avid collectors and fans. Authors are automatically granted a portion of current and future resales through blockchain technology.  Reader apps give access from all HTML-5 devices, and instant feedback and AI tools guide the author in optimizing their success.  The sale of bookmarks, embedded games, and even advertisements will generate additional revenue and excitement.  There is almost no limit to the possible content, including limited artwork, AI pets, exclusive author access, audiobooks and even the distribution of limited edition physical media, yes, the old fashioned printed book. 
 
 Ongoing revenue will be secured through the portion of sales perpetually generated in the NFT marketplace. Marketing and site placement are premiums for potential creators to place their offerings. Smart Media will become the standard for the future because it allows successful authors to interact with their public on a level that is not possible no other way.
+
+## Operations
+Welcome the high level operations that users can accomplish when using the software you are writing. These are the “Steve Jobs Level” concepts. These are what he worried about when he made his code. Is the user experience clean and consistent across all the operations the users partake in? At the highest level we do not worry about what functionalities are needed to implement, we simply assign them the functionalities needed to accomplish the goal and as we work through the operations we worry about the UX (user experience.)
 
 ### Connect to Network
 
