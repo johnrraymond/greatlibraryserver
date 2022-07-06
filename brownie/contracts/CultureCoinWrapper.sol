@@ -20,7 +20,7 @@ contract CultureCoinWrapper is ERC20, ERC20Burnable, ReentrancyGuard {
     uint256 private b;			// Balance.
     uint256 private price;
     uint256 private generatePrice;
-    CultureCoin private CC;
+    CultureCoinV1M0m1 private CC;
     constructor(uint256 initialSupply, address _cultureCoin, address _cCAClone, string memory _meme) ERC20("CultureCoin", _meme) {
         require(_cultureCoin != address(0), "Invalid Culturcoin.");
         require(_cCAClone != address(0), "Zero address.");
@@ -30,7 +30,7 @@ contract CultureCoinWrapper is ERC20, ERC20Burnable, ReentrancyGuard {
         emit DebugUINT(initialSupply);
         emit Debug(_meme);
 
-        CC = CultureCoin(_cultureCoin);
+        CC = CultureCoinV1M0m1(_cultureCoin);
         CC.register(_meme, initialSupply, msg.sender);
 
         cCA = CC.clone(); // Only clone the best.
