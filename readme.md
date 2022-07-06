@@ -8,8 +8,6 @@ This code contains four main parts:
 3. the code for creating and managing the tokens on the backend
 4. the unity code for the game 
 
-Looking to help? :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
-
 =======================
 
 For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
