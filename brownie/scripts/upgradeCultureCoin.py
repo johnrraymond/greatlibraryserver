@@ -25,7 +25,7 @@ def main():
     # Deploy the contract
     print("Deploying the contract...")
 
-    cc_v2 = CultureCoin.at(cultureCoinImplAddress)
+    cc_v2 = CultureCoinV1M0m1.at(cultureCoinImplAddress)
     proxy = TransparentUpgradeableProxy[-1]
     proxy_admin = ProxyAdmin[-1]
     upgrade(account, proxy, cc_v2, proxy_admin_contract=proxy_admin)
