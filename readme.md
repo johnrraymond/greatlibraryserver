@@ -256,7 +256,7 @@ Now fight with dns as you try to run:
 sudo certbot --apache
 ```
 
-## Edit "/etc/apache2/envvars":
+## Edit /etc/apache2/envvars to have these lines instead of what it has:
 ```
 export APACHE_RUN_USER=john
 export APACHE_RUN_GROUP=john
