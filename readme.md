@@ -362,7 +362,6 @@ sudo python3 setup.py install
 ~~pip3 install django-dotenv~~
 
 # The Great Library’s Requirements
-#### ::Contribute and get paid::
 
 Welcome adventurer, you are not lost if you are a developer interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find developer documentation and information you need to understand our site and initial game-fi offering: The Scarab Cycle.
 
