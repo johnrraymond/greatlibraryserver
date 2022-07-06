@@ -362,13 +362,13 @@ sudo python3 setup.py install
 ~~pip3 install django-dotenv~~
 
 # The Great Library’s Requirements
-#####::Contribute and get paid::
+#### ::Contribute and get paid::
 
 Welcome adventurer, you are not lost if you are a developer interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find developer documentation and information you need to understand our site and initial game-fi offering: The Scarab Cycle.
 
 Good games have a good game play loop and a good story. The game document is primarily focused on the game play loop. The story comes from the books.
 
-##Getting Started – Time is valuable
+## Getting Started – Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
 
 Let’s talk about the game…
@@ -382,25 +382,25 @@ Items players create using the mechanisms of the game have real-money implicatio
 The take-away is this: If you play this game and wish to make money at it we support that. Want to sell your hero? We support that. By playing the game you gain ownership of valuable in-game assets–as it should be. 
 
 Remember, the player’s time is valuable.
-###Planned Features
-###Legendary item effects
+### Planned Features
+### Legendary item effects
 
-###Item crafting
+### Item crafting
 
-###In-game auction house
+### In-game auction house
 
-##User contributed cosmetics and art
-##Commitment to the players
-###We want a game in which money can play a part without it becoming evil:
+## User contributed cosmetics and art
+## Commitment to the players
+### We want a game in which money can play a part without it becoming evil:
     Players should be able to sell their characters, unlike in World of Warcraft.
     People without large disposable incomes should not be farmed by “whales.”
     Etcetera
 
-###No loot boxes. Never ever. Any gambling on the site must be based on knowledge/skill.
+### No loot boxes. Never ever. Any gambling on the site must be based on knowledge/skill.
 
-###No predatory sales will ever be allowed. This is NOT diablo immortal.
+### No predatory sales will ever be allowed. This is NOT diablo immortal.
 
-##Threading the Needle of Pay-to-Win
+## Threading the Needle of Pay-to-Win
 For this version of the game the library’s token Culture Coin will play a role is the availability of loot and the purchase thereof. That means that aspects of the game will be pay-to-win. Therefore it is imperative we thread the needle and not fall into the traps other pay-to-win games fall into.
 
 They say it cannot be done. However, it is possible with care. First off, the library’s token is the primary in-game currency. Heroes are minted with it, and items are bought and sold with it. It is the hope that the bookmarks heroes are minted from confer some advantage, or lack there of, given that bookmarks are a property that is ownable. Ownership should confer some privilege and in this “needle threading” they will.
