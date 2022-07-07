@@ -209,7 +209,7 @@ contract CultureCoinV1M0m1 is Initializable, ERC20Upgradeable, ERC20BurnableUpgr
     }
     function setAddon(address _addon, bool onOff) external {
     	require(msg.sender == cCA, "Admin only.");
-	addons[_addon] = onOff;
+	    addons[_addon] = onOff;
     }
     //event Pay(address who, uint256 amount);
     function dexCCInFrom(address spender, uint256 _amount) external nonReentrant returns(uint256)  {
@@ -273,7 +273,7 @@ contract CultureCoinV1M0m1 is Initializable, ERC20Upgradeable, ERC20BurnableUpgr
     }
     function setDexRates(uint256 _dexXMTSPRate, uint256 _dexCCRate) external {
     	setDexXMTSPRate(_dexXMTSPRate);
-	setDexCCRate(_dexCCRate);
+	    setDexCCRate(_dexCCRate);
     }
     function getDexXMTSPRate() external view returns(uint256) {
         return dexXMTSPRate;
@@ -301,7 +301,7 @@ contract CultureCoinV1M0m1 is Initializable, ERC20Upgradeable, ERC20BurnableUpgr
         // And if I be fake and return 1, let my real clone kill me.
     }
 
-    function seed(string memory _meme, uint256 _totalSupply, address _MotherAddress, bool _register) public returns(address) {
+    function seed(string memory _meme, uint256 _totalSupply, address _MotherAddress, bool _register) public nonReentrant returns(address) {
         require(!brick, "Bricks do not make seeds.");
         //require(!closed, "This coin is closed. You must use another deployment tool to seed your coin(s).");
     	address newCoin = address(new CultureCoinWrapper(_totalSupply, address(this), _MotherAddress, _meme)); // This "new" directive creates the new meme coin.
