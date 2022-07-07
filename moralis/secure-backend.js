@@ -126,20 +126,6 @@ function runServer(passPhrase) {
 
 
         		var contractid;		// This will be the real contract when the tx completes.
-
-			/* /
-			const lockfile = whoFile + ".lock";
-			let haveLock = false;
-			await lockFile.lock(lockfile, { wait: 1, stale: 10000 }, async function (err) {
-				if (err) {
-					console.log("Locking error: " + err);
-					return;
-				} 
-				haveLock = true;
-
-			});
-			*/
-
 			await newBookContractWithLockFile(whoFile, _name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, cCAPrivateKey);
 			res.end();
 		}
@@ -203,14 +189,6 @@ async function newBookContractWithLockFile(whoFile, _name, _symbol, _bookRegistr
 				}
 			}
 		}
-
-		/*/ remove lock file
-		lockFile.unlock(lockfile, function(err) {
-			//console.error("unlocked failed", err);
-			if (err) {
-				console.error("unlock failed: ", err);
-			}
-		}); */
 
         } catch (e) {
                 console.log('error calling newBookContract: ',  e);
