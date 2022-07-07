@@ -8,8 +8,6 @@ This code contains four main parts:
 3. the code for creating and managing the tokens on the backend
 4. the unity code for the game 
 
-Looking to help?
-
 ## Major TODOs
 
 1. Add 'use strict'; in all js code
