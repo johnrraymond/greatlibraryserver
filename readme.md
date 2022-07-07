@@ -18,7 +18,7 @@ This code contains four main parts:
 7. Finish this list 
 
 # Getting Started
-:warning: **Please pull the master code before make pull request or commit**: Be very careful here!
+:warning: **Please pull the master code before make pull request or commit**: Be very careful here! (Looking at your JRR.)
     
     git pull
     git commit
