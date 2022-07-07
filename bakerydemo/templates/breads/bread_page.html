@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags %}
+
+{% block content %}
+
+
+
+    <div class="container bread-detail">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="row">
+                        <h1>{{ NICKpage.title }}</h1>
+
+                        <figure class="hidden-md-up">
+                            {% image page.image width-500 %}
+                        </figure>
+
+                        {% if page.introduction %}
+                            <p class="introduction">
+                                {{ NICKpage.introduction }}
+                            </p>
+                        {% endif %}
+
+                        {{ page.body }}
+
+
+			<iframe src="/art?type=default&datamine={{page.datamine}}" 
+			frameBorder="2"	seemless height="700" width="500"  style="background-image:linear-gradient(to bottom right, #840, #420);
+  outline:#e95 dashed 1px;
+  padding:10px;
+  border-radius:10px;
+  outline-offset:-3px;
+  border: none;
+  box-shadow:inset 1px 1px 2px #e95, inset -1px -1px 2px black;
+  color:white;
+  transition:0.1s;
+  "
+
+ ></iframe>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="row">
+                        <figure class="hidden-md-down">
+                            {% image page.image width-500 %}
+                        </figure>
+                        <ul class="bread-meta">
+                            {% if page.origin %}
+                                    <h4>Creator</h4>
+                                    <p>{{ page.origin }}</p>
+                                </li>
+                            {% endif %}
+                            {% if page.bread_type %}
+                                <li>
+                                    <h4>Genre</h4>
+                                    <p>{{ page.bread_type }}</p>
+                                </li>
+                            {% endif %}
+
+                            <h4>Purchasing the bookmark will progress the story for others, and you will be able to read the full book free.  Currently BETA.</h4>
+			    <img id="bookmarkimage" src="/art/?type=bookmark&datamine={{page.datamine}}" width="300" height="154" -->
+			    <!--img id="bookmarkimage"  width="500" height="500"-->
+
+
+			    <script>
+// create an XHR object
+const xhr = new XMLHttpRequest();
+
+// listen for `onload` event
+xhr.onload = () => {
+	img = document.getElementById('bookmarkimage');
+
+	if (xhr.status == 200) {
+		try {
+			data = JSON.parse(xhr.responseText);
+			console.log(xhr.responseText);
+			// if we are here the data is text/json
+		}  catch (e) {
+		    	//if we are here the data is image hopefully.
+		        //console.log(xhr.responseText);
+			img.src = "data:image/jpeg;base64," + btoa(xhr.responseText);
+			img.style.display = 'block';
+		}
+    	}
+};
+
+// create a `HEAD` request
+xhr.open('GET', '/art/?type=bookmark&curserial_num={{page.curserial_number}}&datamine={{page.datamine}}');
+
+// send request
+//xhr.send();
+
+			    </script>
+
+                            {% with ingredients=page.ingredients.all %}
+                                {% if ingredients %}
+                                    <li>
+                                        <h4>Book May Also Include:</h4>
+                                        <ul>
+                                            {% for ingredient in ingredients %}
+                                                <li>
+                                                    {{ ingredient.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endwith %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
