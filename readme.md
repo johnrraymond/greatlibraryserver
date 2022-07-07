@@ -1,5 +1,4 @@
 # Welcome to The Great Library's source code
-=======================
 
 This code contains four main parts:
 
@@ -8,15 +7,23 @@ This code contains four main parts:
 3. the code for creating and managing the tokens on the backend
 4. the unity code for the game 
 
-Looking to help? :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
+## Major TODOs
 
-=======================
+1. Add 'use strict'; in all js code
+2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
+3. Make site work from windows, macos, etc. 
+4. Remove the heavy node_modules commits jrr made and move to using package.json
+4. Finish this list 
+
+## Windows Development
 
 For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
 
 Install the solidity extension to compile the contracts.
 
-=======================
+# Installing the Server
+
+## Setting up your Linux development environment
 
 This installation walkthrough assumes a ubuntu 20.04. (Works with digital ocean's 20.04LTS droplets.)
 
@@ -397,9 +404,11 @@ Remember, the player’s time is valuable.
     People without large disposable incomes should not be farmed by “whales.”
     Etcetera
 
-### No loot boxes. Never ever. Any gambling on the site must be based on knowledge/skill.
+### No loot boxes. 
+Never ever. Any gambling on the site must be based on knowledge/skill.
 
-### No predatory sales will ever be allowed. This is NOT diablo immortal.
+### No predatory sales will ever be allowed. 
+This is NOT diablo immortal.
 
 ## Threading the Needle of Pay-to-Win
 For this version of the game the library’s token Culture Coin will play a role is the availability of loot and the purchase thereof. That means that aspects of the game will be pay-to-win. Therefore it is imperative we thread the needle and not fall into the traps other pay-to-win games fall into.
@@ -554,11 +563,9 @@ The current version of the website uses moralis’ vanilla js. This react initia
 ## The Secure Backend
 The CCA private key should not be on disk in the .env file without being encrypted. Likewise the keys used for the ssl node server code should also be encrypted. The plan is to run the backend in GNU’s Screen. It requires the admin/librarian in charge of the server to type in the password to decrypt everything into memory, including the cCAPrivateKey.
 
-To facilitate the transition, if the password is 1234 or fallback or blank, the value in the .env will not be decrypted but used directly.
+By setting the cCAPrivateKey="encrypted" and the password to "production" the site will attempt to comunicate using ssl to the secure-backend using
+https://secureHost:securePort/
 
-## Major TODOs
+To facilitate the transition, if the password is not "production," the value in the .env will not be decrypted but used directly.
 
-1. Add 'use strict'; in all js code
-2. Migrate away from moralis-backend.js to secure-mackend.js
-3. Finish this list
 
