@@ -397,9 +397,11 @@ Remember, the player’s time is valuable.
     People without large disposable incomes should not be farmed by “whales.”
     Etcetera
 
-### No loot boxes. Never ever. Any gambling on the site must be based on knowledge/skill.
+### No loot boxes. 
+Never ever. Any gambling on the site must be based on knowledge/skill.
 
-### No predatory sales will ever be allowed. This is NOT diablo immortal.
+### No predatory sales will ever be allowed. 
+This is NOT diablo immortal.
 
 ## Threading the Needle of Pay-to-Win
 For this version of the game the library’s token Culture Coin will play a role is the availability of loot and the purchase thereof. That means that aspects of the game will be pay-to-win. Therefore it is imperative we thread the needle and not fall into the traps other pay-to-win games fall into.
