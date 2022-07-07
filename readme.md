@@ -476,7 +476,7 @@ Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements tracea
 
 As a good developer, ask yourself why am I writing this code if there is no functionality it supports?
 
-## The Pitch
+## The Library's Marketing Pitch
 We are pleased to introduce the next evolution of the written word. By blending artistic content, NFT’s, gaming and AI, we have leapt past the current saturated e-reader market and bring something new which marries the best of physical mediums with the ease of digital ones.
 
 Take the humble book. It is physical, tactile, collectible. A library is a sign of culture to some, and speaks of your passion and interests. Books can take us to far away places, or teach us things we never thought were possible. They are, sadly, cumbersome, entirely static, and once read are stored, collecting dust.  But most damaging, there is a significant barrier to entry that barres all but the most easily marketed. New Authors have a steep hill to climb to enter into this tight market as the cost to print, store and distribute and market physical media is high, and publishers, facing an increasingly cluttered market fear to innovate.
