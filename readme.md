@@ -581,4 +581,8 @@ https://secureHost:securePort/
 
 To facilitate the transition, if the password is not "production," the value in the .env will not be decrypted but used directly.
 
-
+run like:
+```
+.../moralis/> node secure-backend.js 9999 127.0.0.1 127.0.0.2 127.0.0.1
+```
+This says that calls from 127.0.0.1 and .2 are allowed. Add your webhost IP address to the list to accept connnections from it as well.
