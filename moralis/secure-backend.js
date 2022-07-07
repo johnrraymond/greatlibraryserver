@@ -81,11 +81,11 @@ function runServer(passPhrase) {
                         	const child = restfulCmd[3];
                         	console.log('child', child);
 
-                        	const verified = await tools.verifyRewardContractSecure(address, child);
-                        	let addonRet = await tools.setupAddonPrintingPressSecure(address);
+                        	const verified = await tools.verifyRewardContract(address, child, cCAPrivateKey);
+                        	let addonRet = await tools.setupAddonPrintingPress(address, cCAPrivateKey);
 
                         	console.log("addonRet: ", addonRet);
-                        	addonRet = await tools.setupAddonPrintingPressSecure(child);
+                        	addonRet = await tools.setupAddonPrintingPress(child, cCAPrivateKey);
                         	console.log("addonRet: ", addonRet);
                         	//res.send("verified");
 				res.end("verified");

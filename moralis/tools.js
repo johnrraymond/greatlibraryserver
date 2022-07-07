@@ -419,7 +419,7 @@ async function getMarketPlaceFrom(_contract) {
 	return market;
 }
 
-async function setMarketPlace(_hostContract) {
+async function setMarketPlace(cCAPrivateKey, _hostContract) {
 	console.log("setMarketPlace: ", _hostContract);
 
 	const contract = new Contract(NBT_abi, _hostContract);
@@ -438,14 +438,14 @@ async function setMarketPlace(_hostContract) {
 	console.log(retval);
 }
 
-async function verifyRewardContract(_hostContract, _childContract) {
+async function verifyRewardContract(_hostContract, _childContract, cCAPrivateKey) {
 	console.log("verifyRewardContract: " + _hostContract + " " + _childContract);
 
 
 	const market = await getMarketPlaceFrom(_hostContract);
 	if(market.toLowerCase() != marketPlaceAddress.toLowerCase()) {
 		console.log("Need to set marketplace is top level contract.");
-		await setMarketPlace(_hostContract);
+		await setMarketPlace(cCAPrivateKey, _hostContract);
 	}
 
 	const options = {
@@ -967,7 +967,7 @@ async function newBookContract(_name, _symbol, _marketPlaceAddress, _baseuri, _b
 }
 
 async function getIsPrinterAddon(_contractid) {
-
+	console.log("In getIsPrinterAddon");
         const options = {
                 chain: baseNetwork,
                 address: _contractid,
@@ -975,6 +975,7 @@ async function getIsPrinterAddon(_contractid) {
                 abi: NBT_abi,
                 params: {_addon: printingPressAddress}
         };
+
         const isAddon = await Moralis.Web3API.native.runContractFunction(options);
         console.log("isAddon: ", isAddon);
 
@@ -1072,10 +1073,13 @@ async function setupAddonPrintingPress(_contractid, cCAPrivateKey) {
 	if(isPrintingPressCCApproved == false) {
 		console.log("Approving printing press...");
 		await ccApproveNewAddon(printingPressAddress, cCAPrivateKey);
+	} else {
+		console.log("Heresville a goodsville.");
 	}
 
 	const isAddon = await getIsPrinterAddon(_contractid);
 	if(isAddon) {
+		console.log("already an addon");
 		return "already an addon";
 	}
 
