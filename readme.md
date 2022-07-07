@@ -11,8 +11,9 @@ This code contains four main parts:
 ## Major TODOs
 
 1. Add 'use strict'; in all js code
-2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task
+2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
 3. Make site work from windows, macos, etc. 
+4. Remove the heavy node_modules commits jrr made and move to using package.json
 4. Finish this list 
 
 ## Windows Development
