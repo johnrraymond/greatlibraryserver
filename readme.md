@@ -15,7 +15,11 @@ This code contains four main parts:
 4. Remove the heavy node_modules commits jrr made and move to using package.json
 5. Finish this list 
 
+# Getting Started
 :warning: **Please pull the master code before make pull request or commit**: Be very careful here!
+    git pull
+    git commit
+    git push
 
 ## Windows Development
 
