@@ -14,6 +14,7 @@ This code contains four main parts:
 3. Make site work from windows, macos, etc. 
 4. Remove the heavy node_modules commits jrr made and move to using package.json
 5. Finish this list 
+
 :warning: **Please pull the master code before make pull request or commit**: Be very careful here!
 
 ## Windows Development
