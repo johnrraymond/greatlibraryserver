@@ -2,8 +2,13 @@ const myEnv = require('dotenv');
 console.log(myEnv);
 require('dotenv').config({ path: '/home/john/bakerydemo/.env',  override: true, debug: true });
 
-const coordinatorKey=process.env.cCAPrivateKey;
+const crypto = require('crypto');
+const algorithm = 'aes-256-ctr';
+
+const cCAPrivateKey=process.env.cCAPrivateKey;
+const cCAPrivateKeyEncrypted=process.env.cCAPrivateKeyEncrypted;
 const cultureCoinAddress=process.env.cultureCoinAddress;
+const unsafePassword=process.env.unsafePassword;
 
 const testAccountAddress=process.env.testAccountAddress;
 const testPrivateKey=process.env.testPrivateKey;
@@ -61,6 +66,28 @@ const gw100 = web3.utils.toWei("25.01", "gwei");
 const gw25 = web3.utils.toWei("25.001", "gwei");
 const gw10 = web3.utils.toWei("25.0001", "gwei");
 
+
+////////////\\\\\\\\\\
+//    Secure Codes
+////////////\\\\\\\\\\
+
+const metakeycontent = cCAPrivateKeyEncrypted.split(":");
+const metakeycon = {iv: metakeycontent[0], content: metakeycontent[1]};
+//console.debug("DEBUG:", metakeycon);
+
+if(unsafePassword === "production") {
+	if(cCAPrivateKey==="encrypted") {
+		console.debug("Looks like password and key are production ready.");
+	} else {
+		console.debug("Set cCAPrivateKey to >>encrypted<< to make the site run properly.");
+	}
+} else {
+	const cCAPrivateKey = decrypt(unsafePassword, metakeycon);
+	//console.debug("DEBUG: cCAPrivateKey: ", cCAPrivateKey);
+	tools.cCAPrivateKey = cCAPrivateKey;
+}
+
+
 async function recover(msg, sig) {
 	const bufObj = Buffer.from(msg, "base64");
 	const decodedString = bufObj.toString("utf8");
@@ -97,7 +124,7 @@ async function getTotalSupply2(_contractid) {
                 gas: regularGas,
                 gasPrice:gw100
         }
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
 	return retval;
@@ -282,7 +309,7 @@ async function getMeme(_meme) {
                 		gasPrice:gw10
 			}
 
-        		signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        		signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 			console.log("signedtx: ", signedTransaction);
         		const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         		console.log("retval: ", retval);
@@ -337,7 +364,7 @@ async function registerMemeWithTx(_contractid, _meme) {
 
 	//console.log(transactionBody);
 
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log("signed: ", signedTransaction);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
@@ -356,7 +383,7 @@ async function setGasToken(_contractid) {
                 gasPrice:gw10
         }
 
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
 }
@@ -373,7 +400,7 @@ async function getMsgSender(_hostContract){
 		gasPrice:gw100
 	}
 
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
 	return retval;
@@ -406,7 +433,7 @@ async function setMarketPlace(_hostContract) {
 		gasPrice:gw25
 	}
 
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
 }
@@ -441,7 +468,7 @@ async function verifyRewardContract(_hostContract, _childContract) {
                 	gas:regularGas,
                 	gasPrice:gw100
         	};
-        	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         	console.log(signedTransaction);
         	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         	console.log(retval);
@@ -474,7 +501,7 @@ async function verifyRewardContract(_hostContract, _childContract) {
 			gas:regularGas,
                 	gasPrice:gw100
         	}
-		signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+		signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         	console.log(retval);
 	} else {
@@ -501,7 +528,7 @@ async function transferOwner(_contractid, _to) {
                 gasPrice:gw10
         }
 
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
 
@@ -522,7 +549,7 @@ async function safeTransferToken(contractid, oldOwner, newOwner, tokenId) {
 		gas:premiumGas,
 		gasPrice:gw10
 	}
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
 
@@ -539,7 +566,7 @@ async function retireMsg(msg, yesNo) {
 		gas:regularGas,
 		gasPrice:gw25
 	}
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log(signedTransaction);
 	await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 }
@@ -578,7 +605,7 @@ async function closeOffering(marketplace, offeringId){
 		gas:premiumGas,
 		gasPrice:gw10
 	}
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 
 	console.log(retval);
@@ -596,7 +623,7 @@ async function placeOffering(marketplace, offerer, hostContract, tokenId, price)
 		gas:premiumGas,
 		gasPrice:gw10
 	}
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 
 	console.log(retval);
@@ -857,7 +884,7 @@ async function newCultureCoinSeed(_meme) {
                 gas:premiumGas,
                 gasPrice:gw100
         };
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         console.log(signedTransaction);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
@@ -896,7 +923,7 @@ async function recoverXMTSPFromCC(_amount) {
                 gas:regularGas,
                 gasPrice:gw100
         };
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         console.log(signedTransaction);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
@@ -960,7 +987,7 @@ if(true){
 		gas:premiumGas,
 		gasPrice:gw100
 	};
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log(signedTransaction);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
@@ -1024,7 +1051,7 @@ async function verifyAddon(_contract, _addon, _onOff) {
                 	gas:premiumGas,
                 	gasPrice:gw100
         	};
-        	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         	console.log(signedTransaction);
         	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         	console.log(retval);
@@ -1043,7 +1070,7 @@ async function ccApproveNewAddon(_addon) {
 		gas:premiumGas,
 		gasPrice:gw25
 	};
-	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log(signedTransaction);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
@@ -1098,7 +1125,7 @@ async function setupAddonPrintingPress(_contractid) {
 		gas:premiumGas,
 		gasPrice:gw100
 	};
-	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log(signedTransaction);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	return retval;
@@ -1135,7 +1162,7 @@ async function gasUpPrintingPress(_to, _amount) {
                 gas:premiumGas,
                 gasPrice:gw100
         };
-        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+        signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
         console.log(signedTransaction);
         const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
         console.log(retval);
@@ -1157,7 +1184,7 @@ async function newContest(_NBT, _rightTokenId, _leftTokenId, _closeTime) {
 		gas:premiumGas,
 		gasPrice:gw100
 	};
-	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log(signedTransaction);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
@@ -1204,7 +1231,7 @@ async function doSetAddon3(_contractAddress, _abi, _addon, _onOff) {
 		gas:regularGas,
 		gasPrice:gw100
 	};
-	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,coordinatorKey);
+	const signedTransaction = await web3.eth.accounts.signTransaction(transactionBody,cCAPrivateKey);
 	console.log(signedTransaction);
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
@@ -1358,5 +1385,25 @@ module.exports.sleep = sleep;
 module.exports.cloudRun = cloudRun;
 module.exports.recoverXMTSPFromCC = recoverXMTSPFromCC;
 module.exports.testRecoverXMTSPFromCC = testRecoverXMTSPFromCC;
+module.exports.cCAPrivateKeyEncrypted = cCAPrivateKeyEncrypted;
 
 
+
+const encrypt = (secretKey, text) => {
+    const iv = crypto.randomBytes(16);
+    const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
+    const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
+    return {
+        iv: iv.toString('hex'),
+        content: encrypted.toString('hex')
+    };
+};
+
+const decrypt = (secretKey, hash) => {
+    const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(hash.iv, 'hex'));
+    const decrpyted = Buffer.concat([decipher.update(Buffer.from(hash.content, 'hex')), decipher.final()]);
+    return decrpyted.toString();
+};
+
+module.exports.encrypt = encrypt;
+module.exports.decrypt = decrypt;
