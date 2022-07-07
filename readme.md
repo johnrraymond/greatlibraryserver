@@ -22,7 +22,9 @@ For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS D
 
 Install the solidity extension to compile the contracts.
 
-## Setting up your development environment
+# Installing the Server
+
+## Setting up your Linux development environment
 
 This installation walkthrough assumes a ubuntu 20.04. (Works with digital ocean's 20.04LTS droplets.)
 
