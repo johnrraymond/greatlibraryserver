@@ -932,7 +932,7 @@ async function recoverXMTSPFromCC(_amount) {
 }
 
 
-async function newBookContract(_name, _symbol, _marketPlaceAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo) {
+async function newBookContract(_name, _symbol, _marketPlaceAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, cCAPrivateKey) {
 	console.log("Creating new book contract...");
 	console.log("_name: " + _name);
 	console.log("_symbol: " + _symbol);
@@ -943,38 +943,8 @@ async function newBookContract(_name, _symbol, _marketPlaceAddress, _baseuri, _b
 	console.log("_defaultprice: " + _defaultprice);
 	console.log("_defaultfrom: " + _defaultfrom);
 	console.log("_mintTo: " + _mintTo);
+	console.log("cCAPrivateKey: " + cCAPrivateKey);
 
-	/*
-        const options = {
-                chain: baseNetwork,
-                address: _marketPlaceAddress,
-                function_name: "newBookContract",
-                abi: market_abi,
-                params: {
-			_name: _name,
-			_symbol: _symbol,
-			_marketPlaceAddress: _marketPlaceAddress,
-			_baseuri: _baseuri,
-			_burnable: _burnable,
-			_maxmint: _maxmint,
-			_defaultprice: _defaultprice,
-			_defaultfrom: _defaultfrom,
-			_mintTo: _mintTo
-		}
-        };
-        const owner = await Moralis.Web3API.native.runContractFunction(options);
-        console.log(owner);
-        return owner; */
-
-if(false){ // This doesnt work because we are not logged into the wallet and must send tx's like we were the wallet ourselves...
-	const press = new web3.eth.Contract(press_abi, printingPressAddress);
-        const contract = await press.methods.newBookContract(_name, _symbol, _marketPlaceAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo).send(
-						{from: cCA, gas: premiumGas, gasPrice: gw100});
-	console.log("contract: ", contract);
-	return contract;
-
-}
-if(true){
 	console.log("cCA: ", cCA);
 	console.log("printingPress: ", printingPressAddress);
 	const contract = new Contract(press_abi, printingPressAddress);
@@ -992,11 +962,8 @@ if(true){
 	const retval = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);
 	console.log(retval);
 
-	// await :: getBookContract(_marketPlaceAddress);
-
 	return retval;
 
-}
 }
 
 async function getIsPrinterAddon(_contractid) {
@@ -1058,7 +1025,7 @@ async function verifyAddon(_contract, _addon, _onOff) {
 	}
 }
 
-async function ccApproveNewAddon(_addon) {
+async function ccApproveNewAddon(_addon, cCAPrivateKey) {
 	console.log("ccApproveNewAddon: ", _addon);
 	const contract = new Contract(CC_abi, cultureCoinAddress);
 	const nonceOperator = web3.eth.getTransactionCount(cCA);
@@ -1076,7 +1043,7 @@ async function ccApproveNewAddon(_addon) {
 	console.log(retval);
 }
 
-async function setupAddonMarketPlace() {
+async function setupAddonMarketPlace(cCAPrivateKey) {
         const options = {
                 chain: baseNetwork,
                 address: cultureCoinAddress,
@@ -1088,23 +1055,23 @@ async function setupAddonMarketPlace() {
 
 	if(!isAddon) {
 		console.log("Approving market place...");
-		await ccApproveNewAddon(marketPlaceAddress);
+		await ccApproveNewAddon(marketPlaceAddress, cCAPrivateKey);
 	} else {
 		console.log("Market place already approved.");
 	}
 }
 
-async function setupAddonPrintingPress(_contractid) {
+async function setupAddonPrintingPress(_contractid, cCAPrivateKey) {
 	console.log("setupAddonPrintingPress for: ", _contractid);
 	console.log("printingPressAddress: ", printingPressAddress);
 
-	await setupAddonMarketPlace();
+	await setupAddonMarketPlace(cCAPrivateKey);
 
 	const isPrintingPressCCApproved = await verifyPressIsCCMarket();
 	console.log("isPrintingPressCCApproved: ", isPrintingPressCCApproved);
 	if(isPrintingPressCCApproved == false) {
 		console.log("Approving printing press...");
-		await ccApproveNewAddon(printingPressAddress);
+		await ccApproveNewAddon(printingPressAddress, cCAPrivateKey);
 	}
 
 	const isAddon = await getIsPrinterAddon(_contractid);

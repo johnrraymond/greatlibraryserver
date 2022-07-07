@@ -238,8 +238,8 @@ def Minter(potential, datamine, contractType, whoFile):
 
     #return moralis.runNewBookContract(_name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, who) ##, unknown // moralis got it.
 
-    secureUri = "0x0" + "/newbookcontract/" + _name + "/" + _symbol+ "/" + _bookRegistryAddress + "#" + _baseuri + "#"
-    secureUri += _burnable + "/" + _maxmint + "/" + _defaultprice + "/" + _defaultfrom + "/" + _mintTo + "#" + whoFile
+    secureUri = "0x0" + "/newbookcontract/" + _name + "/" + _symbol+ "/" + _bookRegistryAddress + "!" + _baseuri + "!"
+    secureUri += _burnable + "/" + _maxmint + "/" + _defaultprice + "/" + _defaultfrom + "/" + _mintTo + "!" + whoFile
 
     print(secureUri)
     getFromBackend(secureUri)
