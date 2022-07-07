@@ -135,7 +135,7 @@ abstract contract Stakeable {
           // the alghoritm is  seconds = block.timestamp - stake seconds (block.timestap - _stake.since)
           // hours = Seconds / 3600 (seconds /3600) 3600 is an variable in Solidity names hours
           // we then multiply each token by the hours staked , then divide by the rewardPerHour rate 
-          return (((block.timestamp - _current_stake.since) / 1 hours) * _current_stake.amount) / rewardPerHour;
+          return (block.timestamp - _current_stake.since) * _current_stake.amount / (rewardPerHour*1 hours);
       }
 
     /**
