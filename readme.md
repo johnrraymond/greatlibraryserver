@@ -12,9 +12,10 @@ This code contains four main parts:
 
 1. Add 'use strict'; in all js code
 2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task
-3. Finish this list 
+3. Make site work from windows, macos, etc. 
+4. Finish this list 
 
-=======================
+## Windows Development
 
 For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
 
