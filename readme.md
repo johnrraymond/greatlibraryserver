@@ -137,7 +137,7 @@ brownie accounts generate Account1
 SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
 ```
 
-***Save the account address and paswword. The account needs to be added to ~john/bakerydemo/.env as the cCA***
+***Save the account address and password. The account needs to be added to ~john/bakerydemo/.env as the cCA***
 
 # Find your private key cCAPrivateKey and cCAPrivateKeyEncrypted
 ```
