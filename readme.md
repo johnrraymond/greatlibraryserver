@@ -139,7 +139,7 @@ SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been gen
 
 # Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
 ```
-(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input")     ## This returns the cCAPrivateKey
+(cd ~john/bakerydemo/moralis; node getPrivateKey.js "your mnemonic here" vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3)     ## Change the password to your real password for prod
 ```
 
 # Edit the .env file like:
