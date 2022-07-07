@@ -8,6 +8,8 @@ This code contains four main parts:
 3. the code for creating and managing the tokens on the backend
 4. the unity code for the game 
 
+Looking to help? :: https://docs.google.com/document/d/1_2A2VKrus-1Mt6fdsahudrLe1-SW-HSPZbnvKFJZ984/edit?usp=sharing
+
 =======================
 
 For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
@@ -559,3 +561,4 @@ To facilitate the transition, if the password is 1234 or fallback or blank, the 
 1. Add 'use strict'; in all js code
 2. Migrate away from moralis-backend.js to secure-mackend.js
 3. Finish this list
+
