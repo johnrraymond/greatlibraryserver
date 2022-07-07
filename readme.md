@@ -13,7 +13,9 @@ This code contains four main parts:
 2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
 3. Make site work from windows, macos, etc. 
 4. Remove the heavy node_modules commits jrr made and move to using package.json
-5. Finish this list 
+5. Add twitter-like capabilities for the messaging components of the site
+6. Add domain name marketplace to the site
+7. Finish this list 
 
 # Getting Started
 :warning: **Please pull the master code before make pull request or commit**: Be very careful here!
