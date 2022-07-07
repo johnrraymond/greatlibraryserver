@@ -553,3 +553,9 @@ The current version of the website uses moralis’ vanilla js. This react initia
 The CCA private key should not be on disk in the .env file without being encrypted. Likewise the keys used for the ssl node server code should also be encrypted. The plan is to run the backend in GNU’s Screen. It requires the admin/librarian in charge of the server to type in the password to decrypt everything into memory, including the cCAPrivateKey.
 
 To facilitate the transition, if the password is 1234 or fallback or blank, the value in the .env will not be decrypted but used directly.
+
+## Major TODOs
+
+1. Add 'use strict'; in all js code
+2. Migrate away from moralis-backend.js to secure-mackend.js
+3. Finish this list
