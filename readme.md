@@ -1,20 +1,41 @@
 # Welcome to The Great Library's source code
-=======================
 
 This code contains four main parts:
 
 1. the website as a wagtail bakerydemo
 2. the code for creating the smart html
 3. the code for creating and managing the tokens on the backend
-4. the unity code for the game 
+4. the unity code for the game
+5. the react frontend
+6. the secure backend
 
-=======================
+## Major TODOs
+
+1. Add 'use strict'; in all js code
+2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
+3. Make site work from windows, macos, etc. 
+4. Remove the heavy node_modules commits jrr made and move to using package.json
+5. Add twitter-like capabilities for the messaging components of the site
+6. Add domain name marketplace to the site
+7. Create a react-native e-reader for the books in the library
+8. Finish this list 
+
+# Getting Started
+:warning: **Please pull the master code before making pull requests or committing**: Be very careful here! (Looking at your JRR.)
+    
+    git pull
+    git commit
+    git push
+
+## Windows Development
 
 For windows development in Unity use Visual Studio Code. ***COMMUNITY VERSIONS DO NOT WORK!***
 
 Install the solidity extension to compile the contracts.
 
-=======================
+# Installing the Server
+
+## Setting up your Linux development environment
 
 This installation walkthrough assumes a ubuntu 20.04. (Works with digital ocean's 20.04LTS droplets.)
 
@@ -117,11 +138,11 @@ brownie accounts generate Account1
 SUCCESS: A new account '0x183a3e96a8D52E4f4b07688aCfa0fCF50a4CFF02' has been generated with the id 'Account1'
 ```
 
-***Save the account address and paswword. The account needs to be added to ~john/bakerydemo/.env as the cCA***
+***Save the account address and password. The account needs to be added to ~john/bakerydemo/.env as the cCA***
 
-# Use the tool in moralis dir. Save the result in the .env as the cCAPrivateKey 
+# Find your private key cCAPrivateKey and cCAPrivateKeyEncrypted
 ```
-(cd ~john/bakerydemo/moralis; node getPrivateKey.js "you mnemonic goes in here as the input")     ## This returns the cCAPrivateKey
+(cd ~john/bakerydemo/moralis; node getPrivateKey.js "your mnemonic here" vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3)     ## Change the password to your real password for prod
 ```
 
 # Edit the .env file like:
@@ -395,9 +416,11 @@ Remember, the player’s time is valuable.
     People without large disposable incomes should not be farmed by “whales.”
     Etcetera
 
-### No loot boxes. Never ever. Any gambling on the site must be based on knowledge/skill.
+### No loot boxes. 
+Never ever. Any gambling on the site must be based on knowledge/skill.
 
-### No predatory sales will ever be allowed. This is NOT diablo immortal.
+### No predatory sales will ever be allowed. 
+This is NOT diablo immortal.
 
 ## Threading the Needle of Pay-to-Win
 For this version of the game the library’s token Culture Coin will play a role is the availability of loot and the purchase thereof. That means that aspects of the game will be pay-to-win. Therefore it is imperative we thread the needle and not fall into the traps other pay-to-win games fall into.
@@ -454,7 +477,7 @@ Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements tracea
 
 As a good developer, ask yourself why am I writing this code if there is no functionality it supports?
 
-## The Pitch
+## The Library's Marketing Pitch
 We are pleased to introduce the next evolution of the written word. By blending artistic content, NFT’s, gaming and AI, we have leapt past the current saturated e-reader market and bring something new which marries the best of physical mediums with the ease of digital ones.
 
 Take the humble book. It is physical, tactile, collectible. A library is a sign of culture to some, and speaks of your passion and interests. Books can take us to far away places, or teach us things we never thought were possible. They are, sadly, cumbersome, entirely static, and once read are stored, collecting dust.  But most damaging, there is a significant barrier to entry that barres all but the most easily marketed. New Authors have a steep hill to climb to enter into this tight market as the cost to print, store and distribute and market physical media is high, and publishers, facing an increasingly cluttered market fear to innovate.
@@ -478,7 +501,11 @@ Welcome the high level operations that users can accomplish when using the softw
 
 ### Sell Bookmark
 
+### Transfer Book
+
 ### Purchase Book
+
+### Transfer Book
 
 ### Sell Bookmark
 
@@ -552,10 +579,19 @@ The current version of the website uses moralis’ vanilla js. This react initia
 ## The Secure Backend
 The CCA private key should not be on disk in the .env file without being encrypted. Likewise the keys used for the ssl node server code should also be encrypted. The plan is to run the backend in GNU’s Screen. It requires the admin/librarian in charge of the server to type in the password to decrypt everything into memory, including the cCAPrivateKey.
 
-To facilitate the transition, if the password is 1234 or fallback or blank, the value in the .env will not be decrypted but used directly.
+By setting the cCAPrivateKey="encrypted" and the password to "production" the site will attempt to comunicate using ssl to the secure-backend using
+https://secureHost:securePort/
 
-## Major TODOs
+To facilitate the transition, if the password is not "production," the value in the .env will not be decrypted but used directly.
 
-1. Add 'use strict'; in all js code
-2. Migrate away from moralis-backend.js to secure-mackend.js
-3. Finish this list
+Generate your ssl keys using the same password used to encrypt your private key
+```
+moralis$ sh gensslcert.sh
+```
+    
+Run the backend like:
+```
+moralis$ node secure-backend.js 9999 127.0.0.1 127.0.0.2 127.0.0.1
+```
+This says that calls from 127.0.0.1 and .2 are allowed. Add your webhost IP address to the list to accept connnections from it as well.
+ 
