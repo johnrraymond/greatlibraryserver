@@ -17,7 +17,8 @@ This code contains four main parts:
 4. Remove the heavy node_modules commits jrr made and move to using package.json
 5. Add twitter-like capabilities for the messaging components of the site
 6. Add domain name marketplace to the site
-7. Finish this list 
+7. Create a react-native e-reader for the books in the library
+8. Finish this list 
 
 # Getting Started
 :warning: **Please pull the master code before making pull requests or committing**: Be very careful here! (Looking at your JRR.)
