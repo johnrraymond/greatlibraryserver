@@ -31,7 +31,7 @@ contract CultureCoinWrapper is ERC20, ERC20Burnable, ReentrancyGuard {
         emit Debug(_meme);
 
         CC = CultureCoinV1M0m1(_cultureCoin);
-        CC.register(_meme, initialSupply, msg.sender);
+        CC.register(msg.sender);
 
         cCA = CC.clone(); // Only clone the best.
         p = _cultureCoin;			 // Parent coin.
