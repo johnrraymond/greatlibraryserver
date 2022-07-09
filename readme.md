@@ -25,27 +25,27 @@ Welcome adventurer, you are not lost even if you aren't interested in Web3/Game-
 
 In keeping with the Great Library’s mission to be open and transparent, here you will find documentation and information needed to understand the site and initial game-fi offering: The Scarab Cycle.
 
-Good games have 1) a good game play loop and 2) a good story. The stories for the games will comes from the books, yet the loop comes from these requirements.
+Good games have 1) a good game play loop and 2) a good story. The stories for the games will come from the books, yet the loop comes from these requirements.
 
 Let's get started,
 
 John R Raymond, Author of *The Scarab Cycle*
 
 ## Games for Gamers by Gamers
-The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angery can drive engagement in the shor tto near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
+The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angry can drive engagement in the short to near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
 
 They have all forgotten that they work for the people. They have forgotten that they must be the proper curators of the public sphere. They forgot their mandate.
 
-This is why there is toxicity. It is the company's fault. They forgot that they are a public service. They dont think of themselves as an extension of the people. They think of people as sheep to be sheared. They have become everything a good library isn't.
+This is why there is toxicity. It is the company's fault. They forgot that they are a public service. They don't think of themselves as an extension of the people. They think of people as sheep to be sheared. They have become everything a good library isn't.
 
-### Web3 doesnt have to be a bad things for games, gaming, and gamers
-Web3 is a boon for our games. These open systems like the Avalanche network we use provide technological capabilities to the libary which until now were the purview of large companies. Concensus networks provide several advantages:
+### Web3 doesn't have to be a bad things for games, gaming, or gamers
+Web3 is a boon for our games. These open systems like the Avalanche network we use provide technological capabilities to the libary which until now were the purview of large companies. Consensus networks provide several advantages:
 
 #### No realm servers
-The first most advantage is no more realm servers. The Avalanche network spreads the load across its servers seemlessly. You, the player, log into a web3 game and you dont choose where to connect to. You simply connect and are ready to play with all your freinds across the globe. No need for character transfers. There are no more cross realm guild problems. None of that nonsense is needed now. The "world computer" takes care of all that for us.
+The first advantage is no more realm servers. The Avalanche network spreads the load across its servers seemlessly. You, the player, log into a web3 game and you don't choose where to connect to. You simply connect and are ready to play with all your freinds across the globe. No need for character transfers. There are no more cross realm guild problems. None of that nonsense is needed now. The "world computer" takes care of all that for us.
 
 #### Financing the development of the games
-Furthermore, web3 allows the libary to pack a larger punch with less initial investment. It takes money to make a good game. Web3 allows the library to grow its titles organically while still delivering to the players something they want. 
+Furthermore, web3 allows the library to pack a larger punch with less initial investment. It takes money to make a good game. Web3 allows the library to grow its titles organically while still delivering to the players something they want. 
 
 ### Casual isn't a dirty word
 We play games to experience story, to enjoy content, and to have fun with our freinds. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
