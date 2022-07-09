@@ -1,4 +1,4 @@
-# Welcome to The Great Library
+# The Great Library
 
 All our code is open source:
 
