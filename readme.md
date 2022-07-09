@@ -32,14 +32,14 @@ So let's get started,
 John R Raymond, Author of *The Scarab Cycle*
 
 ## Games for Gamers by Gamers
-The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angry can drive engagement in the short to near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
+The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. Companies stopped caring about what makes a good game from the player perspective and focused instead on other metrics like engagement. It is the same problem we see from social media. Anger can drive engagement in the short to near term, but in the end these platforms don't value the user needs and will collapse into the junk heaps that they are. 
 
-They have all forgotten that they work for the people. They have forgotten that they must be the proper curators of the public sphere. They forgot their mandate.
+They have all forgotten that they work for the people. They have forgotten that they must be curators of the public sphere. They forgot their mandate. They have become bad faith actors.
 
-This is why there is toxicity. It is the company's fault. They forgot that they are a public service. They don't think of themselves as an extension of the people. They think of people as sheep to be sheared. They have become everything a good library isn't.
+This is why there is toxicity. It is the companies' fault. They forgot that they are a public service. They don't think of themselves as an extension of the people. They think people as sheep to be sheared. They have become everything a good library isn't.
 
 ### Web3 doesn't have to be a bad things for games, gaming, or gamers
-Web3 is a boon for our games. These open systems like the Avalanche network we use provide technological capabilities to the libary which until now were the purview of large companies. Consensus networks provide several advantages:
+Web3 is a boon for our games. These open systems like the Avalanche Network provide technological capabilities to the libary which until now were the purview of large companies. These consensus networks provide several advantages:
 
 #### 1. No realm servers
 The first advantage is no more realm servers. The Avalanche network spreads the load across its servers seemlessly. You, the player, log into a web3 game and you don't choose where to connect to. You simply connect and are ready to play with all your freinds across the globe. No need for character transfers. There are no more cross realm guild problems. None of that nonsense is needed now. The "world computer" takes care of all that for us.
@@ -48,20 +48,20 @@ The first advantage is no more realm servers. The Avalanche network spreads the 
 Furthermore, web3 allows the library to pack a larger punch with less initial investment. It takes money to make a good game. Web3 allows the library to grow its titles organically while still delivering to the players something they want. We don't have to answer to investors. We only have to answer to the players.
 
 ### Casual isn't a dirty word
-We play games to experience story, to enjoy content, and to have fun with our friends. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
+We play games to experience story, to enjoy content, and to have fun with our friends. "Softcore," "hardcore," and words like "casual" all have nebulous meaning we admit. But a casual player should be able to do things in a game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
 
 ## The Professional Gaming Council
-The first sizable cohort of professional gamers now walk the earth. They have seen the industry grow and mature and finally come to this point of corruption and decay. This cohort supplies the voices for the gaming community. Men like Asmongold, Josh Hayes-Strife, and Bellular Gaming's Michael and Matt speak for us all as gamers. They try to hold companies' feet to the fire when it comes to game design. Yet to date, the companies have ignored these men. The reasons the companies do so is because they only care about the money, whereas a person like Matt cares about the game. Its a question of priorities. Copmanies prioritize money over everything.
+The first sizable cohort of professional gamers now walk the earth. They have seen the industry grow, mature and finally come to this point of corruption and decay. This cohort currently supplies the voices for the gaming community. Men like Asmongold, Josh Strife Hayes, and Bellular Gaming's Michael and Matt speak for us all. They try to hold companies' feet to the fire when it comes to game design. Yet to date, the big companies have ignored these men. The reasons the companies do so is because they only care about the money, whereas a person like Matt cares about the game. Its a question of priorities. Copmanies prioritize money over everything.
 
-The library prioritizes the people and art above revenues, because it knows both are more important than simple dollars and cents.
+The library prioritizes the people and art above revenues, because the library knows both are more important than simple dollars and cents.
 
 ### The library's commitment to the council
 The library is resolved to hear out and to act on the council's feedback if possible. Not all things requested by the council may find its way into, or out of the game. However, the library promises to work with the council to provide a philosophically sound game. Likewise, the library staff, its librarians and developers, promise to duely consider to any and all suggestions made by the council.
 
-The library furthermore understands  ultimately creating a good game means making something professionals want to play as well as the casuals.
+The library furthermore understands ultimately creating a good game means making something professionals want to play as well as the casuals.
 
 ### Joining the council
-If you think you belong on the council, please email johnrraymond@yahoo.com or any of the other council members with your suggestions with evidentiary proof that you speak for the community in a cogent way. It also helps to be a professional gamer yourself. Furthermore, it may help to have a youtube channel or stream. Having a platform which holds our feet to the fire is a good way to prove you belong on the council.
+If you think you belong on the council, please email johnrraymond@yahoo.com or any of the other council members with your suggestions with evidentiary proof that you speak for the community in a cogent way. It also helps to be a professional gamer yourself. Furthermore, it may help to have a youtube channel or stream. Having a platform means you can hold our feet to the fire. It is a good way to prove you belong on the council.
 
 ## Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
