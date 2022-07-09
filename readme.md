@@ -50,20 +50,20 @@ Furthermore, web3 allows the library to pack a larger punch with less initial in
 ### Casual isn't a dirty word
 We play games to experience story, to enjoy content, and to have fun with our friends. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
 
-### The Professional Gaming Council
+## The Professional Gaming Council
 The first sizable cohort of professional gamers now walk the earth. They have seen the industry grow and mature and finally come to this point of corruption and decay. This cohort supplies the voices for the gaming community. Men like Asmongold, Josh Hayes-Strife, and Bellular Gaming's Michael and Matt speak for us all as gamers. They try to hold companies' feet to the fire when it comes to game design. Yet to date, the companies have ignored these men. The reasons the companies do so is because they only care about the money, whereas a person like Matt cares about the game. Its a question of priorities. Copmanies prioritize money over everything.
 
 The library prioritizes the people and art above revenues, because it knows both are more important than simple dollars and cents.
 
-#### The library's commitment to the council
+### The library's commitment to the council
 The library is resolved to hear out and to act on the council's feedback if possible. Not all things requested by the council may find its way into, or out of the game. However, the library promises to work with the council to provide a philosophically sound game. Likewise, the library staff, its librarians and developers, promise to duely consider to any and all suggestions made by the council.
 
 The library furthermore understands  ultimately creating a good game means making something professionals want to play as well as the casuals.
 
-#### Joining the council
+### Joining the council
 If you think you belong on the council, please email johnrraymond@yahoo.com or any of the other council members with your suggestions with evidentiary proof that you speak for the community in a cogent way. It also helps to be a professional gamer yourself. Furthermore, it may help to have a youtube channel or stream. Having a platform which holds our feet to the fire is a good way to prove you belong on the council.
 
-# Getting Started -- Time is valuable
+## Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
 
 Let’s talk about the game…
