@@ -56,12 +56,12 @@ The first sizable cohort of professional gamers now walk the earth. They have se
 The library prioritizes the people and art above revenues, because it knows both are more important than simple dollars and cents.
 
 #### The library's commitment to the council
-The library is resolved to hear out and to act on the council's feedback if possible. Not all things requested by the council may find its way into, or out of the game. Howerver, the libary promises to work with the council to provide a philosphicly sound game. Likewise, the libary staff, its librarians and developers, promise to duely consider to any and all suggestions made by the council.
+The library is resolved to hear out and to act on the council's feedback if possible. Not all things requested by the council may find its way into, or out of the game. However, the library promises to work with the council to provide a philosophically sound game. Likewise, the library staff, its librarians and developers, promise to duely consider to any and all suggestions made by the council.
 
-The libary furthermore understands  ultimately creating a good game means making something professionals want to play as well as the casuals.
+The library furthermore understands  ultimately creating a good game means making something professionals want to play as well as the casuals.
 
 #### Joining the council
-If you think you belong on the council, please email johnrraymond@yahoo.com or any of the other council memebers with your suggestions with evidentuary proof that you  speak for the community in a cogent way. It also helps to be a professional gamer yourself. Furthermore, it may help to have a youtube channel or stream. Having a platform which hold our feet to the fire is a good way to prove you belong on the council.
+If you think you belong on the council, please email johnrraymond@yahoo.com or any of the other council members with your suggestions with evidentiary proof that you speak for the community in a cogent way. It also helps to be a professional gamer yourself. Furthermore, it may help to have a youtube channel or stream. Having a platform which holds our feet to the fire is a good way to prove you belong on the council.
 
 # Getting Started -- Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
