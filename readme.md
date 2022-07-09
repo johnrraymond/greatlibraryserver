@@ -34,10 +34,10 @@ This is why there is toxicity. It is the company's fault because they forgot tha
 
 ### The Professional Gaming Council
 
-#### Web3 doesnt have to be a bad things for games, gaming, or gamers
+### Web3 doesnt have to be a bad things for games, gaming, or gamers
 A primary reason why web3 is such a boon for our games is because the underlying consensus network acts as the netcode for the games. This has several advantages. The first most critical is no more realm servers. The network spreads the load across its servers seemlessly. You log into a web3 game and you dont choose where to connect to. You connect and you are ready to play with all your freinds. No character transfers, not cross realm guilds. None of that nonsense is needed now.
 
-#### Casual isn't a dirty word
+### Casual isn't a dirty word
 We play games to experience story, to enjoy content, and to have fun with our freinds. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
 
 ## Getting Started – Time is valuable
