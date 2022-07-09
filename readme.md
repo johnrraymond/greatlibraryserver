@@ -25,7 +25,7 @@ Welcome adventurer, you are not lost if you are interested in Web3/Game-Fi. In k
 
 Good games have 1) a good game play loop and 2) a good story. The stories for the games will comes from the books, yet the loop comes from these requirements.
 
-## A Game For Gamers By Gamers
+## Games For Gamers By Gamers
 The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angery can drive engagement in the shor tto near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
 
 They have all forgotten that they work for the people. They have forgotten that they must be the proper curators of the public sphere. They forgot their mandate.
