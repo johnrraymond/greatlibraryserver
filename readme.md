@@ -17,16 +17,13 @@ This code contains four main parts:
 4. Remove the heavy node_modules commits jrr made and move to using package.json
 5. Add twitter-like capabilities for the messaging components of the site
 6. Add domain name marketplace to the site
-7. Create a react-native ereader for the books in the library
-8. Finish this list 
-
-
+7. Create a react-native ereader for the books in the library 
 
 # The Great Library’s Requirements
 
-Welcome adventurer, you are not lost if you are a developer interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find developer documentation and information you need to understand our site and initial game-fi offering: The Scarab Cycle.
+Welcome adventurer, you are not lost if you are interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find  documentation and information needed to understand the site and initial game-fi offering: The Scarab Cycle.
 
-Good games have a good game play loop and a good story. This document is primarily focused on the game play loop. The story comes from the books.
+Good games have 1) a good game play loop and 2) a good story. The story comes from the books, but the game play comes from the requirement.
 
 ## Getting Started – Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
