@@ -23,24 +23,41 @@ This code contains four main parts:
 
 Welcome adventurer, you are not lost if you are interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find  documentation and information needed to understand the site and initial game-fi offering: The Scarab Cycle.
 
-Good games have 1) a good game play loop and 2) a good story. The story comes from the books, yet the loop comes from these requirements.
+Good games have 1) a good game play loop and 2) a good story. The stories for the games will comes from the books, yet the loop comes from these requirements.
 
 ## A Game For Gamers By Gamers
 The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angery can drive engagement in the shor tto near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
 
-They have all forgotten that they are a service to the people. They have forgotten that they must be the proper curators of the public sphere they create.
+They have all forgotten that they work for the people. They have forgotten that they must be the proper curators of the public sphere. They forgot their mandate.
 
-This is why there is toxicity. It is the company's fault because they forgot that they are a public service. they think of users like sheep to be sheared, not people to be helped along on their journey in life. They have become everything a library isn't.
+This is why there is toxicity. It is the company's fault. They forgot that they are a public service. They dont think of themselves as an extension of the people. They think of people as sheep to be sheared. They have become everything a good library isn't.
 
-### The Professional Gaming Council
+### Web3 doesnt have to be a bad things for games, gaming, and gamers
+A primary reason why web3 is such a boon for our games is because the underlying consensus network acts as the netcode for the games. This has several advantages. 
 
-### Web3 doesnt have to be a bad things for games, gaming, or gamers
-A primary reason why web3 is such a boon for our games is because the underlying consensus network acts as the netcode for the games. This has several advantages. The first most critical is no more realm servers. The network spreads the load across its servers seemlessly. You log into a web3 game and you dont choose where to connect to. You connect and you are ready to play with all your freinds. No character transfers, not cross realm guilds. None of that nonsense is needed now.
+#### No realm servers
+The first most critical reason is no more realm servers. The network spreads the load across its servers seemlessly. You log into a web3 game and you dont choose where to connect to. You connect and you are ready to play with all your freinds. No character transfers, not cross realm guilds. None of that nonsense is needed now.
+
+#### Financing the development of the games
+Furthermore, web3 allows the libary to pack a larger punch. Money is why. It takes money to make a good game. Web3 allows the library to grow its titles organically by delivering to the players something they want. 
 
 ### Casual isn't a dirty word
 We play games to experience story, to enjoy content, and to have fun with our freinds. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
 
-## Getting Started – Time is valuable
+### The Professional Gaming Council
+The first sizable cohort of professional gamers now walk the earth. They have seen the industry grow and mature and finally come to this point of corruption and decay. This cohort supplies the voices for the gaming community. Men like Asmongold, Josh Hayes-Strife, and Bellular Gaming's Michael and Matt speak for us all as gamers. They try to hold companies' feet to the fire when it comes to game design. Yet to date, the companies have ignored these men. The reasons the companies do so is because they only care about the money, whereas a person like Matt cares about the game. Its a question of priorities. Copmanies prioritize money over everything.
+
+The library prioritizes the people and art above revenues, because it knows both are more important than simple dollars and cents.
+
+#### The library's commitment to the council
+The library is resolved to hear out and to act on the council's feedback if possible. Not all things requested by the council may find its way into, or out of the game. Howerver, the libary promises to work with the council to provide a philosphicly sound game. Likewise, the libary staff, its librarians and developers, promise to duely consider to any and all suggestions made by the council.
+
+The libary furthermore understands  ultimately creating a good game means making something professionals want to play as well as the casuals.
+
+#### Joining the council
+If you think you belong on the council, please email johnrraymond@yahoo.com or any of the other council memebers with your suggestions with evidentuary proof that you  speak for the community in a cogent way. It also helps to be a professional gamer yourself. Furthermore, it may help to have a youtube channel or stream. Having a platform which hold our feet to the fire is a good way to prove you belong on the council.
+
+# Getting Started -- Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
 
 Let’s talk about the game…
