@@ -28,7 +28,10 @@ In keeping with the Great Library’s mission to be open and transparent, here y
 Good games have 1) a good game play loop and 2) a good story. The stories for the games will comes from the books, yet the loop comes from these requirements.
 
 Let's get started,
+
 John R Raymond
+
+Author of the Scarab Cycle
 
 ## Games for Gamers by Gamers
 The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angery can drive engagement in the shor tto near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
