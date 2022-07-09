@@ -489,7 +489,7 @@ Ongoing revenue will be secured through the portion of sales perpetually generat
 
 The current site allows users to connect to the books directly inside a frame. This will be unnecessary with the new skin on the frontend. There will be no frames and the users will be able to connect to the full site directly. The book text will be sent to the frontend from the backend api and then will be injected into the page.
     
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+![This is an image](first-ui-mockup.png)
     
 # The Full Requirements: OxFxM
 Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements traceability is what this project uses for its main high level design and will include all of the great library. Operations are the highest level actions that users and AIs can take. Whereas the functionalities implement large swaths of these operations. The module level is the lowest level and is at the function or subroutine level of the code.
