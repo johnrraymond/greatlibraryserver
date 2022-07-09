@@ -45,7 +45,7 @@ Web3 is a boon for our games. These open systems like the Avalanche network we u
 The first advantage is no more realm servers. The Avalanche network spreads the load across its servers seemlessly. You, the player, log into a web3 game and you don't choose where to connect to. You simply connect and are ready to play with all your freinds across the globe. No need for character transfers. There are no more cross realm guild problems. None of that nonsense is needed now. The "world computer" takes care of all that for us.
 
 #### 2. Smart financing the development of the games
-Furthermore, web3 allows the library to pack a larger punch with less initial investment. It takes money to make a good game. Web3 allows the library to grow its titles organically while still delivering to the players something they want. 
+Furthermore, web3 allows the library to pack a larger punch with less initial investment. It takes money to make a good game. Web3 allows the library to grow its titles organically while still delivering to the players something they want. We don't have to answer to investors. We only have to answer to the players.
 
 ### Casual isn't a dirty word
 We play games to experience story, to enjoy content, and to have fun with our friends. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
