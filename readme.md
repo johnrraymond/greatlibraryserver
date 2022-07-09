@@ -2,7 +2,7 @@
 
 All our code is open source:
 
-1. A website as a wagtail bakerydemo
+1. The website as currently a wagtail bakerydemo
 2. Code for creating the smart html
 3. Code for creating and managing the tokens on the backend
 4. Unity code for the game
