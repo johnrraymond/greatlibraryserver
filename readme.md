@@ -33,13 +33,13 @@ They have all forgotten that they work for the people. They have forgotten that 
 This is why there is toxicity. It is the company's fault. They forgot that they are a public service. They dont think of themselves as an extension of the people. They think of people as sheep to be sheared. They have become everything a good library isn't.
 
 ### Web3 doesnt have to be a bad things for games, gaming, and gamers
-A primary reason why web3 is such a boon for our games is because the underlying consensus network acts as the netcode for the games. This has several advantages. 
+Web3 is a boon for our games. These open systems like the Avalanche network we use provide technological capabilities to the libary which until now were the purview of large companies. Concensus networks provide several advantages:
 
 #### No realm servers
-The first most critical reason is no more realm servers. The network spreads the load across its servers seemlessly. You log into a web3 game and you dont choose where to connect to. You connect and you are ready to play with all your freinds. No character transfers, not cross realm guilds. None of that nonsense is needed now.
+The first most advantage is no more realm servers. The Avalanche network spreads the load across its servers seemlessly. You, the player, log into a web3 game and you dont choose where to connect to. You simply connect and are ready to play with all your freinds across the globe. No need for character transfers. There are no more cross realm guild problems. None of that nonsense is needed now. The "world computer" takes care of all that for us.
 
 #### Financing the development of the games
-Furthermore, web3 allows the libary to pack a larger punch. Money is why. It takes money to make a good game. Web3 allows the library to grow its titles organically by delivering to the players something they want. 
+Furthermore, web3 allows the libary to pack a larger punch with less initial investment. It takes money to make a good game. Web3 allows the library to grow its titles organically while still delivering to the players something they want. 
 
 ### Casual isn't a dirty word
 We play games to experience story, to enjoy content, and to have fun with our freinds. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
