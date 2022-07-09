@@ -472,12 +472,9 @@ Because the UI of any game is so critical, a theory of how it should work is imp
 Clicking both mouse buttons will cause the player to move forward and then WASD can help modify those movements.
 
 Targeting will require selecting the mobs individually at the start and possibly a location at some point for area of effect spells and abilities.
-The Full Requirements: OxFxM 
-Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements traceability is what this project uses for its main high level design and will include all of the great library. Operations are the highest level actions that users and AIs can take. Whereas the functionalities implement large swaths of these operations. The module level is the lowest level and is at the function or subroutine level of the code.
-
-As a good developer, ask yourself why am I writing this code if there is no functionality it supports?
-
+    
 ## The Library's Marketing Pitch
+    
 We are pleased to introduce the next evolution of the written word. By blending artistic content, NFT’s, gaming and AI, we have leapt past the current saturated e-reader market and bring something new which marries the best of physical mediums with the ease of digital ones.
 
 Take the humble book. It is physical, tactile, collectible. A library is a sign of culture to some, and speaks of your passion and interests. Books can take us to far away places, or teach us things we never thought were possible. They are, sadly, cumbersome, entirely static, and once read are stored, collecting dust.  But most damaging, there is a significant barrier to entry that barres all but the most easily marketed. New Authors have a steep hill to climb to enter into this tight market as the cost to print, store and distribute and market physical media is high, and publishers, facing an increasingly cluttered market fear to innovate.
@@ -488,6 +485,14 @@ Smartbooks are radically different.  They are collectable and dynamic, capitaliz
 
 Ongoing revenue will be secured through the portion of sales perpetually generated in the NFT marketplace. Marketing and site placement are premiums for potential creators to place their offerings. Smart Media will become the standard for the future because it allows successful authors to interact with their public on a level that is not possible no other way.
 
+## The React Frontend
+
+The current site allows users to connect to the books directly inside a frame. This will be unnecessary with the new skin on the frontend. There will be no frames and the users will be able to connect to the full site directly. The book text will be sent to the frontend from the backend api and then will be injected into the page.
+    
+# The Full Requirements: OxFxM
+Pronounced “Oh, cross Eff, cross Em,” the OxFxM model of requirements traceability is what this project uses for its main high level design and will include all of the great library. Operations are the highest level actions that users and AIs can take. Whereas the functionalities implement large swaths of these operations. The module level is the lowest level and is at the function or subroutine level of the code.
+
+As a good developer, ask yourself why am I writing this code if there is no functionality it supports?
 ## Operations
 Welcome the high level operations that users can accomplish when using the software you are writing. These are the “Steve Jobs Level” concepts. These are what he worried about when he made his code. Is the user experience clean and consistent across all the operations the users partake in? At the highest level we do not worry about what functionalities are needed to implement, we simply assign them the functionalities needed to accomplish the goal and as we work through the operations we worry about the UX (user experience.)
 
