@@ -55,7 +55,7 @@ The first sizable cohort of professional gamers now walk the earth. They have se
 
 The library prioritizes the people and art above revenues, because the library knows both are more important than simple dollars and cents.
 
-### The library's commitment to the council
+### The library's commitment to the Council
 The library is resolved to hear out and to act on the council's feedback if possible. Not all things requested by the council may find its way into, or out of the game. However, the library promises to work with the council to provide a philosophically sound game. Likewise, the library staff, its librarians and developers, promise to duely consider to any and all suggestions made by the council.
 
 The library furthermore understands ultimately creating a good game means making something professionals want to play as well as the casuals.
