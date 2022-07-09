@@ -1,13 +1,13 @@
-# Welcome to The Great Library's source code
+# Welcome to The Great Library
 
-This code contains four main parts:
+All our code is open source:
 
-1. the website as a wagtail bakerydemo
-2. the code for creating the smart html
-3. the code for creating and managing the tokens on the backend
-4. the unity code for the game
-5. the react frontend
-6. the secure backend
+1. A website as a wagtail bakerydemo
+2. Code for creating the smart html
+3. Code for creating and managing the tokens on the backend
+4. Unity code for the game
+5. A react frontend
+6. A secure backend
 
 ## Major TODOs
 
