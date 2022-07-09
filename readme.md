@@ -27,7 +27,7 @@ In keeping with the Great Library’s mission to be open and transparent, here y
 
 Good games have 1) a good game play loop and 2) a good story. The stories for the games will come from the books, yet the loop comes from these requirements.
 
-Let's get started,
+So let's get started,
 
 John R Raymond, Author of *The Scarab Cycle*
 
