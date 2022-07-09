@@ -23,7 +23,22 @@ This code contains four main parts:
 
 Welcome adventurer, you are not lost if you are interested in Web3/Game-Fi. In keeping with the Great Library’s mission to be open and transparent, here you will find  documentation and information needed to understand the site and initial game-fi offering: The Scarab Cycle.
 
-Good games have 1) a good game play loop and 2) a good story. The story comes from the books, but the game play comes from the requirement.
+Good games have 1) a good game play loop and 2) a good story. The story comes from the books, yet the loop comes from these requirements.
+
+## A Game For Gamers By Gamers
+The major game companies no longer make games for gamers. This is the reason why we see such dissatisfaction from the professional gamer core. The companies stopped caring about what makes a good game from the player perspective and focused instead on other things, other metrics like engagements. It is the same problem we see from social media. Angery can drive engagement in the shor tto near term, but in the end the platforms that don't value the user needs will collapse into the junk heap that they are. 
+
+They have all forgotten that they are a service to the people. They have forgotten that they must be the proper curators of the public sphere they create.
+
+This is why there is toxicity. It is the company's fault because they forgot that they are a public service. they think of users like sheep to be sheared, not people to be helped along on their journey in life. They have become everything a library isn't.
+
+### The Professional Gaming Council
+
+#### Web3 doesnt have to be a bad things for games, gaming, or gamers
+A primary reason why web3 is such a boon for our games is because the underlying consensus network acts as the netcode for the games. This has several advantages. The first most critical is no more realm servers. The network spreads the load across its servers seemlessly. You log into a web3 game and you dont choose where to connect to. You connect and you are ready to play with all your freinds. No character transfers, not cross realm guilds. None of that nonsense is needed now.
+
+#### Casual isn't a dirty word
+We play games to experience story, to enjoy content, and to have fun with our freinds. Softcore, hardcore, and words like casual all have nebulous meaning. A casual player should be able to do those things in any game regardless if the game is tailored to hardcore or softcore players. Why? Because if the game is designed right even casual players will enjoy playing it.
 
 ## Getting Started – Time is valuable
 Books in the great library have underlying smart contracts–more than one, but the ones we are most interested in for the game are the bookmarks as they are like owning property in Monopoly or even in real-life.
