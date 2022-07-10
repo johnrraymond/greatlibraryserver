@@ -26,9 +26,9 @@ Welcome adventurer, you are not lost even if you aren't interested in Web3/Game-
 
 In keeping with the Great Library’s mission to be open and transparent, here you will find documentation and information needed to understand the site and initial game-fi offering: The Scarab Cycle.
 
-Good games have 1) a good game play loop and 2) a good story. The stories for the games will come from the books, yet the loop comes from these requirements.
+For starters, good games have 1) a good game play loop and 2) a good story. The stories for the games will come from the books, yet the loop comes from these requirements.
 
-So let's get started,
+So let's get to it,
 
 John R Raymond, Author of *The Scarab Cycle*
 
