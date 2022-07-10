@@ -18,6 +18,7 @@ All our code is open source:
 6. Add domain name marketplace to the site
 7. Create a react-native ereader for the books in the library
 8. Add a new author portal for editing the text (and other memecodes)
+9. Add jobs listings for the site (and others)
 
 # The Great Library’s Requirements
 
