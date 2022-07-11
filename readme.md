@@ -19,6 +19,8 @@ All our code is open source:
 7. Create a react-native ereader for the books in the library
 8. Add a new author portal for editing the text (and other memecodes)
 9. Add jobs listings for the site (and others)
+10. Create a react-native e-reader for the books in the library
+11. Finish this list
 
 # The Great Library’s Requirements
 
