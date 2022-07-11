@@ -10,7 +10,8 @@ All our code is open source:
 
 ## Major TODOs
 
-1. Add 'use strict'; in all js code
+1. Create working installer. **Top priority in JRR's mind.**
+2. Add 'use strict'; in all js code
 2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
 3. Make site work from windows, macos, etc. 
 4. Remove the heavy node_modules commits jrr made and move to using package.json
