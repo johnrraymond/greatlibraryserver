@@ -26,13 +26,17 @@ import bakerydemo.breads.models as books
 from bakerydemo.art.study import Study
 from bakerydemo.art.minter import MyFirstMinter
 from bakerydemo.art.minter import MySecondMinter
-from bakerydemo.art.minter import Minter
+#from bakerydemo.art.minter import Minter
 
 from bakerydemo.art.moralis import Moralis
 
 moralis = Moralis()
 
 #os.environ['DJANGO_SETTINGS_MODULE']
+securePort = os.environ['securePort']
+secureHost = os.environ['secureHost']
+cCAPrivateKey = os.environ['cCAPrivateKey']
+
 marketPlaceAddress = os.environ['marketPlaceAddress']
 if not marketPlaceAddress:
     #marketPlaceAddress = "0x0000000000000000000000000000000000000000"
@@ -213,8 +217,32 @@ def getbookcontractid(potential, datamine):
 
 def verifyRewards(potential, datamine, bookmarkcontractid, bookcontractid):
     print("verifyRewards: " + str(bookmarkcontractid) + " " + str(bookcontractid))
-    verified = getFrom(getbookmarkcontractid(potential, datamine) + "/verifyrewards/" + getbookcontractid(potential, datamine)) 
+    verified = getFromBackend(getbookmarkcontractid(potential, datamine) + "/verifyrewards/" + getbookcontractid(potential, datamine)) 
     return verified
+
+
+def Minter(potential, datamine, contractType, whoFile):
+    #Minter(self, datamine, "HB", whoFile)
+
+    #self.potential = potential
+    _datamine = datamine
+    _name = contractType + potential._name
+    _symbol = contractType + potential._symbol
+    _bookRegistryAddress = potential._bookRegistryAddress
+    _baseuri = potential._baseuri
+    _burnable = potential._burnable
+    _maxmint = potential._maxmint
+    _defaultprice = potential._defaultprice
+    _defaultfrom = potential._defaultfrom
+    _mintTo = potential._mintTo
+
+    #return moralis.runNewBookContract(_name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, _mintTo, who) ##, unknown // moralis got it.
+
+    secureUri = "0x0" + "/newbookcontract/" + _name + "/" + _symbol+ "/" + _bookRegistryAddress + "!" + _baseuri + "!"
+    secureUri += _burnable + "/" + _maxmint + "/" + _defaultprice + "/" + _defaultfrom + "/" + _mintTo + "!" + whoFile
+
+    print(secureUri)
+    getFromBackend(secureUri)
 
 
 
@@ -226,24 +254,35 @@ def getFifoWrite():
         fifoWrite = os.open(writeFifo, os.O_WRONLY)
     return fifoWrite
 
-def getFrom(url):
-    print("getFrom: " + url)
-    tmpFile = os.environ["SERVICE_TMPFILE"]
-    print("tmpFile: " + tmpFile)
-    f = open(tmpFile, 'r')
-    port = f.read().strip()
-    print("port: " + str(port))
-    f.close()
+def getFromBackend(url):
 
-    response = requests.get("http://localhost:" + port + "/" + url)
-    print("response: " + response.text)
+    print("cCAPrivateKey: " + cCAPrivateKey)
 
-    return response.text
+    if cCAPrivateKey != "encrypted":
+        print("getFromBackend: " + url)
+        tmpFile = os.environ["SERVICE_TMPFILE"]
+        print("tmpFile: " + tmpFile)
+        f = open(tmpFile, 'r')
+        port = f.read().strip()
+        print("port: " + str(port))
+        f.close()
+
+        response = requests.get("http://localhost:" + port + "/" + url)
+        print("response: " + response.text)
+        return response.text
+    else:
+        print("secure request incoming")
+        port = securePort
+        host = secureHost
+
+        response = requests.get("https://" + host + ":" + port + "/" + url, verify="/home/john/bakerydemo/moralis/cert.pem")
+        print("response: " + response.text)
+        return response.text
 
 def getBookmarkTotalSupply(potential, datamine):
     print("getBookmarkTotalSupply: " + str(datamine))
 
-    currentBookmarlTotalSupply = getFrom(getbookmarkcontractid(potential, datamine) + "/totalsupply")
+    currentBookmarlTotalSupply = getFromBackend(getbookmarkcontractid(potential, datamine) + "/totalsupply")
     print("currentBookmarlTotalSupply: " + str(currentBookmarlTotalSupply))
     try:
         currentBookmarlTotalSupply = int(currentBookmarlTotalSupply)
