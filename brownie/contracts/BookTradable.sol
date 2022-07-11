@@ -5,6 +5,9 @@ pragma solidity ^0.8.0;
 import "./ERC721BookTradable.sol";
 //import "./Solution.sol";
 import "./CultureCoin.sol";
+import "../openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "../openzeppelin-solidity/contracts/token/ERC20/utils/SafeERC20.sol";
+import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
 
 /**
  * @title BookTradable is like a Regular opensea ERC721 tradable,
@@ -13,7 +16,8 @@ import "./CultureCoin.sol";
  *
  * And some other additions for editing metadata and the like.
  */
-contract BookTradable is ERC721BookTradable {
+contract BookTradable is ERC721BookTradable,ReentrancyGuard {
+    using SafeERC20 for IERC20;
 
     event GasTokenSpent(address owner, uint256 tokenId, uint256 amount, string reason);
 
@@ -44,47 +48,51 @@ contract BookTradable is ERC721BookTradable {
     constructor(string memory _name, string memory _symbol, address _bookRegistryAddress, string memory _baseuri,
     					bool _burnable, uint256 _maxmint, uint256 _defaultprice, uint256 _defaultfrom, address _gasToken, address _cCA)
         ERC721BookTradable(_name, _symbol, _cCA, _maxmint) {
+        require(_cCA!=address(0), "Invalid admin address");
+        require(_gasToken!=address(0), "Invalid gas token");
+        require(_bookRegistryAddress!=address(0), "Invalid bookRegistryAddress");
 
-	cCA = _cCA;
+	    cCA = _cCA;
         baseuri = _baseuri;
-	burnable = _burnable;	// Please do not burn books.
-	defaultprice = _defaultprice;
-	defaultfrom = _defaultfrom;
+        burnable = _burnable;	// Please do not burn books.
+        defaultprice = _defaultprice;
+        defaultfrom = _defaultfrom;
 
-	gasToken = _gasToken;
+	    gasToken = _gasToken;
 
         royalty = 5;  //5%
 
-	bookRegistryAddress = _bookRegistryAddress;
+	    bookRegistryAddress = _bookRegistryAddress;
     }
 
     // Used like: DCBT.safeTransferFromRegistry(address(this), msg.sender, DCBT.totalSupply());
-    function safeTransferFromRegistry(address from, address to, uint256 tokenId) public {
-	require(msgSender() == bookRegistryAddress || isAddon[msgSender()], "Only addon can safe send.");
+    function safeTransferFromRegistry(address from, address to, uint256 tokenId) public nonReentrant{
+	    require(msgSender() == bookRegistryAddress || isAddon[msgSender()], "Only addon can safe send.");
 
         address tokenOwner = ERC721.ownerOf(tokenId);
-	require(tokenOwner != to, "Token owner can not transfer token to self.");
+        require(tokenOwner != to, "Token owner can not transfer token to self.");
 
-	// Transfers the base otken to the buyer.
+        // Transfers the base otken to the buyer.
         _transfer(from, to, tokenId);
 
         // Transfers the reward token if any.
-	if(address(0) != rewardContract && rewardTokenId[tokenId] != 0 && !tokenRewarded[tokenId]) {
-	    BookTradable(rewardContract).safeTransferFromRegistry(from, to, rewardTokenId[tokenId]);
+        if(address(0) != rewardContract && rewardTokenId[tokenId] != 0 && !tokenRewarded[tokenId]) {
+            BookTradable(rewardContract).safeTransferFromRegistry(from, to, rewardTokenId[tokenId]);
             tokenRewarded[tokenId] = true;
-	}
+        }
 
-        // Give the buyer their share of the gas.
-	if(gasRewards[tokenId] != 0) {
-       	    CultureCoin(gasToken).transfer(to, gasRewards[tokenId]);
-	    gasRewards[tokenId] = 0;		// Rewards are now empty.
-	}
-	
+            // Give the buyer their share of the gas.
+        if(gasRewards[tokenId] != 0) {
+            IERC20(gasToken).safeTransfer(to, gasRewards[tokenId]);
+            gasRewards[tokenId] = 0;		// Rewards are now empty.
+	    }	
     }
+
     mapping(address => bool) public isAddon;
     function setAddon(address _addon, bool _isAddon) public {
-	require(cCA == msgSender() || msgSender() == bookRegistryAddress || isAddon[msg.sender]);
-	isAddon[_addon] = _isAddon;
+        require(_addon!=address(0), "Invalid address");
+        require(cCA == msgSender() || msgSender() == bookRegistryAddress || isAddon[msg.sender]);
+        isAddon[_addon] = _isAddon;
     }
     function getAddon(address _addon) external view returns(bool) {
     	return isAddon[_addon];
@@ -114,16 +122,17 @@ contract BookTradable is ERC721BookTradable {
     }
 
     function setRewardContract(address _rewardContract) public {
+        require(_rewardContract!=address(0), "Invalid address");
         require(msgSender() == owner() || msgSender() == bookRegistryAddress || cCA == msgSender(), "Only the owner or registery may change the reward contract.");
 
     	rewardContract = _rewardContract;
     }
     
     function setRewardToken(uint256 _tokenId, uint256 _rewardTokenId) public {
-	require(isAddon[msg.sender] || cCA == msgSender());
+	    require(isAddon[msg.sender] || cCA == msgSender());
 
         rewardTokenId[_tokenId] = _rewardTokenId;
-	tokenRewarded[_tokenId] = false;		// On setting this the safetransgerfromregistry can send it on.
+	    tokenRewarded[_tokenId] = false;		// On setting this the safetransgerfromregistry can send it on.
     }
 
 
@@ -133,13 +142,14 @@ contract BookTradable is ERC721BookTradable {
 
     function setRoyalty(uint256 _royalty) external {
     	require(msgSender() == owner() || msgSender() == bookRegistryAddress || msgSender() == cCA);
-	require(royalty <= 99, "Be between 0 and 99.");
+        require(royalty <= 99, "Be between 0 and 99.");
 
-	royalty = _royalty;
+        royalty = _royalty;
     }
     	
 
     function setGasToken(address _gasToken) external {
+        require(_gasToken!=address(0), "Invalid address");
     	require(msgSender() == owner() || msgSender() == bookRegistryAddress || cCA == msgSender());
 
     	gasToken = _gasToken;
@@ -150,31 +160,31 @@ contract BookTradable is ERC721BookTradable {
     }
 
     // This function burns the Culture Coins that the contract owns on behalf of the token owner.
-    function burnGas(uint256 _tokenId, uint256 _amount, string memory _reason) external {
+    function burnGas(uint256 _tokenId, uint256 _amount, string memory _reason) external nonReentrant{
         address tokenOwner = ownerOf(_tokenId);
-	require(msgSender() == tokenOwner || msgSender() == bookRegistryAddress || cCA == msgSender(), "Amins only.");
+        require(msgSender() == tokenOwner || msgSender() == bookRegistryAddress || cCA == msgSender(), "Amins only.");
 
-	require(gasBalance[_tokenId] >= _amount, "Refill.");
-	gasBalance[_tokenId] -= _amount;
+        require(gasBalance[_tokenId] >= _amount, "Refill.");
+        gasBalance[_tokenId] -= _amount;
 
-	CultureCoin(gasToken).burn(_amount);
+        CultureCoin(gasToken).burn(_amount);
 
-	emit GasTokenSpent(tokenOwner, _tokenId, _amount, _reason);
+        emit GasTokenSpent(tokenOwner, _tokenId, _amount, _reason);
     }
 
-    function fillGasTank(uint256 _tokenId, uint256 _amount, uint256 _gasRewards) external {
-	uint256 allowedAmount = CultureCoin(gasToken).allowance(msgSender(), address(this));
+    function fillGasTank(uint256 _tokenId, uint256 _amount, uint256 _gasRewards) external nonReentrant{
+	    uint256 allowedAmount = IERC20(gasToken).allowance(msgSender(), address(this));
         require(allowedAmount >= _amount, "fillGasTank");
 
-	CultureCoin(gasToken).transferFrom(msgSender(), address(this), _amount);
-
-	gasBalance[_tokenId] += _amount - _gasRewards;
+        gasBalance[_tokenId] += _amount - _gasRewards;
         gasRewards[_tokenId] += _gasRewards;
+
+        IERC20(gasToken).safeTransferFrom(msgSender(), address(this), _amount);
     }
 
 
     function getDefaultPrice() public view returns(uint256) {
-	return defaultprice;
+	    return defaultprice;
     }
     function setDefaultPrice(uint256 _defaultprice) external {
     	require(msgSender() == owner() || msgSender() == bookRegistryAddress || cCA == msgSender());
@@ -232,6 +242,7 @@ contract BookTradable is ERC721BookTradable {
 
     // So we can change the marketplace address for the books if needed.
     function setProxyRegistryAddress(address _bookRegistryAddress) public {
+        require(_bookRegistryAddress!=address(0), "Invalid address");
         require(msgSender() == owner() || msgSender() == bookRegistryAddress || msgSender() == cCA, "Not owner or book rigistery.");
 
     	bookRegistryAddress = _bookRegistryAddress;
