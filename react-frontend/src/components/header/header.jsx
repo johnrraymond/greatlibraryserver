@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartIcon from '../cart-icon/cart-icon';
-import { auth } from '../../firebase';
 import { UserContext } from '../../context/user-context'
 import './header.styles.scss';
 
@@ -34,7 +33,7 @@ const Header = () => {
         }
         {
           user && 
-          <li onClick={() => auth.signOut()}>
+          <li onClick={()=> {}}>
             Sign Out
           </li>
         } 

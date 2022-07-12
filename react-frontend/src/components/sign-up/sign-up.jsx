@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../shared/layout';
 import { Formik } from 'formik';
-import { auth, createUserProfileDocument } from '../../firebase';
-import { withRouter } from 'react-router-dom';
+// import { auth, createUserProfileDocument } from '../../firebase';
+import withRouter from '../../withRouter';
 import './sign-up.styles.scss';
 
 const validate = values => {
@@ -29,8 +29,8 @@ const SignUp = ({ history: { push } }) => {
     const { firstname, email, password } = values;
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password)
-      await createUserProfileDocument(user, { displayName: firstname });
+      // const { user } = await auth.createUserWithEmailAndPassword(email, password)
+      // await createUserProfileDocument(user, { displayName: firstname });
       push('/shop');
       setSubmitting(false);
     } catch (error) {

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { isInCart } from '../../helpers';
 import { CartContext } from '../../context/cart-context'; 
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../withRouter';
 import './featured-product.styles.scss';
 
 const FeaturedProduct = (props) => {

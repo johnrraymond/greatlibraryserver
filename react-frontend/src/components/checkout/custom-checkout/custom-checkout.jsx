@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../../withRouter';
 import {
   CardNumberElement,
   CardExpiryElement,
