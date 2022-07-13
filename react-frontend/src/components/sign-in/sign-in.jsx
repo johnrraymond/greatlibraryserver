@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../withRouter';
 import Layout from '../shared/layout';
 import { Formik } from 'formik';
-import { auth } from '../../firebase';
 import '../sign-up/sign-up.styles.scss';
 
 const validate = values => {
@@ -29,7 +28,7 @@ const SignIn = ({ history: { push } }) => {
     const { email, password } = values;
     try {
       //signin with firebase
-      await auth.signInWithEmailAndPassword(email, password);
+      // await auth.signInWithEmailAndPassword(email, password);
       setSubmitting(false);
       push('/shop');
       

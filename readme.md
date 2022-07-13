@@ -11,6 +11,7 @@ All our code is open source:
 
 ## Major TODOs
 
+
 1. Add 'use strict'; in all js code
 2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
 3. Make site work from windows, macos, etc. 
@@ -22,6 +23,7 @@ All our code is open source:
 9. Add jobs listings for the site (and others)
 10. Create a react-native e-reader for the books in the library
 11. Finish this list
+
 
 # The Great Library’s Requirements
 

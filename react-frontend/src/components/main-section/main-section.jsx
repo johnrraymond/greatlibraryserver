@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../withRouter';
 import bigScore from '../../assets/the-big-score.jpg';
 import './main-section.styles.scss';
 
