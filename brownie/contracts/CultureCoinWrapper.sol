@@ -22,7 +22,7 @@ contract CultureCoinWrapper is ERC20, ERC20Burnable, ReentrancyGuard {
     uint256 private b;          // Balance.
     uint256 private price;
     uint256 private generatePrice;
-    CultureCoinV1M0m1 private CC;
+    CultureCoin private CC;
     constructor(uint256 initialSupply, address _cultureCoin, address _cCAClone, string memory _meme) ERC20("CultureCoin", _meme) {
         require(_cultureCoin != address(0), "Invalid Culturcoin.");
         require(_cCAClone != address(0), "Zero address.");

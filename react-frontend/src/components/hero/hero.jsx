@@ -13,7 +13,7 @@ const Hero = () => {
           <Link to='/shop'>    
             <div className='shop-now-btn'>
               <button className='button is-black' id='shop-now'>
-                SHOP NOW
+                Books
               </button>
             </div>   
           </Link>         
