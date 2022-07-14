@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import withRouter from '../../withRouter';
 import { ProductsContext } from '../../context/products-context';
 import { CartContext } from '../../context/cart-context';
-import { isInCart } from '../../helpers';
 import Layout from '../shared/layout';
 import './single-product.styles.scss';
 
 const SingleProduct = ({ match, history: { push } }) => {
   const { products } = useContext(ProductsContext);
-  const { addProduct, cartItems, increase } = useContext(CartContext);
+  const { addProduct, increase } = useContext(CartContext);
   const { id } = match.params;
   const [product, setProduct] = useState(null);
   useEffect(() => {
@@ -25,7 +24,6 @@ const SingleProduct = ({ match, history: { push } }) => {
   // while we check for product
   if (!product) { return null }
   const { imageUrl, author, title, price, description } = product;
-  const itemInCart = isInCart(product, cartItems);
   return (
     <Layout>
       <div className='single-product-container'>
@@ -42,7 +40,6 @@ const SingleProduct = ({ match, history: { push } }) => {
 
           <div className='add-to-cart-btns'>
             {
-              !itemInCart &&
               <button 
                 className='button is-white nomad-btn' 
                 id='btn-white-outline'
@@ -51,7 +48,6 @@ const SingleProduct = ({ match, history: { push } }) => {
               </button> 
             }
             {
-              itemInCart &&
               <button 
                 className='button is-white nomad-btn' 
                 id='btn-white-outline'

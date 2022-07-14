@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { isInCart } from '../../helpers';
 import { CartContext } from '../../context/cart-context'; 
 import withRouter from '../../withRouter';
 import './featured-product.styles.scss';
@@ -7,8 +6,7 @@ import './featured-product.styles.scss';
 const FeaturedProduct = (props) => {
   const { title, imageUrl, price, history, id, description } = props;
   const product = { title, imageUrl, price, id,  description };
-  const { addProduct, cartItems, increase } = useContext(CartContext);
-  const itemInCart = isInCart(product, cartItems);
+  const { addProduct, increase } = useContext(CartContext);
   return (
     <div className='featured-product'>
       <div className='featured-image' onClick={() => history.push(`/product/${id}`)}>
@@ -18,14 +16,12 @@ const FeaturedProduct = (props) => {
         <h3>{title}</h3>
         <p>$ {price}</p>
         { 
-          !itemInCart && 
           <button 
             className='button is-black nomad-btn'
             onClick={() => addProduct(product)}>
               ADD TO CART</button>
         }
         {
-          itemInCart &&
           <button 
             className='button is-white nomad-btn'
             id='btn-white-outline'
