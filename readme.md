@@ -7,6 +7,7 @@ All our code is open source:
 3. Code for creating and managing tokens on the backend
 4. Unity code for the game
 5. A new react frontend
+5. All the best Guilds, Guides, and Goblins -- the numbers approved version of every game and franchies under the sun
 
 ## Major TODOs
 

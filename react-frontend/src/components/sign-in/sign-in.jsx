@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../withRouter';
 import Layout from '../shared/layout';
 import { Formik } from 'formik';
-import { auth } from '../../firebase';
+import { useNavigate } from "react-router-dom";
 import '../sign-up/sign-up.styles.scss';
 
 const validate = values => {
@@ -17,7 +17,8 @@ const validate = values => {
   return errors;
 }
 
-const SignIn = ({ history: { push } }) => {
+const SignIn = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const initialValues = {
     email: '',
@@ -29,9 +30,9 @@ const SignIn = ({ history: { push } }) => {
     const { email, password } = values;
     try {
       //signin with firebase
-      await auth.signInWithEmailAndPassword(email, password);
+      // await auth.signInWithEmailAndPassword(email, password);
       setSubmitting(false);
-      push('/shop');
+      navigate('/shop');
       
     } catch (error) {
       console.log('error', error);
