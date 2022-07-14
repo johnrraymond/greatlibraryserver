@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CartIcon from '../cart-icon/cart-icon';
+import WalletConnect from '../walletconnect/walletconnect';
 import './header.styles.scss';
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
         </li>
       </ul>
-      <CartIcon />
+      <WalletConnect />
     </nav>
   );
 }
