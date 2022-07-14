@@ -11,19 +11,17 @@ All our code is open source:
 
 ## Major TODOs
 
-
-1. Add 'use strict'; in all js code
-2. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
-3. Make site work from windows, macos, etc. 
-4. Remove the heavy node_modules commits jrr made and move to using package.json
-5. Add twitter-like capabilities for the messaging components of the site
-6. Add domain name marketplace to the site
-7. Create a react-native ereader for the books in the library
-8. Add a new author portal for editing the text (and other memecodes)
-9. Add jobs listings for the site (and others)
-10. Create a react-native e-reader for the books in the library
-11. Finish this list
-
+1. Create working installer. **Top priority?**
+2. New user onboarding for the users who have never used crypto before.
+3. Add 'use strict'; in all js code
+4. Migrate away from moralis-backend.js to secure-mackend.js --jrr's current task (remove crypto package and use builtin one.)
+5. Make site work from windows, macos, etc. 
+6. Remove the heavy node_modules commits jrr made and move to using package.json
+7. Add twitter-like capabilities for the messaging components of the site
+8. Add domain name marketplace to the site
+9. Create a react-native ereader for the books in the library
+10. Add a new author portal for editing the text (and other memecodes)
+11. Add jobs listings for the site (and others)
 
 # The Great Library’s Requirements
 

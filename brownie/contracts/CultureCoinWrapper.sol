@@ -5,7 +5,9 @@ pragma solidity ^0.8.0;
 import "../openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "../openzeppelin-solidity/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "../openzeppelin-solidity/contracts/security/ReentrancyGuard.sol";
+
 import "./CultureCoin.sol";
+
 import "./Stakeable.sol";
 
 // Create your own book, dApp, or intelectual property using this wrapper coin.
@@ -24,7 +26,9 @@ contract CultureCoinWrapper is ERC20, ERC20Burnable, ReentrancyGuard {
     constructor(uint256 initialSupply, address _cultureCoin, address _cCAClone, string memory _meme) ERC20("CultureCoin", _meme) {
         require(_cultureCoin != address(0), "Invalid Culturcoin.");
         require(_cCAClone != address(0), "Zero address.");
+
         cCAClone = _cCAClone; // Not the real cCA.
+
         emit DebugAddress(_cultureCoin);
         emit DebugAddress(msg.sender);
         emit DebugUINT(initialSupply);
@@ -66,6 +70,7 @@ contract CultureCoinWrapper is ERC20, ERC20Burnable, ReentrancyGuard {
     function getGeneratePrice() public view returns(uint256) {
         return generatePrice;
     }
+    
     function generate(string memory _meme) public payable nonReentrant{     // await debugPayableFunction02("generate", priceEncoded, oferingId, "You have now generated a new coin under yours.");
         require(generatePrice > 0, "More.");
         require(msg.value >= generatePrice, "More, more.");
