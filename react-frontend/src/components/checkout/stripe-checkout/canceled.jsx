@@ -1,8 +1,10 @@
 import React from 'react';
 import withRouter from '../../../withRouter';
 import Layout from '../../shared/layout';
+import { useNavigate } from "react-router-dom";
 
-const Canceled = ({ history }) => {
+const Canceled = () => {
+  const navigate = useNavigate();
   return (
     <Layout>
       <div className='checkout'>
@@ -10,7 +12,7 @@ const Canceled = ({ history }) => {
         <p>Payment was not successful</p>
         <div>
           <button className='button is-black nomad-btn submit' 
-          onClick={() => history.push('/shop')}>
+          onClick={() => navigate('/shop')}>
             Continue Shopping
           </button>
         </div>

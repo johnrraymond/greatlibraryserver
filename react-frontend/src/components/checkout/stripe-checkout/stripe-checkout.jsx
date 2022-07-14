@@ -1,25 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { CartContext } from '../../../context/cart-context';
+import React, { useState } from 'react';
 
 const StripeCheckout = () => {
   const [email, setEmail] = useState('');
-  const { cartItems } = useContext(CartContext);
   const handleGuestCheckout = async (e) => {
     e.preventDefault();
-    // const line_items = cartItems.map(item => {
-    //   return {
-    //     quantity: item.quantity,
-    //     price_data: {
-    //       currency: 'usd',
-    //       unit_amount: item.price * 100, // amount is in cents
-    //       product_data: {
-    //         name: item.title,
-    //         description: item.description,
-    //         images: [item.imageUrl], 
-    //       }
-    //     }
-    //   }
-    // });
   }
 
   return (

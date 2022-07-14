@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import withRouter from '../../../withRouter';
 import Layout from '../../shared/layout';
 import { CartContext } from '../../../context/cart-context';
+import { useNavigate } from "react-router-dom";
 
-const Success = ({ history }) => {
+const Success = () => {
   const { clearCart, cartItems } = useContext(CartContext);
   const [ chargeId, setChargeId ] = useState("");
   const [ amount, setAmount ] = useState(0);
+  const navigate = useNavigate();
   let { id } = useParams();
 
   var myHeaders = new Headers();
@@ -51,7 +53,7 @@ const Success = ({ history }) => {
         <p>Payment ID: <b>{id}</b></p>
         <div>
           <button className='button is-black nomad-btn submit' 
-          onClick={() => history.push('/shop')}>
+          onClick={() => navigate('/shop')}>
             Continue Shopping
           </button>
         </div>

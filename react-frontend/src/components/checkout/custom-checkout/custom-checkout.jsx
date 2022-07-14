@@ -1,14 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import withRouter from '../../../withRouter';
-import {
-  CardNumberElement,
-  CardExpiryElement,
-  CardCvcElement
-} from '@stripe/react-stripe-js';
 
-const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
+const CustomCheckout = () => {
   const [processing, setProcessing] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, ] = useState(null);
   const [payment, setPaymentCard] = useState('');
   const [saveCard, setSavedCard] = useState(false);
 
@@ -20,29 +15,6 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
   const savedCardCheckout = async () => {
     setProcessing(true);
   }
-
-  const cardHandleChange = event => {
-    const { error } = event;
-    setError(error ? error.message: '');
-  }
-
-  const cardStyle = {
-    style: {
-      base: {
-        color: "#000",
-        fontFamily: 'Roboto, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#606060",
-        },
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a"
-      }
-    }
-  };
 
   let cardOption;
 
@@ -66,27 +38,6 @@ const CustomCheckout = ({ shipping, cartItems, history: { push } }) => {
         </div>
       }
       <h4>Or Enter Your Payment Info Below</h4>
-      <div className='stripe-card'>
-        <CardNumberElement 
-          className='card-element'
-          options={cardStyle}
-          onChange={cardHandleChange}
-        />
-      </div>
-      <div className='stripe-card'>
-        <CardExpiryElement 
-          className='card-element'
-          options={cardStyle}
-          onChange={cardHandleChange}
-        />
-      </div>
-      <div className='stripe-card'>
-        <CardCvcElement 
-          className='card-element'
-          options={cardStyle}
-          onChange={cardHandleChange}
-        />
-      </div>
       {
         <div className='save-card'>
           <label>Save Card </label>

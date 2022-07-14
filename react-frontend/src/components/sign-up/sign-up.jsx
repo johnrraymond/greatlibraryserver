@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Layout from '../shared/layout';
 import { Formik } from 'formik';
-// import { auth, createUserProfileDocument } from '../../firebase';
 import withRouter from '../../withRouter';
+import { useNavigate } from "react-router-dom";
 import './sign-up.styles.scss';
 
 const validate = values => {
@@ -17,7 +17,8 @@ const validate = values => {
   return errors;
 }
 
-const SignUp = ({ history: { push } }) => {
+const SignUp = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const initialValues = {
     firstname: '',
@@ -25,13 +26,12 @@ const SignUp = ({ history: { push } }) => {
     password: '',
   }
 
-  const handleSignUp = async (values, { setSubmitting }) => {
-    const { firstname, email, password } = values;
+  const handleSignUp = async (_, { setSubmitting }) => {
 
     try {
       // const { user } = await auth.createUserWithEmailAndPassword(email, password)
       // await createUserProfileDocument(user, { displayName: firstname });
-      push('/shop');
+      navigate('/shop');
       setSubmitting(false);
     } catch (error) {
       console.log('error', error);

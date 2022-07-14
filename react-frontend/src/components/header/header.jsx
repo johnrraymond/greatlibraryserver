@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import CartIcon from '../cart-icon/cart-icon';
 import './header.styles.scss';
@@ -17,28 +17,9 @@ const Header = () => {
         </li>
         <li>
           <Link to='/shop'>
-            Shop
+            Books
           </Link>
         </li>
-        {
-          <li>
-            <Link to='/sign-in'>
-              Sign In
-            </Link>
-          </li>
-        }
-        {
-          <li onClick={()=> {}}>
-            Sign Out
-          </li>
-        } 
-        {
-          <li>
-            <Link to='/sign-up'>
-              Sign Up
-            </Link>
-          </li>
-        }
       </ul>
       <CartIcon />
     </nav>

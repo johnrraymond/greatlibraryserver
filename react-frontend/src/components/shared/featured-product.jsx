@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../context/cart-context'; 
 import withRouter from '../../withRouter';
+import { useNavigate } from "react-router-dom";
 import './featured-product.styles.scss';
 
 const FeaturedProduct = (props) => {
-  const { title, imageUrl, price, history, id, description } = props;
+  const navigate = useNavigate();
+  const { title, imageUrl, price, id, description } = props;
   const product = { title, imageUrl, price, id,  description };
   const { addProduct, increase } = useContext(CartContext);
   return (
     <div className='featured-product'>
-      <div className='featured-image' onClick={() => history.push(`/product/${id}`)}>
+      <div className='featured-image' onClick={() => navigate(`/product/${id}`)}>
         <img src={imageUrl} alt='product' />
       </div>
       <div className='name-price'>
