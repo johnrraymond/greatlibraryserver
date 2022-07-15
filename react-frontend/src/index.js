@@ -6,15 +6,28 @@ import reportWebVitals from './reportWebVitals';
 import ProductsContextProvider from './context/products-context';
 import CartContextProvider from './context/cart-context';
 
+import {
+  Web3ReactProvider,
+} from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
+
+function getLibrary(provider) {
+  const library = new Web3Provider(provider);
+  library.pollingInterval = 8000;
+  return library;
+}
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <ProductsContextProvider>
-      <CartContextProvider>
-        <App />
-      </CartContextProvider>
-    </ProductsContextProvider>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <ProductsContextProvider>
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
+      </ProductsContextProvider>
+    </Web3ReactProvider>
   </React.StrictMode>
 );
 
