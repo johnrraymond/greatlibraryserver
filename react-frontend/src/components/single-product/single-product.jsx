@@ -25,7 +25,7 @@ const SingleProduct = ({ match }) => {
   }, [id, product, navigate, products]);
   // while we check for product
   if (!product) { return null }
-  const { imageUrl, author, title, price, description } = product;
+  const { author, title, price, description } = product;
   return (
     <Layout>
       <div className='single-product-container'>
