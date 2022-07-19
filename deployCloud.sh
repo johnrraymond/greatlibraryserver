@@ -40,6 +40,19 @@ echo "const nonceWindow = \"$nonceWindow\";" >> index.js
 
 cp index.js cloudfolder/
 
+### Game CSharp GameEnv.cs
+GAMEENV="core/Assets/MoralisWeb3ApiSdk/GameEnv.cs"
+
+echo "namespace MoralisWeb3ApiSdk { public class GameEnv {" > $GAMEENV
+echo "public static string timeCubeAddress = \""$timeCubeAddress\"';' >> $GAMEENV
+echo "public static string cultureCoinAddress = \""$cultureCoinAddress\"';' >> $GAMEENV
+echo "public static string baseSpellsAddress = \""$baseSpellsAddress\"';' >> $GAMEENV
+echo "public static string baseLootAddress = \""$baseLootAddress\"';' >> $GAMEENV
+echo "public static string bookmarkAddress = \""$bookmarkAddress\"';' >> $GAMEENV
+echo "public static string myItemsAddress = \""$myItemsAddress\"';' >> $GAMEENV
+echo "public static string heroAddress = \""$heroAddress\"';' >> $GAMEENV
+echo "public static string marketPlaceAddress = \""$marketPlaceAddress\"';' >> $GAMEENV
+echo "}}" >> $GAMEENV
 
 # deploy the code to the web as well
 WEBD="bakerydemo/static/js/defaults.js"
@@ -141,4 +154,5 @@ echo make sure to verify the autosavecloud.sh is running...
 echo "MEOW! DEPLOYING BEN!"
 echo "(cd moralis; . ../.env && node verifyAddon.js $benScratchesAddress $benDeployAddress true)"
 (cd moralis; . ../.env && node verifyAddon.js $benScratchesAddress $benDeployAddress true)
+
 
