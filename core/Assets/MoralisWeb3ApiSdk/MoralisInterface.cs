@@ -91,28 +91,7 @@ namespace MoralisWeb3ApiSdk
         // keep a local copy to save some cycles.
         private static MoralisUser user;
   
-        public static string getAbi(string _name) {
-            string path = "Assets/MoralisWeb3ApiSdk/" + _name + ".json";
-            //Read the text from directly from the test.txt file
-            StreamReader reader = new StreamReader(path);
-            string data = reader.ReadToEnd();
-            Debug.Log(data);
-            reader.Close();
-            return data;
-        }
 
-        public static string getChain()
-        {
-            return "avalanche testnet";
-        }
-
-        public static string getAddress(string _contract)
-        {
-          if(_contract == "TimeCube") return "0x85617d3e9c7b56df186cf99569cdeaae66febac4";
-
-          return "";
-        }
- 
     
         /// <summary>
         /// Initializes the connection to a Moralis server.
