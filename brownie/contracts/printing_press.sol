@@ -124,7 +124,7 @@ contract PrintingPress is Receiver, ReentrancyGuard { // is Ownable { // because
 		operatorFee = 1;
     	}
 	function setOperatorFee(uint256 _operatorFee) public {
-		require(msg.sender == cCA, "Admins only.");
+		require(msg.sender == cCA);
 		
 		operatorFee = _operatorFee;
 
@@ -136,7 +136,7 @@ contract PrintingPress is Receiver, ReentrancyGuard { // is Ownable { // because
                                         bool _burnable, uint256 _maxmint, uint256 _defaultprice, uint256 _defaultfrom,
 					address _mintTo) public returns(address) { //, address _gasToken) {
 
-		require(cCA == msg.sender || _mintTo == cCA, "Admins only.");
+		//require(cCA == msg.sender || _mintTo == cCA, "Admins only.");
     		BookTradable book =  new BookTradable(_name, _symbol, _bookRegistryAddress, _baseuri, _burnable, _maxmint, _defaultprice, _defaultfrom, gasToken, cCA);
 		book.transferOwnership(_mintTo);
 
